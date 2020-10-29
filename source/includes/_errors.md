@@ -6,6 +6,32 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 
 The Kittn API uses the following error codes:
 
+```json--response
+
+HTTP/1.1 403
+
+{
+    "error": "access_denied",
+    "message": "The resource owner or authorization server denied the request.",
+    "hint": "The JWT string must have two dots"
+}
+
+```
+
+
+```json--response
+
+HTTP/1.1 400
+
+{
+    "errors": {
+        "status": 400,
+        "title": null,
+        "detail": "Database failure. Please refer to suitecrm.log for details."
+    }
+}
+
+```
 
 Error Code | Meaning
 ---------- | -------

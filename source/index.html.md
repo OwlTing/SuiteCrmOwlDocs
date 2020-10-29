@@ -2,10 +2,8 @@
 title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - ruby
-  - python
-  - javascript
+  - json--request: request
+  - json--response: response
 
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
@@ -13,227 +11,342 @@ toc_footers:
 
 includes:
   - errors
+  - api
+  - guideline
 
 search: true
 ---
-
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
-
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-
-This example API documentation page was created with [Slate](https://github.com/slatedocs/slate). Feel free to edit it and use it as a base for your own API's documentation.
+SuiteCRM Api Docs (Owlting version)
 
 # Authentication
 
-> To authorize, use this code:
+* Client credentials Grant
 
-```ruby
-require 'kittn'
+**Headers**:<br>
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+param         | value
+-----         | -----
+Content-Type  | application/vnd.api+json
+Accept        | application/vnd.api+json
+Authorization | Bearer {{token}}
+
+# Base URLs:
+env        | url
+---        | ---
+staging    | https://crm-staging.owlting.com
+
+# Authentication with Client Credentials
+
+## Required parameters
+
+param         | value
+-----         | -----
+grant_type    | client_credentials
+client_id     | ExampleClientName
+client_secret | ExampleSecretPassword
+
+```json--request
+{
+    "grant_type": "client_credentials",
+    "client_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "client_secret": "secret"
+}
 ```
 
-```python
-import kittn
+Example Response:
 
-api = kittn.authorize('meowmeowmeow')
+```json--response
+{
+   "token_type":"Bearer",
+   "expires_in":3600,
+   "access_token":"{{access_token}}"
+}
 ```
 
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+Parameter    | description
+----------   | ----------------------
+token_type   | the Bearer token value
+expires_in   | an integer representing the TTL of the access token
+access_token | a JWT signed with the authorization server’s private key. It is required that you include this in the HTTP headers, each time you make a request to the API
+
+# Get MetaData
+
+## HTTP Request
+`GET http://example.com/Api/docs/swagger/swagger.json`
+
+# Available parameters
+According to JsonApi specification, the available parameters are the following depending on the GET endpoint:
+
+## Fields
+Fields can filter on attribute object. Allowed keys are valid bean properties.
+
+Example:
+
+`http://example.com/V8/module/Accounts/11a71596-83e7-624d-c792-5ab9006dd493?fields[Accounts]=name,account_type`
+
+```json--response
+{
+    "data": {
+        "type": "Account",
+        "id": "11a71596-83e7-624d-c792-5ab9006dd493",
+        "attributes": {
+            "name": "White Cross Co",
+            "account_type": "Customer"
+        },
+        "relationships": {
+            "AOS_Contracts": {
+                "links": {
+                    "related": "/V8/module/Accounts/11a71596-83e7-624d-c792-5ab9006dd493/relationships/aos_contracts"
+                }
+            }
+        }
+}
 ```
 
-```javascript
-const kittn = require('kittn');
+## Page
+Page can filter beans and set pagination. Allowed key are number and size.
 
-let api = kittn.authorize('meowmeowmeow');
+* page[number] : number of the wanted page
+
+* page[size] : size of the result
+
+Example:
+
+`http://example.com/V8/module/Accounts?fields[Account]=name,account_type&page[number]=3&page[size]=1`
+
+Result:
+
+```json--response
+{
+    "meta": {
+        "total-pages": 54
+    },
+    "data": [
+        {
+            "type": "Account",
+            "id": "e6e0af95-4772-5773-ae70-5ae70f931feb",
+            "attributes": {
+                "name": "",
+                "account_type": ""
+            },
+            "relationships": {
+                "AOS_Contracts": {
+                    "links": {
+                        "related": "/V8/module/Accounts/e6e0af95-4772-5773-ae70-5ae70f931feb/relationships/aos_contracts"
+                    }
+                }
+            }
+        }
+    ],
+    "links": {
+        "first": "/V8/module/Accounts?fields[Account]=name,account_type&page[number]=1&page[size]=1",
+        "prev": "/V8/module/Accounts?fields[Account]=name,account_type&page[number]=2&page[size]=1",
+        "next": "/V8/module/Accounts?fields[Account]=name,account_type&page[number]=4&page[size]=1",
+        "last": "/V8/module/Accounts?fields[Account]=name,account_type&page[number]=54&page[size]=1"
+    }
+}
+```
+## Sort
+Sort is only available when collections wanted to be fetched. Sorting is set to ASC by default. If the property is prefixed with hyphen, the sort order changes to DESC.
+
+<aside class="warning"><strong>Important notice</strong>: we only support single sorting right now!</aside>
+
+Example:
+
+`http://example.com/V8/module/Accounts?sort=-name`
+
+Result:
+
+```json--response
+{
+    "data": [
+        {
+            "type": "Account",
+            "id": "e6e0af95-4772-5773-ae70-5ae70f931feb",
+            "attributes": {
+                "name": "White Cross Co",
+                "account_type": "Customer"
+            },
+            "relationships": {
+                "AOS_Contracts": {
+                    "links": {
+                        "related": "/V8/module/Accounts/1d125d2a-ac5a-3666-f771-5ab9008b606c/relationships/aos_contracts"
+                    }
+                }
+            }
+        },
+        {
+            "type": "Account",
+            "id": "7831d361-2f3c-dee4-d36c-5ab900860cfb",
+            "attributes": {
+                "name": "Union Bank",
+                "account_type": "Customer"
+            },
+            "relationships": {
+                "AOS_Contracts": {
+                    "links": {
+                         "related": "/V8/module/Accounts/7831d361-2f3c-dee4-d36c-5ab900860cfb/relationships/aos_contracts"
+                    }
+                }
+            }
+        }
+    ],
+}
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+## Filter
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+Our filter strategy is the following:
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+* filter[operator]=and
 
-`Authorization: meowmeowmeow`
+* filter[account_type][eq]=Customer
 
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
+<aside class="warning"><strong>Important notice</strong>: we don’t support multiple level sorting right now!</aside>
 
-# Kittens
+### Supported operators
 
-## Get All Kittens
+#### Comparison
 
-```ruby
-require 'kittn'
+<code>
+EQ = '='<br>
+NEQ = '<>'<br>
+GT = '>'<br>
+GTE = '>='<br>
+LT = '<'<br>
+LTE = '<='
+</code>
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
+#### Logical
 
-```python
-import kittn
+`'AND', 'OR'`
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
+Example 1:
 
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
+`http://example.com/V8/module/Accounts?fields[Accounts]=name,account_type&filter[operator]=and&filter[account_type][eq]=Customer`
 
-```javascript
-const kittn = require('kittn');
+Example 1:
 
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
+`http://example.com/V8/module/Accounts?filter[account_type][eq]=Customer`
 
-> The above command returns JSON structured like this:
+# Endpoints
 
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
+## Logout
+
+`POST http://example.com/V8/logout`
+
+## Get a module by ID
+
+`GET http://example.com/V8/module/{moduleName}/{id}`
+
+<aside class="notice">Available parameters: fields</aside>
+
+Example:
+
+`GET http://example.com/V8/module/Accounts/11a71596-83e7-624d-c792-5ab9006dd493?fields[Accounts]=name,account_type`
+
+## Get collection of modules
+
+`GET http://example.com/V8/module/{moduleName}`
+
+<aside class="notice">Available parameters: fields, page, sort, filter</aside>
+
+Example:
+
+`GET http://example.com/V8/module/Accounts?fields[Accounts]=name,account_type&page[size]=4&page[number]=4`
+
+## Create a module record
+
+`POST http://example.com/V8/module`
+
+```json--request
+{
+  "data": {
+    "type": "Accounts",
+    "id": "86ee02b3-96d2-47b3-bd6d-9e1035daff3a",
+    "attributes": {
+      "name": "Test account"
+    }
   }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
 }
 ```
 
-This endpoint retrieves a specific kitten.
+## Update a module record
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+`PATCH http://example.com/V8/module`
 
-### HTTP Request
+Example body:
 
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
+```json--request
 {
-  "id": 2,
-  "deleted" : ":("
+  "data": {
+    "type": "Accounts",
+    "id": "11a71596-83e7-624d-c792-5ab9006dd493",
+    "attributes": {
+      "name": "Updated name"
+    }
+  }
 }
 ```
 
-This endpoint deletes a specific kitten.
+## Delte a module record
 
-### HTTP Request
+`DELETE http://example.com/V8/module/{moduleName}/{id}`
 
-`DELETE http://example.com/kittens/<ID>`
+```json--response
 
-### URL Parameters
+HTTP/1.1 200
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
+{
+    "meta": {
+        "message": "Record with id 9f66496b-e96b-96e0-bb6b-5f9a4aeea9c2 is deleted"
+    },
+    "data": []
+}
+```
+
+## Get relationship
+
+`GET http://example.com/V8/module/{moduleName}/{id}/relationships/{relatedModuleName}`
+
+Example:
+
+`GET http://example.com/V8/module/Accounts/129a096c-5983-1d59-5ddf-5d95ec91c144/relationships/Accounts`
+
+## Create relationship
+
+`POST http://example.com/V8/module/{moduleName}/relationships`
+
+Example body:
+
+```json--request
+{
+  "data": {
+    "type": "Contacts",
+    "id": "129a096c-5983-1d59-5ddf-5d95ec91c144"
+  }
+}
+```
+
+AccessDeniedException
+
+```
+{
+    "errors": {
+        "status": 400,
+        "title": null,
+        "detail": "[SuiteCRM] [AccessDeniedException] "
+    }
+}
+```
+
+## Delete relationship
+
+`DELETE http://example.com/V8/module/{moduleName}/{id}/relationships/{relatedModule}/{relatedBeanId}`
+
+Example:
+
+`DELETE http://example/V8/module/Accounts/129a096c-5983-1d59-5ddf-5d95ec91c144/relationships/Accounts/11a71596-83e7-624d-c792-5ab9006dd493`
 
