@@ -79,6 +79,8 @@ HTTP/1.1 200
 
 ### 1. 檢查潛在客戶是否曾經被轉換為真實客戶
 
+<aside class="warning"><strong>Information</strong>: 如果建立潛在客戶時選擇不保存 lead_id 則在查詢真實客戶時，務必小心使用 filter 的過濾功能，以免真實客戶被重複建立</aside>
+
 `GET http://example.com/Api/V8/module/Contacts?filter[email1][eq]=example@example.com`
 
 <aside class="info"><strong>Information</strong>: 成功建立過聯絡人則不再建立一次聯絡人</aside>
