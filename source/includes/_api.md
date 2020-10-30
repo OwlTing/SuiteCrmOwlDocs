@@ -7,7 +7,7 @@
 
 ### Create Leads
 
-`POST {{suitecrm.url}}/Api/V8/module`
+`POST http://example.com/Api/V8/module`
 
 ```json--request
 
@@ -253,7 +253,7 @@ HTTP/1.1 201
 
 ### Create Contacts
 
-`POST {{suitecrm.url}}/Api/V8/module`
+`POST http://example.com/Api/V8/module`
 
 ```json--request
 
