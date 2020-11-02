@@ -246,6 +246,15 @@ Example 1:
 }
 ```
 
+```json--response
+{
+   "token_type": "Bearer",
+   "expires_in": 3600,
+   "access_token": "{{access_token}}"
+}
+```
+
+
 ## Logout
 
 `POST http://example.com/V8/logout`
