@@ -234,6 +234,18 @@ Example 1:
 
 # Endpoints
 
+## LogIn
+
+`POST http://example.com/Api/access_token`
+
+```json--request
+{
+    "grant_type": "client_credentials",
+    "client_id": "{{client_id}}",
+    "client_secret": "{{client_secret}}"
+}
+```
+
 ## Logout
 
 `POST http://example.com/V8/logout`
