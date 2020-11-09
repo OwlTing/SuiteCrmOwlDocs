@@ -524,12 +524,14 @@ HTTP/1.1 201
 
 貨幣
 
+<aside class="info"><strong>Important</strong>: 預設幣別(TWD) 無法透過api 查詢 直接帶入-99</aside>
+
 Parameter       | Description | Value
 ---------       | ----------- | -----
 name            | 貨幣名稱    | EUR
 symbol          | 貨幣符號    |
-iso4217         | ISO4217編碼 |
-conversion_rate | 匯率        |
+iso4217         | ISO4217編碼 | https://www.iso.org/iso-4217-currency-codes.html
+conversion_rate | 匯率        | 跟預設幣別 (TWD) 的比率
 status          | 狀態        | Active, Inactive
 
 `GET http://example.com/Api/V8/module/Currencies?page[size]=10&page[number]=1`
@@ -629,6 +631,7 @@ is_parent          | 是父類別    | 0,1
 parent_category_id | 父類別      |
 
 ```json--response
+{
     "data": [
         {
             "type": "AOS_Product_Categories",
@@ -675,11 +678,10 @@ parent_category_id | 父類別      |
             }
         }
     ],
+}
 ```
 
 ## Invoice
-
-(AOS_Invoices)
 
 發票(收據) / 銷售紀錄
 
@@ -699,21 +701,21 @@ shipping_address_city        | 城市                     |
 shipping_address_state       | 州或省                   |
 shipping_address_postalcode  | 郵遞區號                 |
 shipping_address_country     | 國家                     |
-total_amt                    | 訂單總計                 | 5971
-total_amt_usdollar           | 訂單總計（預設貨幣）     | 5971
-subtotal_amount              | 訂單小計                 | 5941 (總計-折扣)
-subtotal_amount_usdollar     | 訂單小計（預設貨幣）     | 5941
-discount_amount              | 訂單折扣總計             | 30
-discount_amount_usdollar     | 訂單折扣總計（預設貨幣） | 30
-tax_amount                   | 訂單稅金總計             | 302.5（ 總計 * 稅率0.05）
-tax_amount_usdollar          | 訂單稅金總計（預設貨幣） | 302.5（ 總計 * 稅率0.05）
+total_amt                    | 訂單總計                 | 6971 (item_groups 的 amount)
+total_amt_usdollar           | 訂單總計（預設貨幣）     | 6971
+subtotal_amount              | 訂單小計                 | 6891 ( total_amt - discount_amount )
+subtotal_amount_usdollar     | 訂單小計（預設貨幣）     | 6891
+discount_amount              | 訂單折扣總計             | -80
+discount_amount_usdollar     | 訂單折扣總計（預設貨幣） | -80
+tax_amount                   | 訂單稅金總計 (訂單貨幣)  | 349.55 ( item_groups 的tax_amount + shipping_tax_amt )
+tax_amount_usdollar          | 訂單稅金總計（預設貨幣） | 349.55
 shipping_amount              | 訂單貨運                 | 100
 shipping_amount_usdollar     | 訂單貨運（預設貨幣）     | 100
-shipping_tax                 | 訂單貨運稅               | 5（貨運＊稅率0.05）
-shipping_tax_amt             | 訂單貨運稅               | 5（貨運＊稅率0.05）
-shipping_tax_amt_usdollar    | 訂單貨運稅（預設貨幣）   | 5（貨運＊稅率0.05）
-total_amount                 | 訂單含稅總計             | 6343.05(總計＋)
-total_amount_usdollar        | 訂單含稅總計（預設貨幣） | 6343.05
+shipping_tax                 | 訂單貨運稅 (百分之幾)    | 5.0
+shipping_tax_amt             | 訂單貨運稅               | 5 ( shipping_tax_amt * shipping_tax / 100 )
+shipping_tax_amt_usdollar    | 訂單貨運稅（預設貨幣）   | 5
+total_amount                 | 訂單含稅總計             | 7340.55 ( subtotal_amount + tax_amount + shipping_amount)
+total_amount_usdollar        | 訂單含稅總計（預設貨幣） | 7340.55
 currency_id                  | 訂單貨幣                 | -99
 quote_number                 | 報價編號                 |
 quote_date                   | 報價日期                 |
@@ -891,28 +893,28 @@ billing_address_postalcode   | 郵遞區號                 |
 }
 ```
 
-## Item Group
+## Item Groups
 
-(AOS_Line_Item_Groups)
+小計群組
 
-Parameter                    | Description          | Value
----------                    | -----------          | -----
-name                         | 名稱                 | name
-description                  | 描述                 | description
-assigned_user_id             | 負責人               | c56be602-4a6b-269c-e734-5eaeb97af366
-total_amt                    | 總計                 | 5971
-total_amt_usdollar           | 總計（預設貨幣）     | 5971
-discount_amount              | 折扣總計             | -30
-discount_amount_usdollar     | 折扣總計（預設貨幣） | -30
-subtotal_amount              | 小計總計             | total_amt - discount_amount = 5941
-subtotal_amount_usdollar     | 小計總計             | 5941
-tax_amount                   | 稅額                 | total_amt * 0.05 = 297.05
-tax_amount_usdollar          | 稅額                 | 297.05
-subtotal_tax_amount          | 小計                 | 0.000000
-subtotal_tax_amount_usdollar | 小計（預設貨幣）     | 0.000000
-total_amount                 | 總計                 | 6238.05
-total_amount_usdollar        | 總計（預設貨幣）     | 6238.05
-parent_type                  | 類型                 | AOS_Invoices
+Parameter                    | Description          | Value | Example
+---------                    | -----------          | ----- | -------
+name                         | 名稱                 |       |
+description                  | 描述                 |       |
+assigned_user_id             | 負責人               |       |
+total_amt                    | 總計                 |       | 5971
+total_amt_usdollar           | 總計（預設貨幣）     |       | 5971
+discount_amount              | 折扣總計             |       | -30
+discount_amount_usdollar     | 折扣總計（預設貨幣） |       | -30
+subtotal_amount              | 小計總計             |       | total_amt - discount_amount = 5941
+subtotal_amount_usdollar     | 小計總計             |       | 5941
+tax_amount                   | 稅額                 |       | total_amt * 0.05 = 297.05
+tax_amount_usdollar          | 稅額                 |       | 297.05
+subtotal_tax_amount          | 小計                 |       | 0.000000
+subtotal_tax_amount_usdollar | 小計（預設貨幣）     |       | 0.000000
+total_amount                 | 總計                 |       | 6238.05
+total_amount_usdollar        | 總計（預設貨幣）     |       | 6238.05
+parent_type                  | 類型                 |       | AOS_Invoices
 
 
 ```json--request
@@ -922,8 +924,6 @@ parent_type                  | 類型                 | AOS_Invoices
         "attributes": {
             "name": "name",
             "description": "description",
-            "deleted": "0",
-            "assigned_user_id": "c56be602-4a6b-269c-e734-5eaeb97af366",
             "total_amt": "180.000000",
             "total_amt_usdollar": "180.000000",
             "discount_amount": "0.000000",
@@ -1000,39 +1000,39 @@ parent_type                  | 類型                 | AOS_Invoices
 }
 ```
 
-
-
 ## Items
 
-Parameter                        | Description          | Value
----------                        | -----------          | -----
-name                             | 名稱                 | name
-description                      | 描述                 | description
-assigned_user_id                 | 負責人               | c56be602-4a6b-269c-e734-5eaeb97af366
-currency_id                      | 幣別                 | 47009c9c-6151-33e1-49a1-5ea287700de2
-part_number                      | 部件編號             | M01990100000001
-item_description                 | 商品描述             | ""
-number                           | 順序                 | 1
-product_qty                      | 商品數量             | 1.0000
-product_cost_price               | 商品成本             | 180.000000
-product_cost_price_usdollar      | 商品成本（預設價格） | 180.000000
-product_list_price               | 商品價格             | 180.000000
-product_list_price_usdollar      | 商品價格（預設價格） | 180.000000
-product_discount                 | 折扣                 | 0.000000
-product_discount_usdollar        | 折扣                 | 0.000000
-product_discount_amount          | 折扣總計             | ""
-product_discount_amount_usdollar | 折扣總計             | ""
-discount                         | 折扣類型             | Percentage,amt
-product_unit_price               | 產品單位價格         | 0.000000
-product_unit_price_usdollar      | 產品單位價格         | 0.000000
-vat_amt                          | 含稅價               | 0.000000
-vat_amt_usdollar                 | 含稅價               | 0.000000
-product_total_price              | 商品含稅總額         | 180.000000
-product_total_price_usdollar     | 商品含稅總額         | 180.000000
-vat                              | 含稅                 | 0
-parent_id                        | 發票編號             | {{invoice_id}}
-product_id                       | 產品編號             | {{product_id}}
-group_id                         | 小計編號（產品組）   | {{item_group_id}
+小計群組裡面的商品
+
+Parameter                        | Description             | Value             | Example
+---------                        | -----------             | -----             | -------
+name                             | 名稱                    |                   |
+description                      | 描述                    |                   |
+assigned_user_id                 | 負責人                  |                   |
+currency_id                      | 幣別                    | 預設貨幣(-99)     | -99
+part_number                      | 部件編號                |                   | J_725_3314
+item_description                 | 商品描述                |                   | ""
+number                           | 順序                    |                   | 1
+product_qty                      | 商品數量                |                   | 2
+product_cost_price               | 商品成本                |                   | 2700
+product_cost_price_usdollar      | 商品成本 (預設幣別)     |                   | 2700
+product_list_price               | 商品價格                |                   | 2700
+product_list_price_usdollar      | 商品價格 (預設幣別)     |                   | 2700
+product_discount                 | 折扣                    |                   | 10
+product_discount_usdollar        | 折扣 (預設幣別)         |                   | 10
+product_discount_amount          | 折扣總計                |                   | ""
+product_discount_amount_usdollar | 折扣總計 (預設幣別)     |                   | ""
+discount                         | 折扣類型                | Amount, Percetage | Amount
+product_unit_price               | 產品單位價格            |                   | 2690
+product_unit_price_usdollar      | 產品單位價格 (預設幣別) |                   | 2690
+vat_amt                          | 含稅價                  |                   | 269
+vat_amt_usdollar                 | 含稅價 (預設幣別)       |                   | 269
+product_total_price              | 商品含稅總額            |                   | 5380
+product_total_price_usdollar     | 商品含稅總額 (預設幣別) |                   | 5380
+vat                              | 稅率                    |                   | 5.0
+parent_id                        | 發票編號                |                   | {{invoice_id}}
+product_id                       | 產品編號                |                   | {{product_id}}
+group_id                         | 小計編號（產品組）      |                   | {{item_group_id}
 
 ```json--request
 {

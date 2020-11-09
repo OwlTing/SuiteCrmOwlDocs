@@ -59,6 +59,7 @@ HTTP/1.1 201
 ```json--response
 
 HTTP/1.1 200
+
 {
     "data": {
         "type": "Lead",
@@ -106,7 +107,9 @@ HTTP/1.1 200
         }
     ]
 }
+```
 
+```json--response
 HTTP/1.1 200
 {
     "meta": {
@@ -128,7 +131,6 @@ HTTP/1.1 200
 
 ```json--request
 
-HTTP/1.1 201
 {
     "data": {
         "type": "Contacts",
@@ -168,6 +170,8 @@ HTTP/1.1 201
 
 ```json--response
 
+HTTP/1.1 201
+
 {
     "data": {
         "type": "Contact",
@@ -194,6 +198,7 @@ HTTP/1.1 201
 ```json--request
 
 HTTP/1.1 201
+
 {
   "data": {
     "type": "Contacts",
@@ -204,6 +209,8 @@ HTTP/1.1 201
 ```
 
 ```json--response
+
+HTTP/1.1 201
 
 {
     "meta": {
@@ -221,7 +228,7 @@ HTTP/1.1 201
 
 `PATCH http://example.com/Api/V8/module`
 
-```
+```json--request
 HTTP/1.1 201
 
 {
@@ -241,21 +248,18 @@ HTTP/1.1 201
 
 在確定潛在客戶有消費之後將其轉換為真實客戶，並將其購買資訊送入
 
-### 1. 前置作業
+1. 先建立訂單 -> 後建立商品
+2. 先建立商品 -> 後建立訂單
 
-依據訂單幣別查詢
+以下假設 1. 從訂單開始送 api，流程順序皆可異動
 
-### 2. 取得 currencies id
+### 1. 取得 currencies id
+
+<aside class="warning"><strong>Important</strong>: 幣別為後續產品及銷售紀錄的重要依據</aside>
 
 `GET http://example.com/Api/V8/module/Currencies?page[size]=1&page[number]=1&filter[iso4217][eq]=EUR`
 
-KEY                 | VALUE
----                 | -----
-page[size]          | 1
-page[number]        | 1
-filter[iso4217][eq] | EUR
-
-如果訂單為台幣不需查詢 uuid
+如果訂單為本位幣別 (台幣) 不需查詢並帶入-99
 
 ```json--response
 {
@@ -292,15 +296,11 @@ filter[iso4217][eq] | EUR
 }
 ```
 
-### 3. 取得 products category id
+### 2. 取得 products category id
 
-`GET {{suitecrm.url}}/Api/V8/module/AOS_Product_Categories?page[size]=1&page[number]=1&filter[name][eq]=E`
+建立商品必須取得 sap 在 crm 相關的類別編號
 
-KEY              | VALUE
----              | -----
-page[size]       | 1
-page[number]     | 1
-filter[name][eq] | E
+`GET http://example.com/Api/V8/module/AOS_Product_Categories?page[size]=1&page[number]=1&filter[name][eq]=E`
 
 ```json--response
 {
@@ -363,13 +363,13 @@ filter[name][eq] | E
 }
 ```
 
-### 4. 建立 product 並取得 id
+### 3. 建立 product 並取得 id
 
 Product Id 為後續建立訂單資訊需要
 
 `POST http://example.com/Api/V8/module`
 
-<aside class="info"><strong>Important</strong>: 建立的產品為台幣不需要打入 currency_id</aside>
+<aside class="info"><strong>Important</strong>: 建立的產品為預設幣別不需要打入 currency_id</aside>
 
 ```json--request
 {
@@ -460,12 +460,11 @@ Product Id 為後續建立訂單資訊需要
 }
 ```
 
-### 5. 開始建立銷售紀錄
-
+### 4. 開始建立銷售紀錄
 
 `POST {{suitecrm.url}}/Api/V8/module`
 
-<aside class="info"><strong>Important</strong>: 建立的產品為台幣不需要打入 currency_id</aside>
+<aside class="info"><strong>Important</strong>: 建立的產品為預設幣別不需要打入 currency_id</aside>
 
 ```json--request
 {
@@ -474,7 +473,6 @@ Product Id 為後續建立訂單資訊需要
         "attributes": {
             "name": "MIS004",
             "description": "",
-            "deleted": "0",
             "billing_account_id": "670f411d-7f4f-abc5-d253-5eac39e93e09",
             "billing_account": "EC_Market",
             "billing_contact_id": "",
@@ -489,7 +487,6 @@ Product Id 為後續建立訂單資訊需要
             "shipping_address_state": "",
             "shipping_address_postalcode": "",
             "shipping_address_country": "",
-            "number": "",
             "total_amt": "399.000000",
             "total_amt_usdollar": "399.000000",
             "subtotal_amount": "378.000000",
@@ -505,12 +502,9 @@ Product Id 為後續建立訂單資訊需要
             "shipping_tax_amt_usdollar": "0.000000",
             "total_amount": "378.000000",
             "total_amount_usdollar": "378.000000",
-            "quote_number": "",
-            "quote_date": "",
             "invoice_date": "202-02-03",
             "due_date": "",
             "status": "Paid",
-            "template_ddown_c": "",
             "subtotal_tax_amount": "",
             "subtotal_tax_amount_usdollar": "0.000000"
         }
@@ -632,11 +626,13 @@ Product Id 為後續建立訂單資訊需要
 }
 ```
 
-### 6. 建立小計群組
+### 5. 建立小計群組
+
+將上述的商品價格總和折扣總和做初步計算並建立小計群組
 
 `POST {{suitecrm.url}}/Api/V8/module`
 
-<aside class="info"><strong>Important</strong>: 建立的產品為台幣不需要打入 currency_id</aside>
+<aside class="info"><strong>Important</strong>: 建立的產品為預設幣別不需要打入 currency_id</aside>
 
 ```json--request
 {
@@ -645,8 +641,6 @@ Product Id 為後續建立訂單資訊需要
         "attributes": {
             "name": "name",
             "description": "description",
-            "deleted": "0",
-            "assigned_user_id": "c56be602-4a6b-269c-e734-5eaeb97af366",
             "total_amt": "180.000000",
             "total_amt_usdollar": "180.000000",
             "discount_amount": "0.000000",
@@ -721,11 +715,13 @@ Product Id 為後續建立訂單資訊需要
 }
 ```
 
-### 7. 建立 小計群組底下的商品
+### 6. 先計算商品
+
+再將產品成功建立後，後面便可以開始建立銷售單之中的商品
 
 `POST {{suitecrm.url}}/Api/V8/module`
 
-<aside class="info"><strong>Important</strong>: 建立的產品為台幣不需要打入 currency_id</aside>
+<aside class="info"><strong>Important</strong>: 建立的產品為預設幣別不需要打入 currency_id</aside>
 
 ```json--request
 {
@@ -734,7 +730,6 @@ Product Id 為後續建立訂單資訊需要
         "attributes": {
             "name": "name",
             "description": "description",
-            "deleted": "0",
             "assigned_user_id": "c56be602-4a6b-269c-e734-5eaeb97af366",
             "part_number": "M01990100000001",
             "item_description": "",
@@ -756,8 +751,6 @@ Product Id 為後續建立訂單資訊需要
             "product_total_price": "180.000000",
             "product_total_price_usdollar": "180.000000",
             "vat": "0",
-            "parent_name": "OD2020040900050",
-            "parent_type": "AOS_Invoices",
             "parent_id": "{{invoice_id}}",
             "product_id": "{{product_id}}",
             "group_id": "{{item_group_id}}"
