@@ -1113,3 +1113,160 @@ group_id                         | 小計編號（產品組）      |           
     }
 }
 ```
+
+## Promotions
+
+促銷相關訊息
+
+Parameter        | Description  | Value | Example
+---------        | -----------  | ----- | -------
+name             | 促銷名稱     |       |
+description      | 描述         |       |
+assigned_user_id | 負責人       |       |
+code             | 促銷編碼     |       |
+priority         | 優先權       |       |
+exclusive        | 獨一         | 0,1   |
+usage_limit      | 使用次數限制 |       |
+used             | 使用中       | 0,1   |
+coupon_based     | 需配合折扣碼 | 0,1   |
+date_start       | 開始日期     |       |
+date_end         | 結束日期     |       |
+
+Experiece Premium:34371b7d-6437-ca5c-a772-5facafb3942f
+
+`GET http://example.com/Api/V8/module/OWL_Promotions?page[size]=10&page[number]=1&sort=name`
+
+```json--response
+{
+    "meta": {
+        "total-pages": 1,
+        "records-on-this-page": 2
+    },
+    "data": [
+        {
+            "type": "OWL_Promotions",
+            "id": "95ccec35-d944-3df1-edd1-5faba28ab21f",
+            "attributes": {
+                "name": "Market Premium 500",
+                "date_entered": "2020-11-11T08:35:00+00:00",
+                "date_modified": "2020-11-11T09:52:00+00:00",
+                "modified_user_id": "1",
+                "modified_by_name": "Administrator",
+                "created_by": "1",
+                "created_by_name": "Administrator",
+                "description": "單筆消費折扣後滿 500 元即享免運費",
+                "deleted": "0",
+                "created_by_link": "",
+                "modified_user_link": "",
+                "assigned_user_id": "1",
+                "assigned_user_name": "Administrator",
+                "assigned_user_link": "",
+                "SecurityGroups": "",
+                "code": "Market Premium 500",
+                "priority": "0",
+                "exclusive": "0",
+                "usage_limit": "0",
+                "used": "0",
+                "coupon_based": "0",
+                "date_start": "2020-11-11T04:00:00+00:00",
+                "date_end": "2020-11-11T05:00:00+00:00",
+                "owl_promotionactions_owl_promotions": "",
+                "owl_promotioncoupons_owl_promotions": "",
+                "owl_promotionrules_owl_promotions": ""
+            },
+            "relationships": {
+                "OWL_PromotionActions": {
+                    "links": {
+                        "related": "V8/module/OWL_Promotions/95ccec35-d944-3df1-edd1-5faba28ab21f/relationships/owl_promotionactions_owl_promotions"
+                    }
+                },
+                "OWL_PromotionCoupons": {
+                    "links": {
+                        "related": "V8/module/OWL_Promotions/95ccec35-d944-3df1-edd1-5faba28ab21f/relationships/owl_promotioncoupons_owl_promotions"
+                    }
+                },
+                "OWL_PromotionRules": {
+                    "links": {
+                        "related": "V8/module/OWL_Promotions/95ccec35-d944-3df1-edd1-5faba28ab21f/relationships/owl_promotionrules_owl_promotions"
+                    }
+                },
+                "SecurityGroups": {
+                    "links": {
+                        "related": "V8/module/OWL_Promotions/95ccec35-d944-3df1-edd1-5faba28ab21f/relationships/SecurityGroups"
+                    }
+                },
+                "Users": {
+                    "links": {
+                        "related": "V8/module/OWL_Promotions/95ccec35-d944-3df1-edd1-5faba28ab21f/relationships/created_by_link"
+                    }
+                }
+            }
+        },
+        {
+            "type": "OWL_Promotions",
+            "id": "cbfd0ade-3c89-5737-0933-5faba09842b2",
+            "attributes": {
+                "name": "Market Premium 9 percetage discount",
+                "date_entered": "2020-11-11T08:27:00+00:00",
+                "date_modified": "2020-11-11T08:33:00+00:00",
+                "modified_user_id": "1",
+                "modified_by_name": "Administrator",
+                "created_by": "1",
+                "created_by_name": "Administrator",
+                "description": "",
+                "deleted": "0",
+                "created_by_link": "",
+                "modified_user_link": "",
+                "assigned_user_id": "1",
+                "assigned_user_name": "Administrator",
+                "assigned_user_link": "",
+                "SecurityGroups": "",
+                "code": "Market Premium",
+                "priority": "0",
+                "exclusive": "0",
+                "usage_limit": "0",
+                "used": "0",
+                "coupon_based": "0",
+                "date_start": "2020-11-11T04:00:00+00:00",
+                "date_end": "2020-11-11T05:00:00+00:00",
+                "owl_promotionactions_owl_promotions": "",
+                "owl_promotioncoupons_owl_promotions": "",
+                "owl_promotionrules_owl_promotions": ""
+            },
+            "relationships": {
+                "OWL_PromotionActions": {
+                    "links": {
+                        "related": "V8/module/OWL_Promotions/cbfd0ade-3c89-5737-0933-5faba09842b2/relationships/owl_promotionactions_owl_promotions"
+                    }
+                },
+                "OWL_PromotionCoupons": {
+                    "links": {
+                        "related": "V8/module/OWL_Promotions/cbfd0ade-3c89-5737-0933-5faba09842b2/relationships/owl_promotioncoupons_owl_promotions"
+                    }
+                },
+                "OWL_PromotionRules": {
+                    "links": {
+                        "related": "V8/module/OWL_Promotions/cbfd0ade-3c89-5737-0933-5faba09842b2/relationships/owl_promotionrules_owl_promotions"
+                    }
+                },
+                "SecurityGroups": {
+                    "links": {
+                        "related": "V8/module/OWL_Promotions/cbfd0ade-3c89-5737-0933-5faba09842b2/relationships/SecurityGroups"
+                    }
+                },
+                "Users": {
+                    "links": {
+                        "related": "V8/module/OWL_Promotions/cbfd0ade-3c89-5737-0933-5faba09842b2/relationships/created_by_link"
+                    }
+                }
+            }
+        }
+    ],
+    "links": {
+        "first": null,
+        "prev": null,
+        "next": null,
+        "last": null
+    }
+}
+```

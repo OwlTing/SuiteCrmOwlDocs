@@ -840,3 +840,16 @@ Product Id 為後續建立訂單資訊需要
     }
 }
 ```
+
+### 7. 建立與促銷的關聯
+
+`POST http://example.com/Api/V8/module/AOS_Invoices/{{invoice_id}}/relationships`
+
+```json--request
+{
+    "data": {
+        "type": "OWL_Promotions",
+        "id": "{{promotion_id}}"
+    }
+}
+```
