@@ -473,9 +473,9 @@ Product Id 為後續建立訂單資訊需要
         "attributes": {
             "name": "MIS004",
             "description": "",
-            "billing_account_id": "670f411d-7f4f-abc5-d253-5eac39e93e09",
-            "billing_account": "EC_Market",
-            "billing_contact_id": "",
+            "billing_account_id": "",
+            "billing_account": "",
+            "billing_contact_id": "670f411d-7f4f-abc5-d253-5eac39e93e09",
             "billing_contact": "",
             "billing_address_street": "",
             "billing_address_city": "",
@@ -843,13 +843,20 @@ Product Id 為後續建立訂單資訊需要
 
 ### 7. 建立與促銷的關聯
 
+<aside class="info"><strong>Important</strong>: 建立的產品為預設幣別不需要打入 currency_id</aside>
+
+Promotions        | id
+----------        | --
+Experiece Premium | 34371b7d-6437-ca5c-a772-5facafb3942f
+
 `POST http://example.com/Api/V8/module/AOS_Invoices/{{invoice_id}}/relationships`
 
 ```json--request
 {
     "data": {
         "type": "OWL_Promotions",
-        "id": "{{promotion_id}}"
+        "id": "34371b7d-6437-ca5c-a772-5facafb3942f"
+
     }
 }
 ```
