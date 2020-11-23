@@ -465,6 +465,7 @@ Product Id 為後續建立訂單資訊需要
 `POST {{suitecrm.url}}/Api/V8/module`
 
 <aside class="info"><strong>Important</strong>: 建立的產品為預設幣別不需要打入 currency_id</aside>
+<aside class="warning"><strong>Important</strong>: "quote_date": "", 需帶入請求內容</aside>
 
 ```json--request
 {
@@ -491,8 +492,8 @@ Product Id 為後續建立訂單資訊需要
             "total_amt_usdollar": "399.000000",
             "subtotal_amount": "378.000000",
             "subtotal_amount_usdollar": "378.000000",
-            "discount_amount": "21.000000",
-            "discount_amount_usdollar": "21.000000",
+            "discount_amount": "-21.000000",
+            "discount_amount_usdollar": "-21.000000",
             "tax_amount": "0.000000",
             "tax_amount_usdollar": "0.000000",
             "shipping_amount": "0.000000",
@@ -502,6 +503,7 @@ Product Id 為後續建立訂單資訊需要
             "shipping_tax_amt_usdollar": "0.000000",
             "total_amount": "378.000000",
             "total_amount_usdollar": "378.000000",
+            "quote_date": "",
             "invoice_date": "202-02-03",
             "due_date": "",
             "status": "Paid",
@@ -553,8 +555,8 @@ Product Id 為後續建立訂單資訊需要
             "total_amt_usdollar": "399.000000",
             "subtotal_amount": "378.000000",
             "subtotal_amount_usdollar": "378.000000",
-            "discount_amount": "21.000000",
-            "discount_amount_usdollar": "21.000000",
+            "discount_amount": "-21.000000",
+            "discount_amount_usdollar": "-21.000000",
             "tax_amount": "0.000000",
             "tax_amount_usdollar": "0.000000",
             "shipping_amount": "0.000000",
