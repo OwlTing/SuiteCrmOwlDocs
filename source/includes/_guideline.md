@@ -862,3 +862,22 @@ Experiece Premium | 34371b7d-6437-ca5c-a772-5facafb3942f
     }
 }
 ```
+
+### 8. 建立與權限群組的關聯
+
+
+Group             | id
+----------        | --
+Experiece Premium | 2
+
+`POST http://example.com/Api/V8/module/AOS_Invoices/{{invoice_id}}/relationships`
+
+```json--request
+{
+    "data": {
+        "type": "SecurityGroups",
+        "id": "2"
+
+    }
+}
+```

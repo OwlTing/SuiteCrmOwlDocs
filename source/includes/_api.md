@@ -1270,3 +1270,14 @@ Experiece Premium:34371b7d-6437-ca5c-a772-5facafb3942f
     }
 }
 ```
+
+## SecurityGroups
+
+群組權限
+
+Parameter        | Description  | Value | Example
+---------        | -----------  | ----- | -------
+name             | 群組名稱     |       |
+description      | 描述         |       |
+
+Experiece: 2
