@@ -850,6 +850,7 @@ Product Id 為後續建立訂單資訊需要
 Promotions        | id
 ----------        | --
 Experiece Premium | 34371b7d-6437-ca5c-a772-5facafb3942f
+三倍券            | 80470707-b612-1a42-71d4-5fc9feb78935
 
 `POST http://example.com/Api/V8/module/AOS_Invoices/{{invoice_id}}/relationships`
 
