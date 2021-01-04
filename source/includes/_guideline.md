@@ -869,7 +869,7 @@ Experiece Premium | 34371b7d-6437-ca5c-a772-5facafb3942f
 
 Group             | id
 ----------        | --
-Experiece Premium | 2
+Experiece         | a253557e-40f7-11eb-8665-fa163ef36d26
 
 `POST http://example.com/Api/V8/module/AOS_Invoices/{{invoice_id}}/relationships`
 
@@ -877,7 +877,7 @@ Experiece Premium | 2
 {
     "data": {
         "type": "SecurityGroups",
-        "id": "2"
+        "id": "a253557e-40f7-11eb-8665-fa163ef36d26"
 
     }
 }
