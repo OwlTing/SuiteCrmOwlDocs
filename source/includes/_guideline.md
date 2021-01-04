@@ -6,12 +6,8 @@
 
 ### 1 建立 潛在客戶 (Leads)
 
-`POST http://example.com/Api/V8/module`
-
 ```json--request
-
 HTTP/1.1 201
-
 {
     "data": {
         "type": "Leads",
@@ -50,16 +46,14 @@ HTTP/1.1 201
         }
     }
 }
-
 ```
+
+`POST http://example.com/Api/V8/module`
 
 <aside class="warning"><strong>Important</strong>: 保留 Lead id 以便後續可以轉換為真實客戶</aside>
 
-
 ```json--response
-
 HTTP/1.1 200
-
 {
     "data": {
         "type": "Lead",
@@ -72,9 +66,7 @@ HTTP/1.1 200
         }
     }
 }
-
 ```
-
 
 ## 潛在客戶轉換成真實客戶
 
@@ -82,14 +74,7 @@ HTTP/1.1 200
 
 ### 1. 檢查潛在客戶是否曾經被轉換為真實客戶
 
-<aside class="warning"><strong>Information</strong>: 如果建立潛在客戶時選擇不保存 lead_id 則在查詢真實客戶時，務必小心使用 filter 的過濾功能，以免真實客戶被重複建立</aside>
-
-`GET http://example.com/Api/V8/module/Contacts?filter[email1][eq]=example@example.com`
-
-<aside class="info"><strong>Information</strong>: 成功建立過聯絡人則不再建立一次聯絡人</aside>
-
-```json--response
-
+```json--request
 HTTP/1.1 200
 {
     "data": [
@@ -109,6 +94,12 @@ HTTP/1.1 200
 }
 ```
 
+<aside class="warning"><strong>Information</strong>: 如果建立潛在客戶時選擇不保存 lead_id 則在查詢真實客戶時，務必小心使用 filter 的過濾功能，以免真實客戶被重複建立</aside>
+
+`GET http://example.com/Api/V8/module/Contacts?filter[email1][eq]=example@example.com`
+
+<aside class="info"><strong>Information</strong>: 成功建立過聯絡人則不再建立一次聯絡人</aside>
+
 ```json--response
 HTTP/1.1 200
 {
@@ -117,20 +108,13 @@ HTTP/1.1 200
     },
     "data": []
 }
-
 ```
-
 
 ### 2. 若無真實客戶則需建立真實客戶
 
 * 建立聯絡人
 
-`POST http://example.com/Api/V8/module`
-
-<aside class="warning"><strong>Important</strong>: 保留 contact id 為後續建立關聯的活動紀錄</aside>
-
 ```json--request
-
 {
     "data": {
         "type": "Contacts",
@@ -165,13 +149,14 @@ HTTP/1.1 200
         }
     }
 }
-
 ```
 
+`POST http://example.com/Api/V8/module`
+
+<aside class="warning"><strong>Important</strong>: 保留 contact id 為後續建立關聯的活動紀錄</aside>
+
 ```json--response
-
 HTTP/1.1 201
-
 {
     "data": {
         "type": "Contact",
@@ -184,10 +169,21 @@ HTTP/1.1 201
         }
     }
 }
-
 ```
 
+
+
 ### 3. 完成真實客戶建立後需與潛在客戶建立關聯
+
+```json--request
+HTTP/1.1 201
+{
+  "data": {
+    "type": "Contacts",
+    "id": "{{contact_id}}"
+  }
+}
+```
 
 需將 Leads 與 Contacts 建立關聯
 
@@ -195,42 +191,21 @@ HTTP/1.1 201
 
 `POST http://example.com/Api/V8/module/Leads/{{lead_id}}/relationships`
 
-```json--request
-
-HTTP/1.1 201
-
-{
-  "data": {
-    "type": "Contacts",
-    "id": "{{contact_id}}"
-  }
-}
-
-```
 
 ```json--response
-
 HTTP/1.1 201
-
 {
     "meta": {
         "message": "Contact with id ed9a0c87-aa99-83bc-2268-5f7a9afefd5f has been added to Lead with id c5b0c6b8-dbcd-ac19-b0bf-5f7a92d51a15"
     },
     "data": []
 }
-
 ```
 
 ### 4. 關聯潛在客戶及真實客戶後將 Leads 標為已經 轉換過
 
-更新 Leads 的狀態
-
-
-`PATCH http://example.com/Api/V8/module`
-
 ```json--request
 HTTP/1.1 201
-
 {
   "data": {
     "type": "Lead",
@@ -241,8 +216,11 @@ HTTP/1.1 201
     }
   }
 }
-
 ```
+
+更新 Leads 的狀態
+
+`PATCH http://example.com/Api/V8/module`
 
 ## 建立真實客戶銷售紀錄
 
@@ -365,12 +343,6 @@ HTTP/1.1 201
 
 ### 3. 建立 product 並取得 id
 
-Product Id 為後續建立訂單資訊需要
-
-`POST http://example.com/Api/V8/module`
-
-<aside class="info"><strong>Important</strong>: 建立的產品為預設幣別不需要打入 currency_id</aside>
-
 ```json--request
 {
     "data": {
@@ -399,6 +371,12 @@ Product Id 為後續建立訂單資訊需要
     }
 }
 ```
+
+Product Id 為後續建立訂單資訊需要
+
+`POST http://example.com/Api/V8/module`
+
+<aside class="info"><strong>Important</strong>: 建立的產品為預設幣別不需要打入 currency_id</aside>
 
 ```json--response
 {
@@ -462,11 +440,6 @@ Product Id 為後續建立訂單資訊需要
 
 ### 4. 開始建立銷售紀錄
 
-`POST {{suitecrm.url}}/Api/V8/module`
-
-<aside class="info"><strong>Important</strong>: 建立的產品為預設幣別不需要打入 currency_id</aside>
-<aside class="warning"><strong>Important</strong>: "quote_date": "", 需帶入請求內容</aside>
-
 ```json--request
 {
     "data": {
@@ -513,6 +486,11 @@ Product Id 為後續建立訂單資訊需要
     }
 }
 ```
+
+`POST {{suitecrm.url}}/Api/V8/module`
+
+<aside class="info"><strong>Important</strong>: 建立的產品為預設幣別不需要打入 currency_id</aside>
+<aside class="warning"><strong>Important</strong>: "quote_date": "", 需帶入請求內容</aside>
 
 ```json--response
 {
@@ -632,10 +610,6 @@ Product Id 為後續建立訂單資訊需要
 
 將上述的商品價格總和折扣總和做初步計算並建立小計群組
 
-`POST {{suitecrm.url}}/Api/V8/module`
-
-<aside class="info"><strong>Important</strong>: 建立的產品為預設幣別不需要打入 currency_id</aside>
-
 ```json--request
 {
     "data": {
@@ -662,6 +636,10 @@ Product Id 為後續建立訂單資訊需要
     }
 }
 ```
+
+`POST {{suitecrm.url}}/Api/V8/module`
+
+<aside class="info"><strong>Important</strong>: 建立的產品為預設幣別不需要打入 currency_id</aside>
 
 ```json--response
 {
@@ -719,12 +697,6 @@ Product Id 為後續建立訂單資訊需要
 
 ### 6. 先計算商品
 
-再將產品成功建立後，後面便可以開始建立銷售單之中的商品
-
-`POST {{suitecrm.url}}/Api/V8/module`
-
-<aside class="info"><strong>Important</strong>: 建立的產品為預設幣別不需要打入 currency_id</aside>
-
 ```json--request
 {
     "data": {
@@ -760,6 +732,13 @@ Product Id 為後續建立訂單資訊需要
     }
 }
 ```
+
+再將產品成功建立後，後面便可以開始建立銷售單之中的商品
+
+`POST {{suitecrm.url}}/Api/V8/module`
+
+<aside class="info"><strong>Important</strong>: 建立的產品為預設幣別不需要打入 currency_id</aside>
+
 
 ```json--response
 {
@@ -845,15 +824,6 @@ Product Id 為後續建立訂單資訊需要
 
 ### 7. 建立與促銷的關聯
 
-<aside class="info"><strong>Important</strong>: 建立的產品為預設幣別不需要打入 currency_id</aside>
-
-Promotions        | id
-----------        | --
-Experiece Premium | 34371b7d-6437-ca5c-a772-5facafb3942f
-三倍券            | 80470707-b612-1a42-71d4-5fc9feb78935
-
-`POST http://example.com/Api/V8/module/AOS_Invoices/{{invoice_id}}/relationships`
-
 ```json--request
 {
     "data": {
@@ -864,14 +834,16 @@ Experiece Premium | 34371b7d-6437-ca5c-a772-5facafb3942f
 }
 ```
 
-### 8. 建立與權限群組的關聯
-
-
-Group             | id
+Promotions        | id
 ----------        | --
-Experiece         | a253557e-40f7-11eb-8665-fa163ef36d26
+Experiece Premium | 34371b7d-6437-ca5c-a772-5facafb3942f
+三倍券            | 80470707-b612-1a42-71d4-5fc9feb78935
 
 `POST http://example.com/Api/V8/module/AOS_Invoices/{{invoice_id}}/relationships`
+
+<aside class="info"><strong>Important</strong>: 建立的產品為預設幣別不需要打入 currency_id</aside>
+
+### 8. 建立與權限群組的關聯
 
 ```json--request
 {
@@ -882,3 +854,10 @@ Experiece         | a253557e-40f7-11eb-8665-fa163ef36d26
     }
 }
 ```
+
+Group             | id
+----------        | --
+Experiece         | a253557e-40f7-11eb-8665-fa163ef36d26
+
+`POST http://example.com/Api/V8/module/AOS_Invoices/{{invoice_id}}/relationships`
+
