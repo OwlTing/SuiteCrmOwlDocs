@@ -371,4 +371,3 @@ AccessDeniedException
 Example:
 
 `DELETE http://example/V8/module/Accounts/129a096c-5983-1d59-5ddf-5d95ec91c144/relationships/Accounts/11a71596-83e7-624d-c792-5ab9006dd493`
-
