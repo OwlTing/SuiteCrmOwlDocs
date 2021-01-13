@@ -1,10 +1,10 @@
-# GuideLine
+# V8 API GuideLine
 
 ## 建立潛在客戶
 
 會員留下任意聯絡資訊的時候視為潛在客戶
 
-### 1 建立 潛在客戶 (Leads)
+### 1. 建立 潛在客戶 (Leads)
 
 ```json--request
 HTTP/1.1 201
@@ -841,7 +841,7 @@ Experiece Premium | 34371b7d-6437-ca5c-a772-5facafb3942f
 
 `POST http://example.com/Api/V8/module/AOS_Invoices/{{invoice_id}}/relationships`
 
-<aside class="info"><strong>Important</strong>: 建立的產品為預設幣別不需要打入 currency_id</aside>
+<aside class="info"><strong>Important</strong>: 建立的產品為預設幣別不需要打入 currency_id </aside>
 
 ### 8. 建立與權限群組的關聯
 
@@ -861,3 +861,182 @@ Experiece         | a253557e-40f7-11eb-8665-fa163ef36d26
 
 `POST http://example.com/Api/V8/module/AOS_Invoices/{{invoice_id}}/relationships`
 
+## 銷售單退款
+
+舉例，針對 a 單進行銷退，須取得 a 單 uuid
+
+### 1. 查詢銷售單單號
+
+若無保留銷售單單號者, 須透過查詢 該筆 銷售單的
+
+`GET {{suitecrm.url}}/{{suitecrm.url}}/Api/V8/module/AOS_Invoices?filter[name][eq]=OTR2020121600004&page[size]=1&page[number]=1`
+
+<aside class="info"><strong>Tip</strong>: filter 條件可以多塞幾個參數確保查詢訂單的正確性 </aside>
+
+<aside class="warning"><strong>Warning!</strong>: 查詢訂單需要注意回傳 total-pages 及 records-on-this-page 是不是為 1 </aside>
+
+```json--response
+{
+    "meta": {
+        "total-pages": 2,
+        "records-on-this-page": 1
+    },
+    "data": [
+        {
+            "type": "AOS_Invoices",
+            "id": "10afcf29-ee9d-dd48-0f94-5ff2edc88302",
+            "attributes": {
+                "name": "OTR2020121600004",
+                "date_entered": "2021-01-04T10:26:00+08:00",
+                "date_modified": "2021-01-13T06:40:00+08:00",
+                "modified_user_id": "1",
+                "modified_by_name": "Administrator",
+                "created_by": "4e640918-9db7-2121-94b5-5eba64642e0c",
+                "created_by_name": "Experience",
+                "description": "",
+                "deleted": "0",
+                "created_by_link": "",
+                "modified_user_link": "",
+                "assigned_user_id": "",
+                "assigned_user_name": "",
+                "assigned_user_link": "",
+                "SecurityGroups": "",
+                "billing_account_id": "73bad98b-40da-11eb-8665-fa163ef36d26",
+                "billing_account": "EC Experience",
+                "billing_contact_id": "506f648e-a31b-23c3-413f-5ff2a504b106",
+                "billing_contact": "Nick Huang",
+                "billing_address_street": "",
+                "billing_address_city": "",
+                "billing_address_state": "",
+                "billing_address_postalcode": "",
+                "billing_address_country": "",
+                "shipping_address_street": "",
+                "shipping_address_city": "",
+                "shipping_address_state": "",
+                "shipping_address_postalcode": "",
+                "shipping_address_country": "",
+                "number": "2",
+                "line_items": "",
+                "total_amt": "-14000.000000",
+                "total_amt_usdollar": "-14000.000000",
+                "subtotal_amount": "-14000.000000",
+                "subtotal_amount_usdollar": "-14000.000000",
+                "discount_amount": "0.000000",
+                "discount_amount_usdollar": "0.000000",
+                "tax_amount": "0.000000",
+                "tax_amount_usdollar": "0.000000",
+                "shipping_amount": "0.000000",
+                "shipping_amount_usdollar": "0.000000",
+                "shipping_tax": "0.0",
+                "shipping_tax_amt": "0.000000",
+                "shipping_tax_amt_usdollar": "0.000000",
+                "total_amount": "-14000.000000",
+                "total_amount_usdollar": "-14000.000000",
+                "currency_id": "-99",
+                "quote_number": "",
+                "quote_date": "",
+                "invoice_date": "2020-12-16",
+                "due_date": "",
+                "status": "Paid",
+                "template_ddown_c": "",
+                "subtotal_tax_amount": "0.000000",
+                "subtotal_tax_amount_usdollar": "0.000000",
+                "accounts": "",
+                "contacts": "",
+                "aos_quotes_aos_invoices": "",
+                "aos_products_quotes": "",
+                "aos_line_item_groups": "",
+                "aos_invoices_aos_invoices_1": "",
+                "owl_promotions_aos_invoices": "",
+                "payment_method_c": "",
+                "potr_c": "",
+                "invoice_datetime_c": "",
+                "departure_date_c": ""
+            },
+            "relationships": {
+                "AOS_Invoices": {
+                    "links": {
+                        "related": "V8/module/AOS_Invoices/10afcf29-ee9d-dd48-0f94-5ff2edc88302/relationships/aos_invoices_aos_invoices_1"
+                    }
+                },
+                "AOS_Line_Item_Groups": {
+                    "links": {
+                        "related": "V8/module/AOS_Invoices/10afcf29-ee9d-dd48-0f94-5ff2edc88302/relationships/aos_line_item_groups"
+                    }
+                },
+                "AOS_Products_Quotes": {
+                    "links": {
+                        "related": "V8/module/AOS_Invoices/10afcf29-ee9d-dd48-0f94-5ff2edc88302/relationships/aos_products_quotes"
+                    }
+                },
+                "AOS_Quotes": {
+                    "links": {
+                        "related": "V8/module/AOS_Invoices/10afcf29-ee9d-dd48-0f94-5ff2edc88302/relationships/aos_quotes_aos_invoices"
+                    }
+                },
+                "Accounts": {
+                    "links": {
+                        "related": "V8/module/AOS_Invoices/10afcf29-ee9d-dd48-0f94-5ff2edc88302/relationships/accounts"
+                    }
+                },
+                "Contacts": {
+                    "links": {
+                        "related": "V8/module/AOS_Invoices/10afcf29-ee9d-dd48-0f94-5ff2edc88302/relationships/contacts"
+                    }
+                },
+                "OWL_Promotions": {
+                    "links": {
+                        "related": "V8/module/AOS_Invoices/10afcf29-ee9d-dd48-0f94-5ff2edc88302/relationships/owl_promotions_aos_invoices"
+                    }
+                },
+                "SecurityGroups": {
+                    "links": {
+                        "related": "V8/module/AOS_Invoices/10afcf29-ee9d-dd48-0f94-5ff2edc88302/relationships/SecurityGroups"
+                    }
+                },
+                "Users": {
+                    "links": {
+                        "related": "V8/module/AOS_Invoices/10afcf29-ee9d-dd48-0f94-5ff2edc88302/relationships/created_by_link"
+                    }
+                }
+            }
+        }
+    ],
+    "links": {
+        "first": null,
+        "prev": null,
+        "next": "V8/module/AOS_Invoices?filter[name][eq]=OTR2020121600004&page[size]=1&page[number]=2",
+        "last": "V8/module/AOS_Invoices?filter[name][eq]=OTR2020121600004&page[size]=1&page[number]=2"
+    }
+}
+```
+
+### 2. 取得該訂單相關的資訊
+
+透過之前取得的 relationships 相關參數
+
+<aside class="warning"><strong>Warning!</strong>: line_items_group 有可能有兩組以上</aside>
+
+`Get {{suitecrm.url}}/Api/V8/module/AOS_Invoices/10afcf29-ee9d-dd48-0f94-5ff2edc88302/relationships/aos_line_item_groups`
+
+```json
+"AOS_Line_Item_Groups": {
+  "links": {
+    "related": "V8/module/AOS_Invoices/10afcf29-ee9d-dd48-0f94-5ff2edc88302/relationships/aos_line_item_groups"
+  }
+}
+```
+
+```json--response
+{
+    "data": [
+        {
+            "type": "AOS_Line_Item_Groups",
+            "id": "4d1c43b8-b50d-0881-bd1a-5ff2edb8efd1",
+            "links": {
+                "self": "V8/module/AOS_Line_Item_Groups/4d1c43b8-b50d-0881-bd1a-5ff2edb8efd1"
+            }
+        }
+    ]
+}
+```

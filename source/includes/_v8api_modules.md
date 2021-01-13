@@ -1,11 +1,10 @@
-# API
-
-## Leads
+## API modules
+### Leads
 
 潛在客戶 / 商業機會
 可以是個人或是公司以及小型商業團體
 
-### Create Leads
+#### Create Leads
 
 `POST http://example.com/Api/V8/module`
 
@@ -245,13 +244,12 @@ HTTP/1.1 201
 }
 
 ```
-### Update Leads
 
-## Contacts
+### Contacts
 
 聯絡人 / 真實客戶
 
-### Create Contacts
+#### Create Contacts
 
 `POST http://example.com/Api/V8/module`
 
@@ -520,7 +518,7 @@ HTTP/1.1 201
 
 ```
 
-## Currencies
+### Currencies
 
 貨幣
 
@@ -571,11 +569,11 @@ status          | 狀態        | Active, Inactive
 }
 ```
 
-## Products
+### Products
 
 產品
 
-### Create Products
+#### Create Products
 
 Parameter               | Description      | Value
 ---------               | -----------      | -----
@@ -618,9 +616,9 @@ aos_product_category_id | 產品類別         |
 
 ```
 
-## Products Categories
+### Products Categories
 
-### 產品類別
+#### 產品類別
 
 Parameter          | Description | Value
 ---------          | ----------- | -----
@@ -681,7 +679,7 @@ parent_category_id | 父類別      |
 }
 ```
 
-## Invoice
+### Invoice
 
 發票(收據) / 銷售紀錄
 
@@ -893,7 +891,7 @@ billing_address_postalcode   | 郵遞區號                 |
 }
 ```
 
-## Item Groups
+### Item Groups
 
 小計群組
 
@@ -1000,7 +998,7 @@ parent_type                  | 類型                 |       | AOS_Invoices
 }
 ```
 
-## Items
+### Items
 
 小計群組裡面的商品
 
@@ -1114,7 +1112,7 @@ group_id                         | 小計編號（產品組）      |           
 }
 ```
 
-## Promotions
+### Promotions
 
 促銷相關訊息
 
@@ -1271,7 +1269,7 @@ Experiece Premium:34371b7d-6437-ca5c-a772-5facafb3942f
 }
 ```
 
-## SecurityGroups
+### SecurityGroups
 
 群組權限
 
@@ -1281,3 +1279,6 @@ name             | 群組名稱     |       |
 description      | 描述         |       |
 
 Experiece: 2
+
+
+
