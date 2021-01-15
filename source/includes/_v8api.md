@@ -1,32 +1,6 @@
----
-title: API Reference
+# V8 API
 
-language_tabs: # must be one of https://git.io/vQNgJ
-  - json--request: request
-  - json--response: response
-
-toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
-
-includes:
-  - api_versions
-  - princeapi
-  - princeapi_endpoints
-  - princeapi_guideline
-  - v8api
-  - v8api_modules
-  - v8api_guideline
-
-search: true
----
-# Introduction
-
-SuiteCRM Api Docs (Owlting version)
-test for github hooks2
-
-<<<<<<< HEAD
-# Authentication
+## Authentication
 
 * Client credentials Grant
 
@@ -38,14 +12,14 @@ Content-Type  | application/vnd.api+json
 Accept        | application/vnd.api+json
 Authorization | Bearer {{token}}
 
-# Base URLs:
+## Base URLs:
 env        | url
 ---        | ---
 staging    | https://crm-staging.owlting.com
 
-# Authentication with Client Credentials
+## Authentication with Client Credentials
 
-## Required parameters
+### Required parameters
 
 param         | value
 -----         | -----
@@ -77,15 +51,15 @@ token_type   | the Bearer token value
 expires_in   | an integer representing the TTL of the access token
 access_token | a JWT signed with the authorization server’s private key. It is required that you include this in the HTTP headers, each time you make a request to the API
 
-# Get MetaData
+## Get MetaData
 
-## HTTP Request
+### HTTP Request
 `GET http://example.com/Api/docs/swagger/swagger.json`
 
-# Available parameters
+## Available parameters
 According to JsonApi specification, the available parameters are the following depending on the GET endpoint:
 
-## Fields
+### Fields
 Fields can filter on attribute object. Allowed keys are valid bean properties.
 
 Example:
@@ -111,7 +85,7 @@ Example:
 }
 ```
 
-## Page
+### Page
 Page can filter beans and set pagination. Allowed key are number and size.
 
 * page[number] : number of the wanted page
@@ -154,7 +128,7 @@ Result:
     }
 }
 ```
-## Sort
+### Sort
 Sort is only available when collections wanted to be fetched. Sorting is set to ASC by default. If the property is prefixed with hyphen, the sort order changes to DESC.
 
 <aside class="warning"><strong>Important notice</strong>: we only support single sorting right now!</aside>
@@ -202,7 +176,7 @@ Result:
 }
 ```
 
-## Filter
+### Filter
 
 Our filter strategy is the following:
 
@@ -212,9 +186,9 @@ Our filter strategy is the following:
 
 <aside class="warning"><strong>Important notice</strong>: we don’t support multiple level sorting right now!</aside>
 
-### Supported operators
+#### Supported operators
 
-#### Comparison
+##### Comparison
 
 <code>
 EQ = '='<br>
@@ -225,7 +199,7 @@ LT = '<'<br>
 LTE = '<='
 </code>
 
-#### Logical
+##### Logical
 
 `'AND', 'OR'`
 
@@ -237,9 +211,9 @@ Example 1:
 
 `http://example.com/V8/module/Accounts?filter[account_type][eq]=Customer`
 
-# Endpoints
+## Endpoints
 
-## LogIn
+### LogIn
 
 `POST http://example.com/Api/access_token`
 
@@ -260,11 +234,11 @@ Example 1:
 ```
 
 
-## Logout
+### Logout
 
 `POST http://example.com/V8/logout`
 
-## Get a module by ID
+### Get a module by ID
 
 `GET http://example.com/V8/module/{moduleName}/{id}`
 
@@ -274,7 +248,7 @@ Example:
 
 `GET http://example.com/V8/module/Accounts/11a71596-83e7-624d-c792-5ab9006dd493?fields[Accounts]=name,account_type`
 
-## Get collection of modules
+### Get collection of modules
 
 `GET http://example.com/V8/module/{moduleName}`
 
@@ -284,7 +258,7 @@ Example:
 
 `GET http://example.com/V8/module/Accounts?fields[Accounts]=name,account_type&page[size]=4&page[number]=4`
 
-## Create a module record
+### Create a module record
 
 `POST http://example.com/V8/module`
 
@@ -300,7 +274,7 @@ Example:
 }
 ```
 
-## Update a module record
+### Update a module record
 
 `PATCH http://example.com/V8/module`
 
@@ -318,7 +292,7 @@ Example body:
 }
 ```
 
-## Delte a module record
+### Delte a module record
 
 `DELETE http://example.com/V8/module/{moduleName}/{id}`
 
@@ -334,7 +308,7 @@ HTTP/1.1 200
 }
 ```
 
-## Get relationship
+### Get relationship
 
 `GET http://example.com/V8/module/{moduleName}/{id}/relationships/{relatedModuleName}`
 
@@ -342,7 +316,7 @@ Example:
 
 `GET http://example.com/V8/module/Accounts/129a096c-5983-1d59-5ddf-5d95ec91c144/relationships/Accounts`
 
-## Create relationship
+### Create relationship
 
 `POST http://example.com/V8/module/{moduleName}/relationships`
 
@@ -369,12 +343,59 @@ AccessDeniedException
 }
 ```
 
-## Delete relationship
+### Delete relationship
 
 `DELETE http://example.com/V8/module/{moduleName}/{id}/relationships/{relatedModule}/{relatedBeanId}`
 
 Example:
 
 `DELETE http://example/V8/module/Accounts/129a096c-5983-1d59-5ddf-5d95ec91c144/relationships/Accounts/11a71596-83e7-624d-c792-5ab9006dd493`
-=======
->>>>>>> b0ef86999f85e29a53d8d0f3c86f96b9b81281af
+
+## Errors
+
+<aside class="notice">
+This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
+</aside>
+
+The Kittn API uses the following error codes:
+
+```json--response
+
+HTTP/1.1 403
+
+{
+    "error": "access_denied",
+    "message": "The resource owner or authorization server denied the request.",
+    "hint": "The JWT string must have two dots"
+}
+
+```
+
+
+```json--response
+
+HTTP/1.1 400
+
+{
+    "errors": {
+        "status": 400,
+        "title": null,
+        "detail": "Database failure. Please refer to suitecrm.log for details."
+    }
+}
+
+```
+
+Error Code | Meaning
+---------- | -------
+400 | Bad Request -- Your request is invalid.
+401 | Unauthorized -- Your API key is wrong.
+403 | Forbidden -- The kitten requested is hidden for administrators only.
+404 | Not Found -- The specified kitten could not be found.
+405 | Method Not Allowed -- You tried to access a kitten with an invalid method.
+406 | Not Acceptable -- You requested a format that isn't json.
+410 | Gone -- The kitten requested has been removed from our servers.
+418 | I'm a teapot.
+429 | Too Many Requests -- You're requesting too many kittens! Slow down!
+500 | Internal Server Error -- We had a problem with our server. Try again later.
+503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later.
