@@ -25,7 +25,6 @@ search: true
 SuiteCRM Api Docs (Owlting version)
 test for github hooks2
 
-<<<<<<< HEAD
 # Authentication
 
 * Client credentials Grant
@@ -376,5 +375,3 @@ AccessDeniedException
 Example:
 
 `DELETE http://example/V8/module/Accounts/129a096c-5983-1d59-5ddf-5d95ec91c144/relationships/Accounts/11a71596-83e7-624d-c792-5ab9006dd493`
-=======
->>>>>>> b0ef86999f85e29a53d8d0f3c86f96b9b81281af
