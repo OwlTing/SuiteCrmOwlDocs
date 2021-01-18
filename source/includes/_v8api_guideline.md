@@ -1,10 +1,10 @@
 # V8 API GuideLine
 
-## 建立潛在客戶
+## 1. 建立潛在客戶
 
 會員留下任意聯絡資訊的時候視為潛在客戶
 
-### 1. 建立 潛在客戶 (Leads)
+### 1.1. 建立潛在客戶
 
 ```json--request
 HTTP/1.1 201
@@ -68,11 +68,11 @@ HTTP/1.1 200
 }
 ```
 
-## 潛在客戶轉換成真實客戶
+## 2. 潛在客戶轉換成真實客戶
 
 當使用者成功購買產品時
 
-### 1. 檢查潛在客戶是否曾經被轉換為真實客戶
+### 2.1. 檢查潛在客戶是否曾經被轉換為真實客戶
 
 ```json--request
 HTTP/1.1 200
@@ -110,7 +110,7 @@ HTTP/1.1 200
 }
 ```
 
-### 2. 若無真實客戶則需建立真實客戶
+### 2.2. 若無真實客戶則需建立真實客戶
 
 * 建立聯絡人
 
@@ -171,9 +171,7 @@ HTTP/1.1 201
 }
 ```
 
-
-
-### 3. 完成真實客戶建立後需與潛在客戶建立關聯
+### 2.3. 完成真實客戶建立後需與潛在客戶建立關聯
 
 ```json--request
 HTTP/1.1 201
@@ -202,7 +200,7 @@ HTTP/1.1 201
 }
 ```
 
-### 4. 關聯潛在客戶及真實客戶後將 Leads 標為已經 轉換過
+### 2.4. 關聯潛在客戶及真實客戶後將 潛在客戶 標為已經 轉換過
 
 ```json--request
 HTTP/1.1 201
@@ -222,7 +220,7 @@ HTTP/1.1 201
 
 `PATCH http://example.com/Api/V8/module`
 
-## 建立真實客戶銷售紀錄
+## 3. 建立真實客戶銷售紀錄
 
 在確定潛在客戶有消費之後將其轉換為真實客戶，並將其購買資訊送入
 
@@ -231,13 +229,15 @@ HTTP/1.1 201
 
 以下假設 1. 從訂單開始送 api，流程順序皆可異動
 
-### 1. 取得 currencies id
+### 3.1. 取得幣別
 
 <aside class="warning"><strong>Important</strong>: 幣別為後續產品及銷售紀錄的重要依據</aside>
 
 `GET http://example.com/Api/V8/module/Currencies?page[size]=1&page[number]=1&filter[iso4217][eq]=EUR`
 
 如果訂單為本位幣別 (台幣) 不需查詢並帶入-99
+```json--request
+```
 
 ```json--response
 {
@@ -274,11 +274,14 @@ HTTP/1.1 201
 }
 ```
 
-### 2. 取得 products category id
+### 3.2. 取得產品類別編號
 
 建立商品必須取得 sap 在 crm 相關的類別編號
 
 `GET http://example.com/Api/V8/module/AOS_Product_Categories?page[size]=1&page[number]=1&filter[name][eq]=E`
+
+```json--request
+```
 
 ```json--response
 {
@@ -341,7 +344,7 @@ HTTP/1.1 201
 }
 ```
 
-### 3. 建立 product 並取得 id
+### 3.3. 建立產品並取得編號
 
 ```json--request
 {
@@ -438,7 +441,7 @@ Product Id 為後續建立訂單資訊需要
 }
 ```
 
-### 4. 開始建立銷售紀錄
+### 3.4. 開始建立銷售紀錄
 
 ```json--request
 {
@@ -606,7 +609,7 @@ Product Id 為後續建立訂單資訊需要
 }
 ```
 
-### 5. 建立小計群組
+### 3.5. 建立小計群組
 
 將上述的商品價格總和折扣總和做初步計算並建立小計群組
 
@@ -695,7 +698,7 @@ Product Id 為後續建立訂單資訊需要
 }
 ```
 
-### 6. 先計算商品
+### 3.6. 先計算商品
 
 ```json--request
 {
@@ -733,12 +736,17 @@ Product Id 為後續建立訂單資訊需要
 }
 ```
 
+```json--response
+```
+
 再將產品成功建立後，後面便可以開始建立銷售單之中的商品
 
 `POST {{suitecrm.url}}/Api/V8/module`
 
 <aside class="info"><strong>Important</strong>: 建立的產品為預設幣別不需要打入 currency_id</aside>
 
+```json--request
+```
 
 ```json--response
 {
@@ -822,7 +830,7 @@ Product Id 為後續建立訂單資訊需要
 }
 ```
 
-### 7. 建立與促銷的關聯
+### 3.7. 建立與促銷的關聯
 
 ```json--request
 {
@@ -834,6 +842,9 @@ Product Id 為後續建立訂單資訊需要
 }
 ```
 
+```json--response
+```
+
 Promotions        | id
 ----------        | --
 Experiece Premium | 34371b7d-6437-ca5c-a772-5facafb3942f
@@ -843,7 +854,7 @@ Experiece Premium | 34371b7d-6437-ca5c-a772-5facafb3942f
 
 <aside class="info"><strong>Important</strong>: 建立的產品為預設幣別不需要打入 currency_id </aside>
 
-### 8. 建立與權限群組的關聯
+### 3.8. 銷售單建立與權限群組的關聯
 
 ```json--request
 {
@@ -855,25 +866,30 @@ Experiece Premium | 34371b7d-6437-ca5c-a772-5facafb3942f
 }
 ```
 
+
 Group             | id
 ----------        | --
 Experiece         | a253557e-40f7-11eb-8665-fa163ef36d26
 
 `POST http://example.com/Api/V8/module/AOS_Invoices/{{invoice_id}}/relationships`
 
-## 銷售單退款
+```json--response
 
-舉例，針對 a 單進行銷退，須取得 a 單 uuid
+```
 
-### 1. 查詢銷售單單號
+## 4. 銷售單退款
 
-若無保留銷售單單號者, 須透過查詢 該筆 銷售單的
+範例，對銷售單的單據進行全額銷退
+
+### 4.1. 查詢銷售單單號
+
+若無保留銷售單單號者, 須透過查詢該筆銷售單的 uuid，並其關聯方式，取得訂單完整資訊
 
 `GET {{suitecrm.url}}/{{suitecrm.url}}/Api/V8/module/AOS_Invoices?filter[name][eq]=OTR2020121600004&page[size]=1&page[number]=1`
 
 <aside class="info"><strong>Tip</strong>: filter 條件可以多塞幾個參數確保查詢訂單的正確性 </aside>
 
-<aside class="warning"><strong>Warning!</strong>: 查詢訂單需要注意回傳 total-pages 及 records-on-this-page 是不是為 1 </aside>
+<aside class="warning"><strong>Warning!</strong>: 正常情況下，訂單為唯一編號，查詢訂單需要注意回傳 total-pages 及 records-on-this-page 是不是為 1 </aside>
 
 ```json--response
 {
@@ -886,132 +902,19 @@ Experiece         | a253557e-40f7-11eb-8665-fa163ef36d26
             "type": "AOS_Invoices",
             "id": "10afcf29-ee9d-dd48-0f94-5ff2edc88302",
             "attributes": {
-                "name": "OTR2020121600004",
-                "date_entered": "2021-01-04T10:26:00+08:00",
-                "date_modified": "2021-01-13T06:40:00+08:00",
-                "modified_user_id": "1",
-                "modified_by_name": "Administrator",
-                "created_by": "4e640918-9db7-2121-94b5-5eba64642e0c",
-                "created_by_name": "Experience",
-                "description": "",
-                "deleted": "0",
-                "created_by_link": "",
-                "modified_user_link": "",
-                "assigned_user_id": "",
-                "assigned_user_name": "",
-                "assigned_user_link": "",
-                "SecurityGroups": "",
-                "billing_account_id": "73bad98b-40da-11eb-8665-fa163ef36d26",
-                "billing_account": "EC Experience",
-                "billing_contact_id": "506f648e-a31b-23c3-413f-5ff2a504b106",
-                "billing_contact": "Nick Huang",
-                "billing_address_street": "",
-                "billing_address_city": "",
-                "billing_address_state": "",
-                "billing_address_postalcode": "",
-                "billing_address_country": "",
-                "shipping_address_street": "",
-                "shipping_address_city": "",
-                "shipping_address_state": "",
-                "shipping_address_postalcode": "",
-                "shipping_address_country": "",
-                "number": "2",
-                "line_items": "",
-                "total_amt": "-14000.000000",
-                "total_amt_usdollar": "-14000.000000",
-                "subtotal_amount": "-14000.000000",
-                "subtotal_amount_usdollar": "-14000.000000",
-                "discount_amount": "0.000000",
-                "discount_amount_usdollar": "0.000000",
-                "tax_amount": "0.000000",
-                "tax_amount_usdollar": "0.000000",
-                "shipping_amount": "0.000000",
-                "shipping_amount_usdollar": "0.000000",
-                "shipping_tax": "0.0",
-                "shipping_tax_amt": "0.000000",
-                "shipping_tax_amt_usdollar": "0.000000",
-                "total_amount": "-14000.000000",
-                "total_amount_usdollar": "-14000.000000",
-                "currency_id": "-99",
-                "quote_number": "",
-                "quote_date": "",
-                "invoice_date": "2020-12-16",
-                "due_date": "",
-                "status": "Paid",
-                "template_ddown_c": "",
-                "subtotal_tax_amount": "0.000000",
-                "subtotal_tax_amount_usdollar": "0.000000",
-                "accounts": "",
-                "contacts": "",
-                "aos_quotes_aos_invoices": "",
-                "aos_products_quotes": "",
-                "aos_line_item_groups": "",
-                "aos_invoices_aos_invoices_1": "",
-                "owl_promotions_aos_invoices": "",
-                "payment_method_c": "",
-                "potr_c": "",
-                "invoice_datetime_c": "",
-                "departure_date_c": ""
+                ...
             },
             "relationships": {
-                "AOS_Invoices": {
-                    "links": {
-                        "related": "V8/module/AOS_Invoices/10afcf29-ee9d-dd48-0f94-5ff2edc88302/relationships/aos_invoices_aos_invoices_1"
-                    }
-                },
-                "AOS_Line_Item_Groups": {
-                    "links": {
-                        "related": "V8/module/AOS_Invoices/10afcf29-ee9d-dd48-0f94-5ff2edc88302/relationships/aos_line_item_groups"
-                    }
-                },
-                "AOS_Products_Quotes": {
-                    "links": {
-                        "related": "V8/module/AOS_Invoices/10afcf29-ee9d-dd48-0f94-5ff2edc88302/relationships/aos_products_quotes"
-                    }
-                },
-                "AOS_Quotes": {
-                    "links": {
-                        "related": "V8/module/AOS_Invoices/10afcf29-ee9d-dd48-0f94-5ff2edc88302/relationships/aos_quotes_aos_invoices"
-                    }
-                },
-                "Accounts": {
-                    "links": {
-                        "related": "V8/module/AOS_Invoices/10afcf29-ee9d-dd48-0f94-5ff2edc88302/relationships/accounts"
-                    }
-                },
-                "Contacts": {
-                    "links": {
-                        "related": "V8/module/AOS_Invoices/10afcf29-ee9d-dd48-0f94-5ff2edc88302/relationships/contacts"
-                    }
-                },
-                "OWL_Promotions": {
-                    "links": {
-                        "related": "V8/module/AOS_Invoices/10afcf29-ee9d-dd48-0f94-5ff2edc88302/relationships/owl_promotions_aos_invoices"
-                    }
-                },
-                "SecurityGroups": {
-                    "links": {
-                        "related": "V8/module/AOS_Invoices/10afcf29-ee9d-dd48-0f94-5ff2edc88302/relationships/SecurityGroups"
-                    }
-                },
-                "Users": {
-                    "links": {
-                        "related": "V8/module/AOS_Invoices/10afcf29-ee9d-dd48-0f94-5ff2edc88302/relationships/created_by_link"
-                    }
-                }
+                ...
             }
-        }
     ],
     "links": {
-        "first": null,
-        "prev": null,
-        "next": "V8/module/AOS_Invoices?filter[name][eq]=OTR2020121600004&page[size]=1&page[number]=2",
-        "last": "V8/module/AOS_Invoices?filter[name][eq]=OTR2020121600004&page[size]=1&page[number]=2"
+        ...
     }
 }
 ```
 
-### 2. 取得該訂單相關的資訊
+### 4.2. 取得該訂單相關的資訊 (query order information)
 
 透過之前取得的 relationships 相關參數
 
@@ -1019,7 +922,7 @@ Experiece         | a253557e-40f7-11eb-8665-fa163ef36d26
 
 `Get {{suitecrm.url}}/Api/V8/module/AOS_Invoices/10afcf29-ee9d-dd48-0f94-5ff2edc88302/relationships/aos_line_item_groups`
 
-```json
+```json--request
 "AOS_Line_Item_Groups": {
   "links": {
     "related": "V8/module/AOS_Invoices/10afcf29-ee9d-dd48-0f94-5ff2edc88302/relationships/aos_line_item_groups"
@@ -1038,5 +941,325 @@ Experiece         | a253557e-40f7-11eb-8665-fa163ef36d26
             }
         }
     ]
+}
+```
+
+### 4.3. 建立相對的銷退單據 (create return invoice)
+
+銷退單據建立方式同建立銷售單，差異為:
+
+* Status：銷退
+* 金額：負數
+* 銷退單：不需建立促銷關聯
+
+以下例子為全都銷退:
+
+### 4.4. 取得 currencies id
+
+<aside class="warning"><strong>Important</strong>: 幣別為後續產品及銷售紀錄的重要依據</aside>
+
+`GET http://example.com/Api/V8/module/Currencies?page[size]=1&page[number]=1&filter[iso4217][eq]=EUR`
+
+如果訂單為本位幣別 (台幣) 不需查詢並帶入-99
+
+```json--response
+{
+    "meta": {
+        "total-pages": 1,
+        "records-on-this-page": 1
+    },
+    "data": [
+        {
+            "type": "Currency",
+            "id": "6ccfc88a-598b-898a-91f5-5f7ed4511cc2",
+            "attributes": {
+                ...
+            },
+            "relationships": []
+        }
+    ],
+    "links": {
+        ...
+    }
+}
+```
+
+### 4.5. 查詢 product 並取得 id
+
+已有相關聯的產品uuid 則不用查詢
+
+```json--request
+{
+    "data": {
+        "type": "AOS_Products",
+        "attributes": {
+            "name": "MIS 【預購商品 佑爾康金貝親 HappyFamily有機蔬果牙餅 蘋果口味】用最天",
+            "description": "MIS 【預購商品 佑爾康金貝親 HappyFamily有機蔬果牙餅 蘋果口味】用最天",
+            "deleted": "0",
+            "SecurityGroups": "",
+            "aos_products_purchases": "",
+            "maincode": "XXXX",
+            "part_number": "MISM01040500000282",
+            "category": "category",
+            "type": "Good",
+            "cost": "180.000000",
+            "cost_usdollar": "180.000000",
+            "price": "180.000000",
+            "price_usdollar": "180.00",
+            "url": "",
+            "contact_id": "",
+            "contact": "",
+            "product_image": "product_image",
+            "file_url": "file_url",
+            "aos_product_category_id": "{{product_category_id}}"
+        }
+    }
+}
+```
+
+Product Id 為後續建立訂單資訊需要
+
+`POST http://example.com/Api/V8/module`
+
+<aside class="info"><strong>Important</strong>: 建立的產品為預設幣別不需要打入 currency_id</aside>
+
+```json--response
+{
+    "data": {
+        "type": "AOS_Products",
+        "id": "ce76dfc3-6f7d-579e-9968-5fa3aab3122b",
+        "attributes": {
+            ...
+        },
+        "relationships": {
+            ...
+        }
+    }
+}
+```
+
+### 4.6. 開始建立銷退紀錄 (create return)
+
+```json--request
+{
+    "data": {
+        "type": "AOS_Invoices",
+        "attributes": {
+            "name": "MIS004",
+            "description": "",
+            "billing_account_id": "",
+            "billing_account": "",
+            "billing_contact_id": "670f411d-7f4f-abc5-d253-5eac39e93e09",
+            "billing_contact": "",
+            "billing_address_street": "",
+            "billing_address_city": "",
+            "billing_address_state": "",
+            "billing_address_postalcode": "",
+            "billing_address_country": "",
+            "shipping_address_street": "",
+            "shipping_address_city": "",
+            "shipping_address_state": "",
+            "shipping_address_postalcode": "",
+            "shipping_address_country": "",
+            "total_amt": "-399.000000",
+            "total_amt_usdollar": "-399.000000",
+            "subtotal_amount": "-378.000000",
+            "subtotal_amount_usdollar": "-378.000000",
+            "discount_amount": "21.000000",
+            "discount_amount_usdollar": "21.000000",
+            "tax_amount": "0.000000",
+            "tax_amount_usdollar": "0.000000",
+            "shipping_amount": "0.000000",
+            "shipping_amount_usdollar": "0.000000",
+            "shipping_tax": "0",
+            "shipping_tax_amt": "0.000000",
+            "shipping_tax_amt_usdollar": "0.000000",
+            "total_amount": "-378.000000",
+            "total_amount_usdollar": "-378.000000",
+            "quote_date": "",
+            "invoice_date": "2020-02-03",
+            "due_date": "",
+            "status": "Return",
+            "subtotal_tax_amount": "",
+            "subtotal_tax_amount_usdollar": "0.000000"
+        }
+    }
+}
+```
+
+這邊的 invoice id 為 return_invoice_id
+
+`POST {{suitecrm.url}}/Api/V8/module`
+
+<aside class="info"><strong>Important</strong>: 建立的產品為預設幣別不需要打入 currency_id</aside>
+<aside class="warning"><strong>Important</strong>: "quote_date": "", 需帶入請求內容</aside>
+
+```json--response
+{
+    "data": {
+        "type": "AOS_Invoices",
+        "id": "b4534cda-6fe8-2926-47b4-5fa3d3146c98",
+        "attributes": {
+            ...
+        },
+        "relationships": {
+            ...
+        }
+    }
+}
+```
+
+### 4.7. 銷退單建立小計群組
+
+將上述的商品價格總和折扣總和做初步計算並建立小計群組
+
+```json--request
+{
+    "data": {
+        "type": "AOS_Line_Item_Groups",
+        "attributes": {
+            "name": "name",
+            "description": "description",
+            "total_amt": "-180.000000",
+            "total_amt_usdollar": "-180.000000",
+            "discount_amount": "0.000000",
+            "discount_amount_usdollar": "0.000000",
+            "subtotal_amount": "-180.000000",
+            "subtotal_amount_usdollar": "-180.000000",
+            "tax_amount": "0.000000",
+            "tax_amount_usdollar": "0.000000",
+            "subtotal_tax_amount": "0.000000",
+            "subtotal_tax_amount_usdollar": "0.000000",
+            "total_amount": "180.000000",
+            "total_amount_usdollar": "180.000000",
+            "parent_type": "AOS_Invoices",
+            "parent_id": "{{return_invoice_id}}",
+            "number": "1",
+        }
+    }
+}
+```
+
+`POST {{suitecrm.url}}/Api/V8/module`
+
+<aside class="info"><strong>Important</strong>: 建立的產品為預設幣別不需要打入 currency_id</aside>
+
+```json--response
+{
+    "data": {
+        "type": "AOS_Line_Item_Groups",
+        "id": "1f58e96f-f3aa-0937-f19d-5fa3d39107ce",
+        "attributes": {
+            ...
+        },
+        "relationships": {
+            ...
+        }
+    }
+}
+```
+
+### 4.8. 銷退單先計算商品
+
+```json--request
+{
+    "data": {
+        "type": "AOS_Products_Quotes",
+        "attributes": {
+            "name": "name",
+            "description": "description",
+            "assigned_user_id": "c56be602-4a6b-269c-e734-5eaeb97af366",
+            "part_number": "M01990100000001",
+            "item_description": "",
+            "number": "1",
+            "product_qty": "1.0000",
+            "product_cost_price": "-180.000000",
+            "product_cost_price_usdollar": "-180.000000",
+            "product_list_price": "-180.000000",
+            "product_list_price_usdollar": "-180.000000",
+            "product_discount": "0.000000",
+            "product_discount_usdollar": "0.000000",
+            "product_discount_amount": "",
+            "product_discount_amount_usdollar": "",
+            "discount": "Percentage",
+            "product_unit_price": "0.000000",
+            "product_unit_price_usdollar": "0.000000",
+            "vat_amt": "0.000000",
+            "vat_amt_usdollar": "0.000000",
+            "product_total_price": "-180.000000",
+            "product_total_price_usdollar": "-180.000000",
+            "vat": "0",
+            "parent_id": "{{return_invoice_id}}",
+            "product_id": "{{product_id}}",
+            "group_id": "{{item_group_id}}"
+        }
+    }
+}
+```
+
+再將產品成功建立後，後面便可以開始建立銷售單之中的商品
+
+`POST {{suitecrm.url}}/Api/V8/module`
+
+<aside class="info"><strong>Important</strong>: 建立的產品為預設幣別不需要打入 currency_id</aside>
+
+
+```json--response
+{
+    "data": {
+        "type": "AOS_Products_Quotes",
+        "id": "32685ba0-8270-7956-58b5-5fa512fd85e4",
+        "attributes": {
+            ...
+        },
+        "relationships": {
+            ...
+        }
+    }
+}
+```
+
+### 4.9. 銷退單建立與權限群組的關聯
+
+```json--request
+{
+    "data": {
+        "type": "SecurityGroups",
+        "id": "a253557e-40f7-11eb-8665-fa163ef36d26"
+    }
+}
+```
+
+Group      | id
+---------- | --
+Experiece  | a253557e-40f7-11eb-8665-fa163ef36d26
+Market     | 70b1530c-40da-11eb-8665-fa163ef36d26
+
+`POST http://example.com/Api/V8/module/AOS_Invoices/{{return_invoice_id}}/relationships`
+
+### 4.10. 建立銷退單與原始單據關聯
+
+```json--request
+{
+    "data": {
+        "type": "SecurityGroups",
+        "id": "a253557e-40f7-11eb-8665-fa163ef36d26"
+    }
+}
+```
+
+Group      | id
+---------- | --
+Experiece  | a253557e-40f7-11eb-8665-fa163ef36d26
+Market     | 70b1530c-40da-11eb-8665-fa163ef36d26
+
+`POST http://example.com/Api/V8/module/AOS_Invoices/{{invoice_id}}/relationships`
+
+```json--request
+{
+    "data": {
+        "type": "AOS_Invoices",
+        "id": "{{return_invoice_id}}"
+    }
 }
 ```
