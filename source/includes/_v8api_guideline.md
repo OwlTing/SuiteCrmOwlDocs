@@ -216,7 +216,17 @@ HTTP/1.1 201
 }
 ```
 
-更新 Leads 的狀態
+### 2.5. 關聯真實客戶去相關的目標群組
+
+
+{{suitecrm.url}}/Api/V8/module/ProspectLists/{{prospect_id}}/relationships
+
+{
+    "data": {
+        "type": "Contacts",
+        "id": "100fb6da-9b79-9bc5-67ee-5ff29ff7a135"
+    }
+}
 
 `PATCH http://example.com/Api/V8/module`
 
