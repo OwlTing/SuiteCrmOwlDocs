@@ -873,6 +873,7 @@ Promotions                   | id
 市集 - 異業合作-Klash        | e40b7745-39c0-c480-f5f2-60125bc02156
 市集 - Premium-常態9折       | e65c3248-6cb9-6a39-b7b7-60125b83b45b
 市集 - 商品滿888運費折半     | f9f80467-e825-4b14-4189-60125c16eeb5
+市集 - 公司員購              | 3268b670-ffa2-387b-2e50-60127becb743
 體驗 - Experiece Premium     | 34371b7d-6437-ca5c-a772-5facafb3942f
 體驗 - 三倍券                | 80470707-b612-1a42-71d4-5fc9feb78935
 體驗 - Zero Order            | 8c770016-49f7-b7fd-f3f9-601267efcaf9
