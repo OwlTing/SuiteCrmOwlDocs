@@ -2,6 +2,15 @@
 
 ## 1. 建立潛在客戶
 
+[![](https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggVERcbiAgICBTdGFydFtTdGFydF0gLS0-IEFbVXNlciByZWdpc3RlcmVkXVxuICAgIEEgLS0gRmluZCB3aGVyZSB0aGUgdXNlciBmcm9tICAtLT4gQltDcmVhdGUgbGVhZCBmb3IgdXNlciB3aXRoIGFjY291bnQgaWQuXTtcbiAgICBCIC0tLT4gRW5kW0VuZF07XG4iLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggVERcbiAgICBTdGFydFtTdGFydF0gLS0-IEFbVXNlciByZWdpc3RlcmVkXVxuICAgIEEgLS0gRmluZCB3aGVyZSB0aGUgdXNlciBmcm9tICAtLT4gQltDcmVhdGUgbGVhZCBmb3IgdXNlciB3aXRoIGFjY291bnQgaWQuXTtcbiAgICBCIC0tLT4gRW5kW0VuZF07XG4iLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
+
+```mermaid
+graph TD
+    Start[Start] --> A[User registered]
+    A -- Find where the user from  --> B[Create lead for user with account id.];
+    B ---> End[End];
+```
+
 會員留下任意聯絡資訊的時候視為潛在客戶
 
 ### 1.1. 建立潛在客戶
@@ -71,6 +80,21 @@ HTTP/1.1 200
 ## 2. 潛在客戶轉換成真實客戶
 
 當使用者成功購買產品時
+
+[![](https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggVERcbiAgICBTdGFydFtTdGFydF0gLS0-IEFbQ3JlYXRlVXNlciBvcmRlcmVkXVxuICAgIEEgLS0-ICBCe0hhcyB1c2VyIGJlZW4gY2hhbmdlZCA8YnI-IGZyb20gbGVhZCB0byBjb250YWN0P307XG4gICAgQiAtLSBZZXMgLS0-IENbQ3JlYXRlIG9yZGVycy9pbnZvaWNlcyBmb3IgdXNlcidzIGNvbnRhY3QuXTtcbiAgICBDIC0tPiBFbmRbRW5kXTtcbiAgICBCIC0tIE5vIC0tLS0-IERbQ2hlY2sgY29udGFjdCBmb3IgdXNlcl07XG4gICAgRCAtLT4gRXtDaGVjayB1c2VycycgY29udGFjdCBleGlzdGVkP31cbiAgICBFIC0tIFllcyAtLT4gQ1xuICAgIEUgLS0gTm8gLS0-IEZbQ3JlYXRlIGNvbmF0Y3QgZm9yIHVzZXJdO1xuICAgIEYgLS0gVXNlIHVzZXIncyBjb250YWN0IHRvIGNyZWF0ZSBvcmRlcnMvaW52b2ljZXMgLS0-IENcbiIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggVERcbiAgICBTdGFydFtTdGFydF0gLS0-IEFbQ3JlYXRlVXNlciBvcmRlcmVkXVxuICAgIEEgLS0-ICBCe0hhcyB1c2VyIGJlZW4gY2hhbmdlZCA8YnI-IGZyb20gbGVhZCB0byBjb250YWN0P307XG4gICAgQiAtLSBZZXMgLS0-IENbQ3JlYXRlIG9yZGVycy9pbnZvaWNlcyBmb3IgdXNlcidzIGNvbnRhY3QuXTtcbiAgICBDIC0tPiBFbmRbRW5kXTtcbiAgICBCIC0tIE5vIC0tLS0-IERbQ2hlY2sgY29udGFjdCBmb3IgdXNlcl07XG4gICAgRCAtLT4gRXtDaGVjayB1c2VycycgY29udGFjdCBleGlzdGVkP31cbiAgICBFIC0tIFllcyAtLT4gQ1xuICAgIEUgLS0gTm8gLS0-IEZbQ3JlYXRlIGNvbmF0Y3QgZm9yIHVzZXJdO1xuICAgIEYgLS0gVXNlIHVzZXIncyBjb250YWN0IHRvIGNyZWF0ZSBvcmRlcnMvaW52b2ljZXMgLS0-IENcbiIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
+
+```mermaid
+graph TD
+    Start[Start] --> A[User ordered]
+    A -->  B{Has user been changed <br> from lead to contact?};
+    B -- Yes --> C[Create orders/invoices for user's contact.];
+    C --> End[End];
+    B -- No ----> D[Check contact for user];
+    D --> E{Check users' contact existed?}
+    E -- Yes --> C
+    E -- No --> F[Create conatct for user];
+    F -- Use user's contact to create orders/invoices --> C
+```
 
 ### 2.1. 檢查潛在客戶是否曾經被轉換為真實客戶
 
@@ -238,6 +262,28 @@ HTTP/1.1 201
 2. 先建立商品 -> 後建立訂單
 
 以下假設 1. 從訂單開始送 api，流程順序皆可異動
+
+[![](https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggVERcbiAgICBTdGFydFtTdGFydF0gLS0-IEFbQ3JlYXRlIHVzZXIgb3JkZXJdXG4gICAgQSAtLT4gIEJ7SGFzIGNvdW50cnkgY3VycmVuY3kgaWQufTtcbiAgICBCIC0tIFllcyAtLT4gQ1tDcmVhdGUgb3JkZXIgcHJvZHVjdC5dXG4gICAgQyAtLT4gRHtIYXMgcHJvZHVjdCBpZD99XG4gICAgRCAtLSBZZXMgLS0-IEV7SGFzIHByb2R1Y3QgY2F0ZWdvcnkgaWQ_fVxuICAgIEUgLS0gWWVzIC0tPiBGW0NyZWF0ZSBpbnZvaWNlIGdyb3VwLl1cbiAgICBGIC0tPiBHW0NyZWF0ZSBpbnZvaWNlIGl0ZW0uXVxuICAgIEcgLS0-IEhbQ3JlYXRlIHByb21vdGlvbiBmb3Igb3JkZXJzXVxuICAgIEggLS0-IElbQ3JlYXRlIHNlY3VyaXR5IGZvciBvcmRlcnNdXG4gICAgSSAtLT4gRW5kW0VuZF1cbiAgICBFIC0tIE5vIC0tPiBHXG4gICAgRCAtLT4gTm8gLS0-IEtbQ3JlYXRlIHByb2R1Y3QuXVxuICAgIEsgLS0-IEVcbiAgICBCIC0tIE5vIC0tPiBKW0dldCBjb3VudHJ5IGN1cnJlbmN5aWQuXVxuICAgIEogLS0-IEMiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggVERcbiAgICBTdGFydFtTdGFydF0gLS0-IEFbQ3JlYXRlIHVzZXIgb3JkZXJdXG4gICAgQSAtLT4gIEJ7SGFzIGNvdW50cnkgY3VycmVuY3kgaWQufTtcbiAgICBCIC0tIFllcyAtLT4gQ1tDcmVhdGUgb3JkZXIgcHJvZHVjdC5dXG4gICAgQyAtLT4gRHtIYXMgcHJvZHVjdCBpZD99XG4gICAgRCAtLSBZZXMgLS0-IEV7SGFzIHByb2R1Y3QgY2F0ZWdvcnkgaWQ_fVxuICAgIEUgLS0gWWVzIC0tPiBGW0NyZWF0ZSBpbnZvaWNlIGdyb3VwLl1cbiAgICBGIC0tPiBHW0NyZWF0ZSBpbnZvaWNlIGl0ZW0uXVxuICAgIEcgLS0-IEhbQ3JlYXRlIHByb21vdGlvbiBmb3Igb3JkZXJzXVxuICAgIEggLS0-IElbQ3JlYXRlIHNlY3VyaXR5IGZvciBvcmRlcnNdXG4gICAgSSAtLT4gRW5kW0VuZF1cbiAgICBFIC0tIE5vIC0tPiBHXG4gICAgRCAtLT4gTm8gLS0-IEtbQ3JlYXRlIHByb2R1Y3QuXVxuICAgIEsgLS0-IEVcbiAgICBCIC0tIE5vIC0tPiBKW0dldCBjb3VudHJ5IGN1cnJlbmN5aWQuXVxuICAgIEogLS0-IEMiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
+
+```mermaid
+graph TD
+    Start[Start] --> A[Create user order]
+    A -->  B{Has country currency id.};
+    B -- Yes --> C[Create order product.]
+    C --> D{Has product id?}
+    D -- Yes --> E{Has product category id?}
+    E -- Yes --> F[Create invoice group.]
+    F --> G[Create invoice item.]
+    G --> H[Create promotion for orders]
+    H --> I[Create security for orders]
+    I --> End[End]
+    E -- No --> G
+    D --> No --> K[Create product.]
+    K --> E
+    B -- No --> J[Get country currencyid.]
+    J --> C
+```
+
 
 ### 3.1. 取得幣別
 
