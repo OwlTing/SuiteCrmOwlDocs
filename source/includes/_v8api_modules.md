@@ -710,7 +710,7 @@ tax_amount_usdollar          | 訂單稅金總計（預設貨幣） | 349.55
 shipping_amount              | 訂單貨運                 | 100
 shipping_amount_usdollar     | 訂單貨運（預設貨幣）     | 100
 shipping_tax                 | 訂單貨運稅 (百分之幾)    | 5.0
-shipping_tax_amt             | 訂單貨運稅               | 5 ( shipping_tax_amt * shipping_tax / 100 )
+shipping_tax_amt             | 訂單貨運稅               | 5 ( shipping_amount * shipping_tax / 100 )
 shipping_tax_amt_usdollar    | 訂單貨運稅（預設貨幣）   | 5
 total_amount                 | 訂單含稅總計             | 7340.55 ( subtotal_amount + tax_amount + shipping_amount)
 total_amount_usdollar        | 訂單含稅總計（預設貨幣） | 7340.55
