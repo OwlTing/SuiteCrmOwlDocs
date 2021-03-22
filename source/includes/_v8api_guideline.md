@@ -267,17 +267,17 @@ HTTP/1.1 201
 
 ```mermaid
 graph TD
-    Start[Start] --> A[Create user order]
+    Start[Start] --> A[Create user order.]
     A -->  B{Has country currency id.};
     B -- Yes --> C[Create order product.]
     C --> D{Has product id?}
-    D -- Yes --> E{Has product category id?}
-    E -- Yes --> F[Create invoice group.]
+    D -- Yes --> E{Has Invoice Item Group?}
+    E -- Yes --> G
     F --> G[Create invoice item.]
-    G --> H[Create promotion for orders]
-    H --> I[Create security for orders]
+    G --> H[Create promotion for orders.]
+    H --> I[Create security for orders.]
     I --> End[End]
-    E -- No --> G
+    E -- No --> F[Create invoice group.]
     D --> No --> K[Create product.]
     K --> E
     B -- No --> J[Get country currencyid.]
