@@ -688,7 +688,7 @@ Parameter                    | Description              | Value
 name                         | 職稱                     |
 description                  | 描述                     |
 assigned_user_id             | 負責人                   |
-billing_account_id           | 客戶                     | **Experience**: <br>73bad98b-40da-11eb-8665-fa163ef36d26<br>**Market:** <br>70b1530c-40da-11eb-8665-fa163ef36d26 <br>**OwlJourney:** <br>768bfdaf-40da-11eb-8665-fa163ef36d26
+billing_account_id           | 客戶                     |
 billing_contact_id           | 聯絡人                   |
 billing_address_street       | 街道                     |
 billing_address_city         | 城市                     |
@@ -797,8 +797,8 @@ billing_address_postalcode   | 郵遞區號                 |
             "assigned_user_name": "",
             "assigned_user_link": "",
             "SecurityGroups": "",
-            "billing_account_id": "670f411d-7f4f-abc5-d253-5eac39e93e09",
-            "billing_account": "EC_Market",
+            "billing_account_id": "",
+            "billing_account": "",
             "billing_contact_id": "",
             "billing_contact": "",
             "billing_address_street": "",

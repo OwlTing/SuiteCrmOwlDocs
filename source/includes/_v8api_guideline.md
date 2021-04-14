@@ -1060,9 +1060,11 @@ Experiece         | a253557e-40f7-11eb-8665-fa163ef36d26
 
 ### 4.5. 查詢 product 並取得 id
 
+`GET http://example.com/Api/V8/module/AOS_Products?page[size]=1&page[number]=1&filter[name][eq]=E&filter[description][eq]=Experiences`
+
 已有相關聯的產品uuid 則不用查詢
 
-```json--request
+```json--reponse
 {
     "data": {
         "type": "AOS_Products",
