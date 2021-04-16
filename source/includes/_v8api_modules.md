@@ -591,6 +591,17 @@ url                     | 超連結           |
 contact_id              | 聯絡人           |
 aos_product_category_id | 產品類別         |
 
+
+<aside class="info"><strong>Info</strong>: Journey 特殊料號</aside>
+
+| id                                   | name          | number                         |
+| ---                                  | ---           | ---                            |
+| db576c01-8b7a-3169-4d41-60780e186c76 | 尾差金額料號  | J00000000000000000000000000001 |
+| a80d3168-7b8a-d7ec-e701-60780f94a6aa | 代收房費-小孩 | J00000000000000000000000000002 |
+| b9f90b33-d6e0-9249-5578-60780f5dd917 | 代收房費-大人 | J00000000000000000000000000003 |
+| 63e51ab7-619b-4fe4-c3e8-60780e042f79 | 服務收入      | J00000000000000000000000000004 |
+
+
 `POST http://example.com/Api/V8/module`
 
 ```json--request
