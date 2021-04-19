@@ -364,7 +364,6 @@ graph TD
                 "assigned_user_id": "1",
                 "assigned_user_name": "Administrator",
                 "assigned_user_link": "",
-                "SecurityGroups": "",
                 "is_parent": "1",
                 "aos_products": "",
                 "sub_categories": "",
@@ -410,7 +409,6 @@ graph TD
             "name": "MIS 【預購商品 佑爾康金貝親 HappyFamily有機蔬果牙餅 蘋果口味】用最天",
             "description": "MIS 【預購商品 佑爾康金貝親 HappyFamily有機蔬果牙餅 蘋果口味】用最天",
             "deleted": "0",
-            "SecurityGroups": "",
             "aos_products_purchases": "",
             "maincode": "XXXX",
             "part_number": "MISM01040500000282",
@@ -457,7 +455,6 @@ Product Id 為後續建立訂單資訊需要
             "assigned_user_id": "",
             "assigned_user_name": "",
             "assigned_user_link": "",
-            "SecurityGroups": "",
             "aos_products_purchases": "",
             "maincode": "XXXX",
             "part_number": "MISM01040500000282",
@@ -571,7 +568,6 @@ Product Id 為後續建立訂單資訊需要
             "assigned_user_id": "",
             "assigned_user_name": "",
             "assigned_user_link": "",
-            "SecurityGroups": "",
             "billing_account_id": "670f411d-7f4f-abc5-d253-5eac39e93e09",
             "billing_account": "EC_Market",
             "billing_contact_id": "",
@@ -1072,7 +1068,6 @@ Experiece         | a253557e-40f7-11eb-8665-fa163ef36d26
             "name": "MIS 【預購商品 佑爾康金貝親 HappyFamily有機蔬果牙餅 蘋果口味】用最天",
             "description": "MIS 【預購商品 佑爾康金貝親 HappyFamily有機蔬果牙餅 蘋果口味】用最天",
             "deleted": "0",
-            "SecurityGroups": "",
             "aos_products_purchases": "",
             "maincode": "XXXX",
             "part_number": "MISM01040500000282",
@@ -1295,34 +1290,7 @@ Product Id 為後續建立訂單資訊需要
 }
 ```
 
-### 4.9. 銷退單建立與權限群組的關聯
-
-```json--request
-{
-    "data": {
-        "type": "SecurityGroups",
-        "id": "a253557e-40f7-11eb-8665-fa163ef36d26"
-    }
-}
-```
-
-Group      | id
----------- | --
-Experiece  | a253557e-40f7-11eb-8665-fa163ef36d26
-Market     | 70b1530c-40da-11eb-8665-fa163ef36d26
-
-`POST http://example.com/Api/V8/module/AOS_Invoices/{{return_invoice_id}}/relationships`
-
-### 4.10. 建立銷退單與原始單據關聯
-
-```json--request
-{
-    "data": {
-        "type": "SecurityGroups",
-        "id": "a253557e-40f7-11eb-8665-fa163ef36d26"
-    }
-}
-```
+### 4.9. 建立銷退單與原始單據關聯
 
 Group      | id
 ---------- | --

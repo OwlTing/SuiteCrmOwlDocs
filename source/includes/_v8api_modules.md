@@ -110,7 +110,6 @@ HTTP/1.1 201
             "assigned_user_id": "",
             "assigned_user_name": "",
             "assigned_user_link": "",
-            "SecurityGroups": "",
             "salutation": "Mr.",
             "first_name": "Iam",
             "last_name": "Robot4",
@@ -350,7 +349,6 @@ HTTP/1.1 201
             "assigned_user_id": "",
             "assigned_user_name": "",
             "assigned_user_link": "",
-            "SecurityGroups": "",
             "salutation": "Mr.",
             "first_name": "Iam",
             "last_name": "Robot5",
@@ -660,7 +658,6 @@ parent_category_id | 父類別      |
                 "assigned_user_id": "1",
                 "assigned_user_name": "Administrator",
                 "assigned_user_link": "",
-                "SecurityGroups": "",
                 "is_parent": "1",
                 "aos_products": "",
                 "sub_categories": "",
@@ -807,7 +804,6 @@ billing_address_postalcode   | 郵遞區號                 |
             "assigned_user_id": "",
             "assigned_user_name": "",
             "assigned_user_link": "",
-            "SecurityGroups": "",
             "billing_account_id": "",
             "billing_account": "",
             "billing_contact_id": "",
@@ -1170,7 +1166,6 @@ Experiece Premium:34371b7d-6437-ca5c-a772-5facafb3942f
                 "assigned_user_id": "1",
                 "assigned_user_name": "Administrator",
                 "assigned_user_link": "",
-                "SecurityGroups": "",
                 "code": "Market Premium 500",
                 "priority": "0",
                 "exclusive": "0",
@@ -1229,7 +1224,6 @@ Experiece Premium:34371b7d-6437-ca5c-a772-5facafb3942f
                 "assigned_user_id": "1",
                 "assigned_user_name": "Administrator",
                 "assigned_user_link": "",
-                "SecurityGroups": "",
                 "code": "Market Premium",
                 "priority": "0",
                 "exclusive": "0",
@@ -1279,17 +1273,4 @@ Experiece Premium:34371b7d-6437-ca5c-a772-5facafb3942f
     }
 }
 ```
-
-### SecurityGroups
-
-群組權限
-
-Parameter        | Description  | Value | Example
----------        | -----------  | ----- | -------
-name             | 群組名稱     |       |
-description      | 描述         |       |
-
-Experiece: 2
-
-
 
