@@ -1,4 +1,329 @@
 ## API modules
+### Accounts
+
+客戶
+
+#### Create Leads
+
+`POST http://example.com/Api/V8/module`
+
+```json--request
+
+{
+    "data": {
+        "type": "Accounts",
+        "attributes": {
+            "name": "test",
+            "date_entered": "2021-05-04T07:38:00+00:00",
+            "date_modified": "2021-05-04T07:38:00+00:00",
+            "modified_user_id": "1",
+            "modified_by_name": "Administrator",
+            "created_by": "1",
+            "created_by_name": "Administrator",
+            "description": "",
+            "deleted": "0",
+            "created_by_link": "",
+            "modified_user_link": "",
+            "assigned_user_id": "",
+            "assigned_user_name": "",
+            "assigned_user_link": "",
+            "SecurityGroups": "",
+            "account_type": "^Analyst^",
+            "industry": "",
+            "annual_revenue": "",
+            "phone_fax": "",
+            "billing_address_street": "",
+            "billing_address_street_2": "",
+            "billing_address_street_3": "",
+            "billing_address_street_4": "",
+            "billing_address_city": "",
+            "billing_address_state": "",
+            "billing_address_postalcode": "",
+            "billing_address_country": "",
+            "rating": "",
+            "phone_office": "",
+            "phone_alternate": "",
+            "website": "",
+            "ownership": "",
+            "employees": "",
+            "ticker_symbol": "",
+            "shipping_address_street": "",
+            "shipping_address_street_2": "",
+            "shipping_address_street_3": "",
+            "shipping_address_street_4": "",
+            "shipping_address_city": "",
+            "shipping_address_state": "",
+            "shipping_address_postalcode": "",
+            "shipping_address_country": "",
+            "email1": "",
+            "email_addresses_primary": "",
+            "email_addresses": "",
+            "email_addresses_non_primary": "",
+            "parent_id": "",
+            "sic_code": "",
+            "parent_name": "",
+            "members": "",
+            "member_of": {},
+            "email_opt_out": "",
+            "invalid_email": "",
+            "cases": "",
+            "email": "",
+            "tasks": "",
+            "notes": "",
+            "meetings": "",
+            "calls": "",
+            "emails": "",
+            "documents": "",
+            "bugs": "",
+            "contacts": "",
+            "opportunities": "",
+            "project": "",
+            "leads": "",
+            "campaigns": "",
+            "campaign_accounts": {},
+            "campaign_id": "",
+            "campaign_name": "",
+            "prospect_lists": "",
+            "aos_quotes": "",
+            "aos_invoices": "",
+            "aos_contracts": "",
+            "accounts_aos_product_categories_1": "",
+            "jjwg_maps_address_c": "",
+            "jjwg_maps_geocode_status_c": "",
+            "jjwg_maps_lat_c": "0.00000000",
+            "jjwg_maps_lng_c": "0.00000000"
+        }
+    }
+}
+
+```
+
+```json--response
+
+HTTP/1.1 201
+
+{
+    "data": {
+        "type": "Account",
+        "id": "62716bfd-c6dd-e31e-2ab9-6090f9c5f2bd",
+        "attributes": {
+            "name": "test",
+            "date_entered": "2021-05-04T07:38:00+00:00",
+            "date_modified": "2021-05-04T07:38:00+00:00",
+            "modified_user_id": "1",
+            "modified_by_name": "Administrator",
+            "created_by": "1",
+            "created_by_name": "Administrator",
+            "description": "",
+            "deleted": "0",
+            "created_by_link": "",
+            "modified_user_link": "",
+            "assigned_user_id": "",
+            "assigned_user_name": "",
+            "assigned_user_link": "",
+            "SecurityGroups": "",
+            "account_type": "^Analyst^",
+            "industry": "",
+            "annual_revenue": "",
+            "phone_fax": "",
+            "billing_address_street": "",
+            "billing_address_street_2": "",
+            "billing_address_street_3": "",
+            "billing_address_street_4": "",
+            "billing_address_city": "",
+            "billing_address_state": "",
+            "billing_address_postalcode": "",
+            "billing_address_country": "",
+            "rating": "",
+            "phone_office": "",
+            "phone_alternate": "",
+            "website": "",
+            "ownership": "",
+            "employees": "",
+            "ticker_symbol": "",
+            "shipping_address_street": "",
+            "shipping_address_street_2": "",
+            "shipping_address_street_3": "",
+            "shipping_address_street_4": "",
+            "shipping_address_city": "",
+            "shipping_address_state": "",
+            "shipping_address_postalcode": "",
+            "shipping_address_country": "",
+            "email1": "",
+            "email_addresses_primary": "",
+            "email_addresses": "",
+            "email_addresses_non_primary": "",
+            "parent_id": "",
+            "sic_code": "",
+            "parent_name": "",
+            "members": "",
+            "member_of": {},
+            "email_opt_out": "",
+            "invalid_email": "",
+            "cases": "",
+            "email": "",
+            "tasks": "",
+            "notes": "",
+            "meetings": "",
+            "calls": "",
+            "emails": "",
+            "documents": "",
+            "bugs": "",
+            "contacts": "",
+            "opportunities": "",
+            "project": "",
+            "leads": "",
+            "campaigns": "",
+            "campaign_accounts": {},
+            "campaign_id": "",
+            "campaign_name": "",
+            "prospect_lists": "",
+            "aos_quotes": "",
+            "aos_invoices": "",
+            "aos_contracts": "",
+            "accounts_aos_product_categories_1": "",
+            "jjwg_maps_address_c": "",
+            "jjwg_maps_geocode_status_c": "",
+            "jjwg_maps_lat_c": "0.00000000",
+            "jjwg_maps_lng_c": "0.00000000"
+        },
+        "relationships": {
+            "AOS_Contracts": {
+                "links": {
+                    "related": "V8/module/62716bfd-c6dd-e31e-2ab9-6090f9c5f2bd/relationships/aos_contracts"
+                }
+            },
+            "AOS_Invoices": {
+                "links": {
+                    "related": "V8/module/62716bfd-c6dd-e31e-2ab9-6090f9c5f2bd/relationships/aos_invoices"
+                }
+            },
+            "AOS_Product_Categories": {
+                "links": {
+                    "related": "V8/module/62716bfd-c6dd-e31e-2ab9-6090f9c5f2bd/relationships/accounts_aos_product_categories_1"
+                }
+            },
+            "AOS_Quotes": {
+                "links": {
+                    "related": "V8/module/62716bfd-c6dd-e31e-2ab9-6090f9c5f2bd/relationships/aos_quotes"
+                }
+            },
+            "Accounts": {
+                "links": {
+                    "related": "V8/module/62716bfd-c6dd-e31e-2ab9-6090f9c5f2bd/relationships/members"
+                }
+            },
+            "Bugs": {
+                "links": {
+                    "related": "V8/module/62716bfd-c6dd-e31e-2ab9-6090f9c5f2bd/relationships/bugs"
+                }
+            },
+            "Calls": {
+                "links": {
+                    "related": "V8/module/62716bfd-c6dd-e31e-2ab9-6090f9c5f2bd/relationships/calls"
+                }
+            },
+            "CampaignLog": {
+                "links": {
+                    "related": "V8/module/62716bfd-c6dd-e31e-2ab9-6090f9c5f2bd/relationships/campaigns"
+                }
+            },
+            "Cases": {
+                "links": {
+                    "related": "V8/module/62716bfd-c6dd-e31e-2ab9-6090f9c5f2bd/relationships/cases"
+                }
+            },
+            "Contacts": {
+                "links": {
+                    "related": "V8/module/62716bfd-c6dd-e31e-2ab9-6090f9c5f2bd/relationships/contacts"
+                }
+            },
+            "EmailAddress": {
+                "links": {
+                    "related": "V8/module/62716bfd-c6dd-e31e-2ab9-6090f9c5f2bd/relationships/email_addresses"
+                }
+            },
+            "Emails": {
+                "links": {
+                    "related": "V8/module/62716bfd-c6dd-e31e-2ab9-6090f9c5f2bd/relationships/emails"
+                }
+            },
+            "Leads": {
+                "links": {
+                    "related": "V8/module/62716bfd-c6dd-e31e-2ab9-6090f9c5f2bd/relationships/leads"
+                }
+            },
+            "Meetings": {
+                "links": {
+                    "related": "V8/module/62716bfd-c6dd-e31e-2ab9-6090f9c5f2bd/relationships/meetings"
+                }
+            },
+            "Notes": {
+                "links": {
+                    "related": "V8/module/62716bfd-c6dd-e31e-2ab9-6090f9c5f2bd/relationships/notes"
+                }
+            },
+            "Opportunities": {
+                "links": {
+                    "related": "V8/module/62716bfd-c6dd-e31e-2ab9-6090f9c5f2bd/relationships/opportunities"
+                }
+            },
+            "Project": {
+                "links": {
+                    "related": "V8/module/62716bfd-c6dd-e31e-2ab9-6090f9c5f2bd/relationships/project"
+                }
+            },
+            "ProspectLists": {
+                "links": {
+                    "related": "V8/module/62716bfd-c6dd-e31e-2ab9-6090f9c5f2bd/relationships/prospect_lists"
+                }
+            },
+            "SecurityGroups": {
+                "links": {
+                    "related": "V8/module/62716bfd-c6dd-e31e-2ab9-6090f9c5f2bd/relationships/SecurityGroups"
+                }
+            },
+            "Tasks": {
+                "links": {
+                    "related": "V8/module/62716bfd-c6dd-e31e-2ab9-6090f9c5f2bd/relationships/tasks"
+                }
+            },
+            "Users": {
+                "links": {
+                    "related": "V8/module/62716bfd-c6dd-e31e-2ab9-6090f9c5f2bd/relationships/modified_user_link"
+                }
+            }
+        }
+    }
+}
+
+```
+Prameter                    | Description       | Value
+---                         | ---               | ---
+name                        | 客戶名稱          | 
+description                 | 描述              | 
+assigned_user_id            | 指派              | 
+account_type                | 客戶類型(多選)    | ^Analyst^,^Competitor^,^Customer^,^Integrator^,^Investor^,^Partner^,^Press^,^Prospect^,^Reseller^,^Supplier^,^Other^
+industry                    | 產業類別          | Apparel, Banking, Biotechnology, Chemicals, Communications, Construction, Consulting, Education, Electronics, Energy, Engineering, Entertainment, Environmental, Finance, Government, Healthcare, Hospitality, Insurance, Machinery, Manufacturing, Media, Not For Profit, Recreation, Retail, Shipping, Technology, Telecommunications, Transportation, Utilities, Other,
+annual_revenue              | 年收入            | 
+phone_fax                   | 傳真              | 
+billing_address_street      | 付款地址 街道     |
+billing_address_city        | 付款地址 城市     |
+billing_address_state       | 付款地址 州或省   |
+billing_address_postalcode  | 付款地址 郵遞區號 |
+billing_address_country     | 付款地址 國家     |
+rating                      | 評價              |
+phone_office                | 辦公電話          |
+phone_alternate             | 替代電話          |
+website                     | 網站              |
+shipping_address_street     | 裝運地址 街道     |
+shipping_address_city       | 裝運地址 城市     |
+shipping_address_state      | 裝運地址 州或省   |
+shipping_address_postalcode | 裝運地址 郵遞區號 |
+shipping_address_country    | 裝運地址 國家     |
+campaign_id                 | 市場活動          |
+
+
 ### Leads
 
 潛在客戶 / 商業機會
@@ -48,44 +373,6 @@
 }
 
 ```
-
-Parameter                  | Description              | Value
----------                  | -----------              | -----
-description                | 描述                     |
-assigned_user_id           | 指派給                   | Experience: 4e640918-9db7-2121-94b5-5eba64642e0c,
-account_id                 | 客戶別（這邊帶入事業體） | **Experience**: <br>73bad98b-40da-11eb-8665-fa163ef36d26<br>**Market:** <br>70b1530c-40da-11eb-8665-fa163ef36d26 <br>**OwlJourney:** <br>768bfdaf-40da-11eb-8665-fa163ef36d26
-salutation                 | 稱呼                     | Mr.,Ms.,Mrs.,Miss,Dr.,Prof.
-first_name                 | 名                       |
-last_name                  | 姓                       |
-title                      | 職稱                     |
-do_not_call                | 不接受電訪               | 0,1
-phone_home                 | 家庭電話                 | 08-88888888
-phone_mobile               | 行動電話                 | 0912345678
-phone_work                 | 辦公電話                 | 07-77777777
-phone_other                | 傳真電話                 | 06-66666666
-phone_fax                  | 傳真                     | 1234567890
-email1                     | 主要聯絡                 |
-email2                     | 次要聯絡                 |
-invalid_email              | 無效郵件地址             | 0,1
-email_opt_out              | 棄用                     | 0,1
-lawful_basis               | 合法基礎                 | consent, contract, legal_obligation, protection_of_interest, public_interest, legitimate_interest, withdrawn
-lawful_basis_source        | 合法基礎來源             | website, phone, given_to_user, email, third_party
-date_reviewed              | 合法基礎之審核日期       |
-primary_address_street     | 主要地址1                |
-primary_address_street_2   | 主要地址2                |
-primary_address_street_3   | 主要地址2                |
-primary_address_city       | 主要城市                 |
-primary_address_state      | 主要州或省               |
-primary_address_postalcode | 郵地區碼                 |
-primary_address_country    | 國家                     |
-converted                  | 已轉換                   | 0,1
-refered_by                 | 推薦人                   |
-lead_source                | 潛在客戶來源             | Cold Call, Existing Customer, Self Generated, Employee, Partner, Public Relations, Direct Mail, Conference, Trade Show, Web Site, Word of mouth, Email, Campaign, Other
-lead_source_description    | 潛在客戶來源說明         | lead_source_description
-status                     | 狀態                     | New, Assigned, In Process, Converted, Recycled, Dead
-status_description         | 狀態描述                 |
-birthdate                  | 生日                     |
-website                    | 網址                     |
 
 ```json--response
 
@@ -244,6 +531,45 @@ HTTP/1.1 201
 
 ```
 
+Parameter                  | Description              | Value
+---------                  | -----------              | -----
+description                | 描述                     |
+assigned_user_id           | 指派給                   | Experience: 4e640918-9db7-2121-94b5-5eba64642e0c,
+account_id                 | 客戶別（這邊帶入事業體） | **Experience**: <br>73bad98b-40da-11eb-8665-fa163ef36d26<br>**Market:** <br>70b1530c-40da-11eb-8665-fa163ef36d26 <br>**OwlJourney:** <br>768bfdaf-40da-11eb-8665-fa163ef36d26
+salutation                 | 稱呼                     | Mr.,Ms.,Mrs.,Miss,Dr.,Prof.
+first_name                 | 名                       |
+last_name                  | 姓                       |
+title                      | 職稱                     |
+do_not_call                | 不接受電訪               | 0,1
+phone_home                 | 家庭電話                 | 08-88888888
+phone_mobile               | 行動電話                 | 0912345678
+phone_work                 | 辦公電話                 | 07-77777777
+phone_other                | 傳真電話                 | 06-66666666
+phone_fax                  | 傳真                     | 1234567890
+email1                     | 主要聯絡                 |
+email2                     | 次要聯絡                 |
+invalid_email              | 無效郵件地址             | 0,1
+email_opt_out              | 棄用                     | 0,1
+lawful_basis               | 合法基礎                 | consent, contract, legal_obligation, protection_of_interest, public_interest, legitimate_interest, withdrawn
+lawful_basis_source        | 合法基礎來源             | website, phone, given_to_user, email, third_party
+date_reviewed              | 合法基礎之審核日期       |
+primary_address_street     | 主要地址1                |
+primary_address_street_2   | 主要地址2                |
+primary_address_street_3   | 主要地址2                |
+primary_address_city       | 主要城市                 |
+primary_address_state      | 主要州或省               |
+primary_address_postalcode | 郵地區碼                 |
+primary_address_country    | 國家                     |
+converted                  | 已轉換                   | 0,1
+refered_by                 | 推薦人                   |
+lead_source                | 潛在客戶來源             | Cold Call, Existing Customer, Self Generated, Employee, Partner, Public Relations, Direct Mail, Conference, Trade Show, Web Site, Word of mouth, Email, Campaign, Other
+lead_source_description    | 潛在客戶來源說明         | lead_source_description
+status                     | 狀態                     | New, Assigned, In Process, Converted, Recycled, Dead
+status_description         | 狀態描述                 |
+birthdate                  | 生日                     |
+website                    | 網址                     |
+
+
 ### Contacts
 
 聯絡人 / 真實客戶
@@ -288,43 +614,6 @@ HTTP/1.1 201
 }
 
 ```
-
-Parameter                  | Description              | Value
----------                  | -----------              | -----
-description                | 描述                     | Description
-assigned_user_id           | 指派給                   | Experience: 4e640918-9db7-2121-94b5-5eba64642e0c
-account_id                 | 客戶別（這邊帶入事業體） | **Experience**: <br>73bad98b-40da-11eb-8665-fa163ef36d26<br>**Market:** <br>70b1530c-40da-11eb-8665-fa163ef36d26 <br>**OwlJourney:** <br>768bfdaf-40da-11eb-8665-fa163ef36d26
-salutation                 | 稱呼                     | Mr.,Ms.,Mrs.,Miss,Dr.,Prof.
-first_name                 | 名                       |
-last_name                  | 姓                       |
-title                      | 職稱                     |
-do_not_call                | 不接受電訪               | 0,1
-phone_home                 | 家庭電話                 | 08-88888888
-phone_mobile               | 行動電話                 | 0912345678
-phone_work                 | 辦公電話                 | 07-77777777
-phone_other                | 傳真電話                 | 06-66666666
-phone_fax                  | 傳真                     | 1234567890
-email1                     | 主要聯絡                 |
-email2                     | 次要聯絡                 |
-invalid_email              | 無效郵件地址             | 0,1
-email_opt_out              | 棄用                     | 0,1
-lawful_basis               | 合法基礎                 | consent, contract, legal_obligation, protection_of_interest, public_interest, legitimate_interest, withdrawn
-lawful_basis_source        | 合法基礎來源             | website, phone, given_to_user, email, third_party
-date_reviewed              | 合法基礎之審核日期       |
-primary_address_street     | 主要地址1                |
-primary_address_street_2   | 主要地址2                |
-primary_address_street_3   | 主要地址3                |
-primary_address_city       | 主要城市                 |
-primary_address_state      | 主要州或省               |
-primary_address_postalcode | 郵地區碼                 |
-primary_address_country    | 國家                     |
-lead_source                | 潛在客戶來源             | Cold Call, Existing Customer, Self Generated, Employee, Partner, Public Relations, Direct Mail, Conference, Trade Show, Web Site, Word of mouth, Email, Campaign, Other
-lead_source_description    | 潛在客戶來源說明         | lead_source_description
-birthdate                  | 生日                     |
-birth_of_day_c             | 日                       |
-birth_of_year_c            | 年                       |
-birth_of_month_c           | 月                       |
-
 
 ```json--response
 
@@ -516,6 +805,44 @@ HTTP/1.1 201
 
 ```
 
+Parameter                  | Description              | Value
+---------                  | -----------              | -----
+description                | 描述                     | Description
+assigned_user_id           | 指派給                   | Experience: 4e640918-9db7-2121-94b5-5eba64642e0c
+account_id                 | 客戶別（這邊帶入事業體） | **Experience**: <br>73bad98b-40da-11eb-8665-fa163ef36d26<br>**Market:** <br>70b1530c-40da-11eb-8665-fa163ef36d26 <br>**OwlJourney:** <br>768bfdaf-40da-11eb-8665-fa163ef36d26
+salutation                 | 稱呼                     | Mr.,Ms.,Mrs.,Miss,Dr.,Prof.
+first_name                 | 名                       |
+last_name                  | 姓                       |
+title                      | 職稱                     |
+do_not_call                | 不接受電訪               | 0,1
+phone_home                 | 家庭電話                 | 08-88888888
+phone_mobile               | 行動電話                 | 0912345678
+phone_work                 | 辦公電話                 | 07-77777777
+phone_other                | 傳真電話                 | 06-66666666
+phone_fax                  | 傳真                     | 1234567890
+email1                     | 主要聯絡                 |
+email2                     | 次要聯絡                 |
+invalid_email              | 無效郵件地址             | 0,1
+email_opt_out              | 棄用                     | 0,1
+lawful_basis               | 合法基礎                 | consent, contract, legal_obligation, protection_of_interest, public_interest, legitimate_interest, withdrawn
+lawful_basis_source        | 合法基礎來源             | website, phone, given_to_user, email, third_party
+date_reviewed              | 合法基礎之審核日期       |
+primary_address_street     | 主要地址1                |
+primary_address_street_2   | 主要地址2                |
+primary_address_street_3   | 主要地址3                |
+primary_address_city       | 主要城市                 |
+primary_address_state      | 主要州或省               |
+primary_address_postalcode | 郵地區碼                 |
+primary_address_country    | 國家                     |
+lead_source                | 潛在客戶來源             | Cold Call, Existing Customer, Self Generated, Employee, Partner, Public Relations, Direct Mail, Conference, Trade Show, Web Site, Word of mouth, Email, Campaign, Other
+lead_source_description    | 潛在客戶來源說明         | lead_source_description
+birthdate                  | 生日                     |
+birth_of_day_c             | 日                       |
+birth_of_year_c            | 年                       |
+birth_of_month_c           | 月                       |
+
+
+
 ### Currencies
 
 貨幣
@@ -625,18 +952,6 @@ aos_product_category_id | 產品類別         |
 
 ```
 
-### Products Categories
-
-#### 產品類別
-
-Parameter          | Description | Value
----------          | ----------- | -----
-name               | 名稱        |
-description        | 描述        |
-assigned_user_id   | 負責人      | 1
-is_parent          | 是父類別    | 0,1
-parent_category_id | 父類別      |
-
 ```json--response
 {
     "data": [
@@ -686,10 +1001,24 @@ parent_category_id | 父類別      |
     ],
 }
 ```
+### Products Categories
+
+#### 產品類別
+
+Parameter          | Description | Value
+---------          | ----------- | -----
+name               | 名稱        |
+description        | 描述        |
+assigned_user_id   | 負責人      | 1
+is_parent          | 是父類別    | 0,1
+parent_category_id | 父類別      |
+
 
 ### Invoice
 
 發票(收據) / 銷售紀錄
+
+稅務算方式為外加稅
 
 Parameter                    | Description              | Value
 ---------                    | -----------              | -----
