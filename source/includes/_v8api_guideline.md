@@ -494,6 +494,40 @@ Product Id 為後續建立訂單資訊需要
 }
 ```
 
+#### 3.3.1 建立產品標記位置
+
+```json--request
+{
+    "data": {
+        "type": "jjwg_Markers",
+        "attributes": {
+            "name": "Mis Marker",
+            "description": "體驗一日遊",
+            "assigned_user_id": "123",
+            "city": "",
+            "state": "",
+            "country": "",
+            "jjwg_maps_lat": "123",
+            "jjwg_maps_lng": "123",
+            "marker_image": ""
+        }
+    }
+}
+```
+
+#### 3.3.2 建立產品與位置的關聯
+
+`POST http://example.com/Api/V8/module/AOS_Products/{{product_id}}/relationships`
+
+```json--request
+{
+    "data": {
+        "type": "jjwg_Markers",
+        "id": "{{jjwg_marker_id}}"
+    }
+}
+```
+
 ### 3.4. 開始建立銷售紀錄
 
 ```json--request
@@ -1150,7 +1184,7 @@ Product Id 為後續建立訂單資訊需要
             "quote_date": "",
             "invoice_date": "2020-02-03",
             "due_date": "",
-            "status": "Return",
+            "status": "Returned",
             "subtotal_tax_amount": "",
             "subtotal_tax_amount_usdollar": "0.000000"
         }

@@ -900,21 +900,26 @@ status          | 狀態        | Active, Inactive
 
 #### Create Products
 
-Parameter               | Description      | Value
----------               | -----------      | -----
-name                    | 產品名稱         |
-description             | 描述             |
-assigned_user_id        | 負責人           |
-part_number             | 部件編碼         | M01040500000282
-type                    | 產品類型         | Good,Service
-cost                    | 成本             |
-cost_usdollar           | 成本（預設貨幣） |
-currency_id             | 貨幣             |
-price                   | 價格             |
-price_usdollar          | 價格（預設貨幣） |
-url                     | 超連結           |
-contact_id              | 聯絡人           |
-aos_product_category_id | 產品類別         |
+Parameter               | Description       | Value
+---------               | -----------       | -----
+name                    | 產品名稱          |
+description             | 描述              |
+assigned_user_id        | 負責人            |
+part_number             | 部件編碼          | M01040500000282
+type                    | 產品類型          | Good,Service
+cost                    | 成本              |
+cost_usdollar           | 成本 ( 預設貨幣 ) |
+currency_id             | 貨幣              |
+price                   | 價格              |
+price_usdollar          | 價格 ( 預設貨幣 ) |
+url                     | 超連結            |
+contact_id              | 聯絡人            |
+account_c               | 客戶名稱          |
+account_id_c            | 客戶編號          |
+advance_booking_days_c  | 提前預定天數      | 0
+latitude_c              | 經度              | 24.99931400
+longitude_c             | 緯度              | 121.51631800
+aos_product_category_id | 產品類別          |
 
 
 <aside class="info"><strong>Info</strong>: Journey 特殊料號</aside>
@@ -1055,8 +1060,10 @@ currency_id                  | 訂單貨幣                 | -99
 quote_number                 | 報價編號                 |
 quote_date                   | 報價日期                 |
 invoice_date                 | 發票日期                 |
+receipt_number_c             | 發票號碼                 |
+payment_method_c             | 付款方式                 | 'credit','credit_union','paypal',<br> 'installment','applepay','atm',<br> 'stripeCreditcard','other','remittance',<br> 'paynow'
 due_date                     | 到期時間                 |
-status                       | 狀態                     | Paid,Canceled,Not Paid,Return
+status                       | 狀態                     | Paid,PendingPaymentConfirmation,Unpaid,<br> Cancelled,Rescheduling,Returning,Returned
 subtotal_tax_amount          | 小計＋稅金               | 0
 subtotal_tax_amount_usdollar | 小計＋稅金（預設貨幣）   | 0
 billing_address_postalcode   | 郵遞區號                 |
@@ -1359,6 +1366,7 @@ product_discount_amount_usdollar | 折扣總計 (預設幣別)     |            
 discount                         | 折扣類型                | Amount, Percetage | Amount
 product_unit_price               | 產品單位價格            |                   | 2690
 product_unit_price_usdollar      | 產品單位價格 (預設幣別) |                   | 2690
+departure_datetime_c             | 出團日期                |                   | 2020-01-01
 vat_amt                          | 含稅價                  |                   | 269
 vat_amt_usdollar                 | 含稅價 (預設幣別)       |                   | 269
 product_total_price              | 商品含稅總額            |                   | 5380
@@ -1603,3 +1611,91 @@ Experiece Premium:34371b7d-6437-ca5c-a772-5facafb3942f
 }
 ```
 
+### Map - Markers
+
+Maps locations
+
+Parameter        | Description | Value | Example
+---------        | ----------- | ----- | -------
+name             | 標記名稱    |       |
+description      | 描述        |       |
+assigned_user_id | 負責人      |       |
+city             | 城市        |       |
+state            | 州或省      |       |
+country          | 國家        |       |
+jjwg_maps_lat    | 經度        |       | 113.727
+jjwg_maps_lng    | 緯度        |       | 34.773
+marker_image     | 標注類型    |       | accident, administration, agriculture, aircraft_small, airplane_tourism, airport, amphitheater, apartment, aquarium, arch, atm, audio, bank, bank_euro, bank_pound, bar, beach, beautiful, bicycle_parking, big_city, bridge, bridge_modern, bus, cable_car, car, car_rental, carrepair, castle, cathedral, chapel, church, city_square, cluster, cluster_2, cluster_3, cluster_4, cluster_5, coffee, community_centre, company, conference, construction, convenience, court, cruise, currency_exchange, customs, cycling, dam, dentist, deptartment_store, disability, disabled_parking, doctor, dog_leash, down, down_left, down_right, down_then_left, down_then_right, drugs, elevator, embassy, expert, factory, falling_rocks, fast_food, festival, fjord, forest, fountain, friday, garden, gas_station, geyser, gifts, gourmet, grocery, hairsalon, helicopter, highway, historical_quarter, home, hospital, hostel, hotel, hotel_1_star, hotel_2_stars, hotel_3_stars, hotel_4_stars, hotel_5_stars, info, justice, lake, laundromat, left, left_then_down, left_then_up, library, lighthouse, liquor, lock, main_road, massage, mobile_phone_tower, modern_tower, monastery, monday, monument, mosque, motorcycle, museum, music_live, oil_pump_jack, pagoda, palace, panoramic, park, park_and_ride, parking, photo, picnic, places_unvisited, places_visited, playground, police, port, postal, power_line_pole, power_plant, power_substation, public_art, rain, real_estate, regroup, resort, restaurant, restaurant_african, restaurant_barbecue, restaurant_buffet, restaurant_chinese, restaurant_fish, restaurant_fish_chips, restaurant_gourmet, restaurant_greek, restaurant_indian, restaurant_italian, restaurant_japanese, restaurant_kebab, restaurant_korean, restaurant_mediterranean, restaurant_mexican, restaurant_romantic, restaurant_thai, restaurant_turkish, right, right_then_down, right_then_up, saturday, school, shopping_mall, shore, sight, small_city, snow, spaceport, speed_100, speed_110, speed_120, speed_130, speed_20, speed_30, speed_40, speed_50, speed_60, speed_70, speed_80, speed_90, speed_hump, stadium, statue, steam_train, stop, stoplight, subway, sun, sunday, supermarket, synagogue, tapas, taxi, taxiway, teahouse, telephone, temple_hindu, terrace, text, theater, theme_park, thursday, toilets, toll_station, tower, traffic_enforcement_camera, train, tram, truck, tuesday, tunnel, turn_left, turn_right, university, up, up_left, up_right, up_then_left, up_then_right, vespa, video, villa, water, waterfall, watermill, waterpark, watertower, wednesday, wifi, wind_turbine, windmill, winery, work_office, world_heritage_site, zoo,
+
+
+```json--request
+{
+    "data": {
+        "type": "jjwg_Markers",
+        "attributes": {
+            "name": "Mis Marker",
+            "description": "體驗一日遊",
+            "assigned_user_id": "123",
+            "city": "",
+            "state": "",
+            "country": "",
+            "jjwg_maps_lat": "123",
+            "jjwg_maps_lng": "123",
+            "marker_image": ""
+        }
+    }
+}
+```
+
+```json--response
+{
+    "data": {
+        "type": "jjwg_Markers",
+        "id": "c88dd3c5-5093-714b-584a-6098b8762c66",
+        "attributes": {
+            "name": "Mis Marker",
+            "date_entered": "2021-05-10T04:36:00+00:00",
+            "date_modified": "2021-05-10T04:36:00+00:00",
+            "modified_user_id": "1",
+            "modified_by_name": "Administrator",
+            "created_by": "1",
+            "created_by_name": "Administrator",
+            "description": "體驗一日遊",
+            "deleted": "0",
+            "created_by_link": "",
+            "modified_user_link": "",
+            "assigned_user_id": "123",
+            "assigned_user_name": "",
+            "assigned_user_link": "",
+            "SecurityGroups": "",
+            "city": " ",
+            "state": " ",
+            "country": "",
+            "jjwg_maps_lat": "100.00000000",
+            "jjwg_maps_lng": "123.00000000",
+            "marker_image": "",
+            "jjwg_maps_jjwg_markers": "",
+            "aos_products_jjwg_markers_1": "",
+            "aos_products_jjwg_markers_1_name": "",
+            "aos_products_jjwg_markers_1aos_products_ida": ""
+        },
+        "relationships": {
+            "AOS_Products": {
+                "links": {
+                    "related": "V8/module/c88dd3c5-5093-714b-584a-6098b8762c66/relationships/aos_products_jjwg_markers_1"
+                }
+            },
+            "SecurityGroups": {
+                "links": {
+                    "related": "V8/module/c88dd3c5-5093-714b-584a-6098b8762c66/relationships/SecurityGroups"
+                }
+            },
+            "Users": {
+                "links": {
+                    "related": "V8/module/c88dd3c5-5093-714b-584a-6098b8762c66/relationships/created_by_link"
+                }
+            }
+        }
+    }
+}
+```

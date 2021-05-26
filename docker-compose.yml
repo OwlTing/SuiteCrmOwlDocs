@@ -1,6 +1,8 @@
-slate_suitecrmowl_docs:
-  build: .
-  ports:
-    - 4567:4567
-  volumes:
-    - ./source:/usr/src/app/source
+version: '2'
+services:
+  slate_suitecrmowl_docs:
+    build: .
+    ports:
+      - 4567:4567
+    volumes:
+      - ./source:/usr/src/app/source

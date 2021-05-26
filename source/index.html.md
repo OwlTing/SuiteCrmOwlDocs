@@ -17,7 +17,7 @@ includes:
   - v8api
   - v8api_modules
   - v8api_guideline
-
+  - releasenotes
 search: true
 ---
 # Introduction
