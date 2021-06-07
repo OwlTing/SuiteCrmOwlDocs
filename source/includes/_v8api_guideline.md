@@ -242,7 +242,6 @@ HTTP/1.1 201
 
 ### 2.5. 關聯真實客戶去相關的目標群組
 
-
 {{suitecrm.url}}/Api/V8/module/ProspectLists/{{prospect_id}}/relationships
 
 {
@@ -294,6 +293,7 @@ graph TD
 `GET http://example.com/Api/V8/module/Currencies?page[size]=1&page[number]=1&filter[iso4217][eq]=EUR`
 
 如果訂單為本位幣別 (台幣) 不需查詢並帶入-99
+
 ```json--request
 ```
 
@@ -498,6 +498,8 @@ Product Id 為後續建立訂單資訊需要
 
 #### 3.3.1 建立產品標記位置
 
+`POST http://example.com/Api/V8/module`
+
 ```json--request
 {
     "data": {
@@ -517,6 +519,59 @@ Product Id 為後續建立訂單資訊需要
 }
 ```
 
+```json--response
+{
+    "data": {
+        "type": "jjwg_Markers",
+        "id": "d38e6cce-da04-b537-7d3a-60bd902c1f1a",
+        "attributes": {
+            "name": "Mis Marker",
+            "date_entered": "2021-06-07T03:20:00+00:00",
+            "date_modified": "2021-06-07T03:20:00+00:00",
+            "modified_user_id": "3052dd55-93e4-b5be-7829-605ae4e80ab6",
+            "modified_by_name": "Journey Application",
+            "created_by": "3052dd55-93e4-b5be-7829-605ae4e80ab6",
+            "created_by_name": "Journey Application",
+            "description": "體驗一日遊",
+            "deleted": "0",
+            "created_by_link": "",
+            "modified_user_link": "",
+            "assigned_user_id": "123",
+            "assigned_user_name": "",
+            "assigned_user_link": "",
+            "SecurityGroups": "",
+            "city": "",
+            "state": "",
+            "country": "",
+            "jjwg_maps_lat": "100.00000000",
+            "jjwg_maps_lng": "123.00000000",
+            "marker_image": "",
+            "jjwg_maps_jjwg_markers": "",
+            "aos_products_jjwg_markers_1": "",
+            "aos_products_jjwg_markers_1_name": "",
+            "aos_products_jjwg_markers_1aos_products_ida": ""
+        },
+        "relationships": {
+            "AOS_Products": {
+                "links": {
+                    "related": "V8/module/d38e6cce-da04-b537-7d3a-60bd902c1f1a/relationships/aos_products_jjwg_markers_1"
+                }
+            },
+            "SecurityGroups": {
+                "links": {
+                    "related": "V8/module/d38e6cce-da04-b537-7d3a-60bd902c1f1a/relationships/SecurityGroups"
+                }
+            },
+            "Users": {
+                "links": {
+                    "related": "V8/module/d38e6cce-da04-b537-7d3a-60bd902c1f1a/relationships/created_by_link"
+                }
+            }
+        }
+    }
+}
+```
+
 #### 3.3.2 建立產品與位置的關聯
 
 `POST http://example.com/Api/V8/module/AOS_Products/{{product_id}}/relationships`
@@ -527,6 +582,15 @@ Product Id 為後續建立訂單資訊需要
         "type": "jjwg_Markers",
         "id": "{{jjwg_marker_id}}"
     }
+}
+```
+
+```json--response
+{
+    "meta": {
+        "message": "jjwg_Markers with id d38e6cce-da04-b537-7d3a-60bd902c1f1a has been added to AOS_Products with id 2c9f7664-c4bc-b3fc-3f32-60bd903ad46d"
+    },
+    "data": []
 }
 ```
 
@@ -920,41 +984,12 @@ Product Id 為後續建立訂單資訊需要
 
 ### 3.7. 建立與促銷的關聯
 
-```json--request
-{
-    "data": {
-        "type": "OWL_Promotions",
-        "id": "34371b7d-6437-ca5c-a772-5facafb3942f"
+`GET http://example.com/Api/V8/module/OWL_Promotions?page[size]=1&page[number]=1&filter[code][eq]=123456`
 
-    }
-}
-```
 
 ```json--response
-```
 
-Promotions                   | id
----                          | ---
-市集 - Line 促銷             | 26777fe0-e11d-a40e-036c-601236befaa0
-市集 - 專區限定              | 2b700203-0da8-09cb-41ed-6012580d20e5
-市集 - 訂閱                  | 415d0693-7d4d-4e05-2cf0-60125cb28c60
-市集 - Premium-滿額免運      | 4615d7b1-ca8c-76d2-b028-60125b182186
-市集 - 異業合作-台新卡友優惠 | 682fd98f-0d38-3922-4d36-60125babbf2e
-市集 - Premium-特殊81折      | 8c6eaeb7-ad36-3f58-b472-60125b606a33
-市集 - EDM                   | 8e4fb4e8-12b0-c6db-bed7-60125960a20d
-市集 - EDM                   | 8f1610c1-c6e3-eb45-2e07-60125a56bf22
-市集 - Premium - 特殊69折    | 90bbf425-a4a0-2804-624a-60125b445990
-市集 - FB                    | d4237daf-70bc-f853-8222-60125be697c0
-市集 - Premium-特殊77折      | d9ecb286-f4b4-97a1-6737-60125bbc19e2
-市集 - Live                  | e0eeb1e5-e9e2-5757-59bd-60125993d6e1
-市集 - 異業合作-台新         | e1db0548-d0ec-562b-ef1a-60125b0bc085
-市集 - 異業合作-Klash        | e40b7745-39c0-c480-f5f2-60125bc02156
-市集 - Premium-常態9折       | e65c3248-6cb9-6a39-b7b7-60125b83b45b
-市集 - 商品滿888運費折半     | f9f80467-e825-4b14-4189-60125c16eeb5
-市集 - 公司員購              | 3268b670-ffa2-387b-2e50-60127becb743
-體驗 - Experiece Premium     | 34371b7d-6437-ca5c-a772-5facafb3942f
-體驗 - 三倍券                | 80470707-b612-1a42-71d4-5fc9feb78935
-體驗 - Zero Order            | 8c770016-49f7-b7fd-f3f9-601267efcaf9
+```
 
 `POST http://example.com/Api/V8/module/AOS_Invoices/{{invoice_id}}/relationships`
 
@@ -971,7 +1006,6 @@ Promotions                   | id
     }
 }
 ```
-
 
 Group             | id
 ----------        | --

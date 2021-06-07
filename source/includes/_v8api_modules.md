@@ -1006,6 +1006,7 @@ aos_product_category_id | 產品類別          |
     ],
 }
 ```
+
 ### Products Categories
 
 #### 產品類別
@@ -1466,15 +1467,13 @@ name             | 促銷名稱     |       |
 description      | 描述         |       |
 assigned_user_id | 負責人       |       |
 code             | 促銷編碼     |       |
-priority         | 優先權       |       |
+priority         | 優先權       | 0~99  |
 exclusive        | 獨一         | 0,1   |
-usage_limit      | 使用次數限制 |       |
+usage_limit      | 使用次數限制 | 0     |
 used             | 使用中       | 0,1   |
 coupon_based     | 需配合折扣碼 | 0,1   |
 date_start       | 開始日期     |       |
 date_end         | 結束日期     |       |
-
-Experiece Premium:34371b7d-6437-ca5c-a772-5facafb3942f
 
 `GET http://example.com/Api/V8/module/OWL_Promotions?page[size]=10&page[number]=1&sort=name`
 
