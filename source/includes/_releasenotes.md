@@ -1,5 +1,13 @@
 # Release Notes
 
+## June 2021
+
+### 2021-06-21
+
+1. AOS_Products: change relationship of AOS Products and Markers to one-to-many 
+2. Markers
+  * add marker_type_c: origin, destination
+
 ## May 2021
 
 ### 2021-05-26

@@ -506,6 +506,7 @@ Product Id 為後續建立訂單資訊需要
         "type": "jjwg_Markers",
         "attributes": {
             "name": "Mis Marker",
+            "marker_type_c": "origin",
             "description": "體驗一日遊",
             "assigned_user_id": "123",
             "city": "",
@@ -523,15 +524,15 @@ Product Id 為後續建立訂單資訊需要
 {
     "data": {
         "type": "jjwg_Markers",
-        "id": "d38e6cce-da04-b537-7d3a-60bd902c1f1a",
+        "id": "d8ff32e8-e906-e63e-d272-60c035051718",
         "attributes": {
             "name": "Mis Marker",
-            "date_entered": "2021-06-07T03:20:00+00:00",
-            "date_modified": "2021-06-07T03:20:00+00:00",
-            "modified_user_id": "3052dd55-93e4-b5be-7829-605ae4e80ab6",
-            "modified_by_name": "Journey Application",
-            "created_by": "3052dd55-93e4-b5be-7829-605ae4e80ab6",
-            "created_by_name": "Journey Application",
+            "date_entered": "2021-06-09T03:27:00+00:00",
+            "date_modified": "2021-06-09T03:27:00+00:00",
+            "modified_user_id": "1",
+            "modified_by_name": "Administrator",
+            "created_by": "1",
+            "created_by_name": "Administrator",
             "description": "體驗一日遊",
             "deleted": "0",
             "created_by_link": "",
@@ -549,22 +550,23 @@ Product Id 為後續建立訂單資訊需要
             "jjwg_maps_jjwg_markers": "",
             "aos_products_jjwg_markers_1": "",
             "aos_products_jjwg_markers_1_name": "",
-            "aos_products_jjwg_markers_1aos_products_ida": ""
+            "aos_products_jjwg_markers_1aos_products_ida": "",
+            "marker_type_c": "origin"
         },
         "relationships": {
             "AOS_Products": {
                 "links": {
-                    "related": "V8/module/d38e6cce-da04-b537-7d3a-60bd902c1f1a/relationships/aos_products_jjwg_markers_1"
+                    "related": "V8/module/d8ff32e8-e906-e63e-d272-60c035051718/relationships/aos_products_jjwg_markers_1"
                 }
             },
             "SecurityGroups": {
                 "links": {
-                    "related": "V8/module/d38e6cce-da04-b537-7d3a-60bd902c1f1a/relationships/SecurityGroups"
+                    "related": "V8/module/d8ff32e8-e906-e63e-d272-60c035051718/relationships/SecurityGroups"
                 }
             },
             "Users": {
                 "links": {
-                    "related": "V8/module/d38e6cce-da04-b537-7d3a-60bd902c1f1a/relationships/created_by_link"
+                    "related": "V8/module/d8ff32e8-e906-e63e-d272-60c035051718/relationships/created_by_link"
                 }
             }
         }

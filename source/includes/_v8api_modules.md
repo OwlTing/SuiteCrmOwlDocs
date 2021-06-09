@@ -1062,6 +1062,7 @@ quote_number                 | 報價編號                 |
 quote_date                   | 報價日期                 |
 invoice_date                 | 發票日期                 |
 receipt_number_c             | 發票號碼                 |
+order_type_c                 | 訂單類別                 |
 payment_method_c             | 付款方式                 | 'credit','credit_union','paypal',<br> 'installment','applepay','atm',<br> 'stripeCreditcard','other','remittance',<br> 'paynow'
 due_date                     | 到期時間                 |
 status                       | 狀態                     | Paid,PendingPaymentConfirmation,Unpaid,<br> Cancelled,Rescheduling,Returning,Returned
@@ -1111,6 +1112,7 @@ billing_address_postalcode   | 郵遞區號                 |
             "quote_number": "",
             "quote_date": "",
             "invoice_date": "202-02-03",
+            "order_type_c": "zero-order",
             "due_date": "",
             "status": "Paid",
             "template_ddown_c": "",
@@ -1614,17 +1616,18 @@ date_end         | 結束日期     |       |
 
 Maps locations
 
-Parameter        | Description | Value | Example
----------        | ----------- | ----- | -------
-name             | 標記名稱    |       |
-description      | 描述        |       |
-assigned_user_id | 負責人      |       |
-city             | 城市        |       |
-state            | 州或省      |       |
-country          | 國家        |       |
-jjwg_maps_lat    | 經度        |       | 113.727
-jjwg_maps_lng    | 緯度        |       | 34.773
-marker_image     | 標注類型    |       | accident, administration, agriculture, aircraft_small, airplane_tourism, airport, amphitheater, apartment, aquarium, arch, atm, audio, bank, bank_euro, bank_pound, bar, beach, beautiful, bicycle_parking, big_city, bridge, bridge_modern, bus, cable_car, car, car_rental, carrepair, castle, cathedral, chapel, church, city_square, cluster, cluster_2, cluster_3, cluster_4, cluster_5, coffee, community_centre, company, conference, construction, convenience, court, cruise, currency_exchange, customs, cycling, dam, dentist, deptartment_store, disability, disabled_parking, doctor, dog_leash, down, down_left, down_right, down_then_left, down_then_right, drugs, elevator, embassy, expert, factory, falling_rocks, fast_food, festival, fjord, forest, fountain, friday, garden, gas_station, geyser, gifts, gourmet, grocery, hairsalon, helicopter, highway, historical_quarter, home, hospital, hostel, hotel, hotel_1_star, hotel_2_stars, hotel_3_stars, hotel_4_stars, hotel_5_stars, info, justice, lake, laundromat, left, left_then_down, left_then_up, library, lighthouse, liquor, lock, main_road, massage, mobile_phone_tower, modern_tower, monastery, monday, monument, mosque, motorcycle, museum, music_live, oil_pump_jack, pagoda, palace, panoramic, park, park_and_ride, parking, photo, picnic, places_unvisited, places_visited, playground, police, port, postal, power_line_pole, power_plant, power_substation, public_art, rain, real_estate, regroup, resort, restaurant, restaurant_african, restaurant_barbecue, restaurant_buffet, restaurant_chinese, restaurant_fish, restaurant_fish_chips, restaurant_gourmet, restaurant_greek, restaurant_indian, restaurant_italian, restaurant_japanese, restaurant_kebab, restaurant_korean, restaurant_mediterranean, restaurant_mexican, restaurant_romantic, restaurant_thai, restaurant_turkish, right, right_then_down, right_then_up, saturday, school, shopping_mall, shore, sight, small_city, snow, spaceport, speed_100, speed_110, speed_120, speed_130, speed_20, speed_30, speed_40, speed_50, speed_60, speed_70, speed_80, speed_90, speed_hump, stadium, statue, steam_train, stop, stoplight, subway, sun, sunday, supermarket, synagogue, tapas, taxi, taxiway, teahouse, telephone, temple_hindu, terrace, text, theater, theme_park, thursday, toilets, toll_station, tower, traffic_enforcement_camera, train, tram, truck, tuesday, tunnel, turn_left, turn_right, university, up, up_left, up_right, up_then_left, up_then_right, vespa, video, villa, water, waterfall, watermill, waterpark, watertower, wednesday, wifi, wind_turbine, windmill, winery, work_office, world_heritage_site, zoo,
+Parameter        | Description | Value              | Example
+---------        | ----------- | -----              | -------
+name             | 標記名稱    |                    |
+marker_type_c    | 標記類別    | Origin,Destination |
+description      | 描述        |                    |
+assigned_user_id | 負責人      |                    |
+city             | 城市        |                    |
+state            | 州或省      |                    |
+country          | 國家        |                    |
+jjwg_maps_lat    | 經度        |                    | 113.727
+jjwg_maps_lng    | 緯度        |                    | 34.773
+marker_image     | 標注類型    |                    | accident, administration, agriculture, aircraft_small, airplane_tourism, airport, amphitheater, apartment, aquarium, arch, atm, audio, bank, bank_euro, bank_pound, bar, beach, beautiful, bicycle_parking, big_city, bridge, bridge_modern, bus, cable_car, car, car_rental, carrepair, castle, cathedral, chapel, church, city_square, cluster, cluster_2, cluster_3, cluster_4, cluster_5, coffee, community_centre, company, conference, construction, convenience, court, cruise, currency_exchange, customs, cycling, dam, dentist, deptartment_store, disability, disabled_parking, doctor, dog_leash, down, down_left, down_right, down_then_left, down_then_right, drugs, elevator, embassy, expert, factory, falling_rocks, fast_food, festival, fjord, forest, fountain, friday, garden, gas_station, geyser, gifts, gourmet, grocery, hairsalon, helicopter, highway, historical_quarter, home, hospital, hostel, hotel, hotel_1_star, hotel_2_stars, hotel_3_stars, hotel_4_stars, hotel_5_stars, info, justice, lake, laundromat, left, left_then_down, left_then_up, library, lighthouse, liquor, lock, main_road, massage, mobile_phone_tower, modern_tower, monastery, monday, monument, mosque, motorcycle, museum, music_live, oil_pump_jack, pagoda, palace, panoramic, park, park_and_ride, parking, photo, picnic, places_unvisited, places_visited, playground, police, port, postal, power_line_pole, power_plant, power_substation, public_art, rain, real_estate, regroup, resort, restaurant, restaurant_african, restaurant_barbecue, restaurant_buffet, restaurant_chinese, restaurant_fish, restaurant_fish_chips, restaurant_gourmet, restaurant_greek, restaurant_indian, restaurant_italian, restaurant_japanese, restaurant_kebab, restaurant_korean, restaurant_mediterranean, restaurant_mexican, restaurant_romantic, restaurant_thai, restaurant_turkish, right, right_then_down, right_then_up, saturday, school, shopping_mall, shore, sight, small_city, snow, spaceport, speed_100, speed_110, speed_120, speed_130, speed_20, speed_30, speed_40, speed_50, speed_60, speed_70, speed_80, speed_90, speed_hump, stadium, statue, steam_train, stop, stoplight, subway, sun, sunday, supermarket, synagogue, tapas, taxi, taxiway, teahouse, telephone, temple_hindu, terrace, text, theater, theme_park, thursday, toilets, toll_station, tower, traffic_enforcement_camera, train, tram, truck, tuesday, tunnel, turn_left, turn_right, university, up, up_left, up_right, up_then_left, up_then_right, vespa, video, villa, water, waterfall, watermill, waterpark, watertower, wednesday, wifi, wind_turbine, windmill, winery, work_office, world_heritage_site, zoo,
 
 
 ```json--request
