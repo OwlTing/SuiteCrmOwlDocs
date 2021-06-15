@@ -1069,6 +1069,8 @@ status                       | 狀態                     | Paid,PendingPaymentC
 subtotal_tax_amount          | 小計＋稅金               | 0
 subtotal_tax_amount_usdollar | 小計＋稅金（預設貨幣）   | 0
 billing_address_postalcode   | 郵遞區號                 |
+potr_c                       | 付款編號                 |
+
 
 ```json--request
 {
@@ -1117,7 +1119,8 @@ billing_address_postalcode   | 郵遞區號                 |
             "status": "Paid",
             "template_ddown_c": "",
             "subtotal_tax_amount": "",
-            "subtotal_tax_amount_usdollar": "0.000000"
+            "subtotal_tax_amount_usdollar": "0.000000",
+            "potr_c": ""
         }
     }
 }

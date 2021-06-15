@@ -715,6 +715,7 @@ Product Id 為後續建立訂單資訊需要
             "aos_line_item_groups": "",
             "aos_invoices_aos_invoices_1": "",
             "invoice_datetime_c": ""
+            "potr_c": ""
         },
         "relationships": {
             "AOS_Invoices": {
