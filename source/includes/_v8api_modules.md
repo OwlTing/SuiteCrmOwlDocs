@@ -1639,6 +1639,7 @@ marker_image     | 標注類型    |                    | accident, administrati
         "type": "jjwg_Markers",
         "attributes": {
             "name": "Mis Marker",
+            "marker_type_c": "origin",
             "description": "體驗一日遊",
             "assigned_user_id": "123",
             "city": "",
