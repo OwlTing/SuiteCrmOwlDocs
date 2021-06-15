@@ -1622,7 +1622,7 @@ Maps locations
 Parameter        | Description | Value              | Example
 ---------        | ----------- | -----              | -------
 name             | 標記名稱    |                    |
-marker_type_c    | 標記類別    | Origin,Destination |
+marker_type_c    | 標記類別    | origin,destination |
 description      | 描述        |                    |
 assigned_user_id | 負責人      |                    |
 city             | 城市        |                    |
