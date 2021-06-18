@@ -1063,7 +1063,7 @@ quote_date                   | 報價日期                 |
 invoice_date                 | 發票日期                 |
 receipt_number_c             | 發票號碼                 |
 order_type_c                 | 訂單類別                 |
-payment_method_c             | 付款方式                 | 'credit','credit_union','paypal',<br> 'installment','applepay','atm',<br> 'stripeCreditcard','other','remittance',<br> 'paynow'
+payment_method_c             | 付款方式                 | 'apple_pay', 'line_pay', 'wechat_pay',<br> 'cash_on_delivery', 'ali_pay', 'credit_card',<br> 'atm', 'intella_pay', 'experiences',<br> 'paynow_creadit_card', 'stripe_credit_card', 'google_pay',<br> 'paynow_credit_card3ds',
 due_date                     | 到期時間                 |
 status                       | 狀態                     | Paid,PendingPaymentConfirmation,Unpaid,<br> Cancelled,Rescheduling,Returning,Returned
 subtotal_tax_amount          | 小計＋稅金               | 0
