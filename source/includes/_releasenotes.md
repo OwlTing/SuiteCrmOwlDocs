@@ -1,5 +1,13 @@
 # Release Notes
 
+### July 2021
+
+1. update country value to ISO_3166-1_alpha-2_
+2. update products add room_source_c
+3. update contacts add membership_type_c
+4. update invoice add number_of_nights_c,
+5. update invoice line_items add date_start to date_end
+
 ## June 2021
 
 ### 2021-06-21

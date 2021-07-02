@@ -39,7 +39,7 @@
             "billing_address_city": "",
             "billing_address_state": "",
             "billing_address_postalcode": "",
-            "billing_address_country": "",
+            "billing_address_country": "tw",
             "rating": "",
             "phone_office": "",
             "phone_alternate": "",
@@ -54,7 +54,7 @@
             "shipping_address_city": "",
             "shipping_address_state": "",
             "shipping_address_postalcode": "",
-            "shipping_address_country": "",
+            "shipping_address_country": "tw",
             "email1": "",
             "email_addresses_primary": "",
             "email_addresses": "",
@@ -133,7 +133,7 @@ HTTP/1.1 201
             "billing_address_city": "",
             "billing_address_state": "",
             "billing_address_postalcode": "",
-            "billing_address_country": "",
+            "billing_address_country": "tw",
             "rating": "",
             "phone_office": "",
             "phone_alternate": "",
@@ -148,7 +148,7 @@ HTTP/1.1 201
             "shipping_address_city": "",
             "shipping_address_state": "",
             "shipping_address_postalcode": "",
-            "shipping_address_country": "",
+            "shipping_address_country": "tw",
             "email1": "",
             "email_addresses_primary": "",
             "email_addresses": "",
@@ -298,30 +298,30 @@ HTTP/1.1 201
 }
 
 ```
-Prameter                    | Description       | Value
----                         | ---               | ---
-name                        | 客戶名稱          | 
-description                 | 描述              | 
-assigned_user_id            | 指派              | 
-account_type                | 客戶類型(多選)    | ^Analyst^,^Competitor^,^Customer^,^Integrator^,^Investor^,^Partner^,^Press^,^Prospect^,^Reseller^,^Supplier^,^Other^
-industry                    | 產業類別          | Apparel, Banking, Biotechnology, Chemicals, Communications, Construction, Consulting, Education, Electronics, Energy, Engineering, Entertainment, Environmental, Finance, Government, Healthcare, Hospitality, Insurance, Machinery, Manufacturing, Media, Not For Profit, Recreation, Retail, Shipping, Technology, Telecommunications, Transportation, Utilities, Other,
-annual_revenue              | 年收入            | 
-phone_fax                   | 傳真              | 
-billing_address_street      | 付款地址 街道     |
-billing_address_city        | 付款地址 城市     |
-billing_address_state       | 付款地址 州或省   |
-billing_address_postalcode  | 付款地址 郵遞區號 |
-billing_address_country     | 付款地址 國家     |
-rating                      | 評價              |
-phone_office                | 辦公電話          |
-phone_alternate             | 替代電話          |
-website                     | 網站              |
-shipping_address_street     | 裝運地址 街道     |
-shipping_address_city       | 裝運地址 城市     |
-shipping_address_state      | 裝運地址 州或省   |
-shipping_address_postalcode | 裝運地址 郵遞區號 |
-shipping_address_country    | 裝運地址 國家     |
-campaign_id                 | 市場活動          |
+Prameter                    | Description                        | Value
+---                         | ---                                | ---
+name                        | 客戶名稱                           |
+description                 | 描述                               |
+assigned_user_id            | 指派                               |
+account_type                | 客戶類型(多選)                     | ^Analyst^,^Competitor^,^Customer^,^Integrator^,^Investor^,^Partner^,^Press^,^Prospect^,^Reseller^,^Supplier^,^Other^
+industry                    | 產業類別                           | Apparel, Banking, Biotechnology, Chemicals, Communications, Construction, Consulting, Education, Electronics, Energy, Engineering, Entertainment, Environmental, Finance, Government, Healthcare, Hospitality, Insurance, Machinery, Manufacturing, Media, Not For Profit, Recreation, Retail, Shipping, Technology, Telecommunications, Transportation, Utilities, Other,
+annual_revenue              | 年收入                             |
+phone_fax                   | 傳真                               |
+billing_address_street      | 付款地址 街道                      |
+billing_address_city        | 付款地址 城市                      |
+billing_address_state       | 付款地址 州或省                    |
+billing_address_postalcode  | 付款地址 郵遞區號                  |
+billing_address_country     | 付款地址 國家(ISO_3166-1_alpha-2_) | us,tw, ...
+rating                      | 評價                               |
+phone_office                | 辦公電話                           |
+phone_alternate             | 替代電話                           |
+website                     | 網站                               |
+shipping_address_street     | 裝運地址 街道                      |
+shipping_address_city       | 裝運地址 城市                      |
+shipping_address_state      | 裝運地址 州或省                    |
+shipping_address_postalcode | 裝運地址 郵遞區號                  |
+shipping_address_country    | 裝運地址 國家(ISO_3166-1_alpha-2_) | us,tw, ...
+campaign_id                 | 市場活動                           |
 
 
 ### Leads
@@ -359,7 +359,7 @@ campaign_id                 | 市場活動          |
             "primary_address_city": "primary_address_city",
             "primary_address_state": "primary_address_state",
             "primary_address_postalcode": "primary_address_postalcode",
-            "primary_address_country": "primary_address_country",
+            "primary_address_country": "tw",
             "converted": "0",
             "refered_by": "汪東城",
             "lead_source": "Web Site",
@@ -424,14 +424,14 @@ HTTP/1.1 201
             "primary_address_city": "primary_address_city",
             "primary_address_state": "primary_address_state",
             "primary_address_postalcode": "primary_address_post",
-            "primary_address_country": "primary_address_country",
+            "primary_address_country": "tw",
             "alt_address_street": "alt_address_street\nalt_address_street_2\nalt_address_street_3",
             "alt_address_street_2": "",
             "alt_address_street_3": "",
             "alt_address_city": "alt_address_city",
             "alt_address_state": "alt_address_state",
             "alt_address_postalcode": "alt_address_postalco",
-            "alt_address_country": "alt_address_country",
+            "alt_address_country": "tw",
             "assistant": "assistant",
             "assistant_phone": "assistant_phone",
             "email_addresses_primary": "",
@@ -531,43 +531,43 @@ HTTP/1.1 201
 
 ```
 
-Parameter                  | Description              | Value
----------                  | -----------              | -----
-description                | 描述                     |
-assigned_user_id           | 指派給                   | Experience: 4e640918-9db7-2121-94b5-5eba64642e0c,
-account_id                 | 客戶別（這邊帶入事業體） | **Experience**: <br>73bad98b-40da-11eb-8665-fa163ef36d26<br>**Market:** <br>70b1530c-40da-11eb-8665-fa163ef36d26 <br>**OwlJourney:** <br>768bfdaf-40da-11eb-8665-fa163ef36d26
-salutation                 | 稱呼                     | Mr.,Ms.,Mrs.,Miss,Dr.,Prof.
-first_name                 | 名                       |
-last_name                  | 姓                       |
-title                      | 職稱                     |
-do_not_call                | 不接受電訪               | 0,1
-phone_home                 | 家庭電話                 | 08-88888888
-phone_mobile               | 行動電話                 | 0912345678
-phone_work                 | 辦公電話                 | 07-77777777
-phone_other                | 傳真電話                 | 06-66666666
-phone_fax                  | 傳真                     | 1234567890
-email1                     | 主要聯絡                 |
-email2                     | 次要聯絡                 |
-invalid_email              | 無效郵件地址             | 0,1
-email_opt_out              | 棄用                     | 0,1
-lawful_basis               | 合法基礎                 | consent, contract, legal_obligation, protection_of_interest, public_interest, legitimate_interest, withdrawn
-lawful_basis_source        | 合法基礎來源             | website, phone, given_to_user, email, third_party
-date_reviewed              | 合法基礎之審核日期       |
-primary_address_street     | 主要地址1                |
-primary_address_street_2   | 主要地址2                |
-primary_address_street_3   | 主要地址2                |
-primary_address_city       | 主要城市                 |
-primary_address_state      | 主要州或省               |
-primary_address_postalcode | 郵地區碼                 |
-primary_address_country    | 國家                     |
-converted                  | 已轉換                   | 0,1
-refered_by                 | 推薦人                   |
-lead_source                | 潛在客戶來源             | Cold Call, Existing Customer, Self Generated, Employee, Partner, Public Relations, Direct Mail, Conference, Trade Show, Web Site, Word of mouth, Email, Campaign, Other
-lead_source_description    | 潛在客戶來源說明         | lead_source_description
-status                     | 狀態                     | New, Assigned, In Process, Converted, Recycled, Dead
-status_description         | 狀態描述                 |
-birthdate                  | 生日                     |
-website                    | 網址                     |
+Parameter                  | Description               | Value
+---------                  | -----------               | -----
+description                | 描述                      |
+assigned_user_id           | 指派給                    | Experience: 4e640918-9db7-2121-94b5-5eba64642e0c,
+account_id                 | 客戶別（這邊帶入事業體）  | **Experience**: <br>73bad98b-40da-11eb-8665-fa163ef36d26<br>**Market:** <br>70b1530c-40da-11eb-8665-fa163ef36d26 <br>**OwlJourney:** <br>768bfdaf-40da-11eb-8665-fa163ef36d26
+salutation                 | 稱呼                      | Mr.,Ms.,Mrs.,Miss,Dr.,Prof.
+first_name                 | 名                        |
+last_name                  | 姓                        |
+title                      | 職稱                      |
+do_not_call                | 不接受電訪                | 0,1
+phone_home                 | 家庭電話                  | 08-88888888
+phone_mobile               | 行動電話                  | 0912345678
+phone_work                 | 辦公電話                  | 07-77777777
+phone_other                | 傳真電話                  | 06-66666666
+phone_fax                  | 傳真                      | 1234567890
+email1                     | 主要聯絡                  |
+email2                     | 次要聯絡                  |
+invalid_email              | 無效郵件地址              | 0,1
+email_opt_out              | 棄用                      | 0,1
+lawful_basis               | 合法基礎                  | consent, contract, legal_obligation, protection_of_interest, public_interest, legitimate_interest, withdrawn
+lawful_basis_source        | 合法基礎來源              | website, phone, given_to_user, email, third_party
+date_reviewed              | 合法基礎之審核日期        |
+primary_address_street     | 主要地址1                 |
+primary_address_street_2   | 主要地址2                 |
+primary_address_street_3   | 主要地址2                 |
+primary_address_city       | 主要城市                  |
+primary_address_state      | 主要州或省                |
+primary_address_postalcode | 郵地區碼                  |
+primary_address_country    | 國家(ISO_3166-1_alpha-2_) | us,tw, ...
+converted                  | 已轉換                    | 0,1
+refered_by                 | 推薦人                    |
+lead_source                | 潛在客戶來源              | Cold Call, Existing Customer, Self Generated, Employee, Partner, Public Relations, Direct Mail, Conference, Trade Show, Web Site, Word of mouth, Email, Campaign, Other
+lead_source_description    | 潛在客戶來源說明          | lead_source_description
+status                     | 狀態                      | New, Assigned, In Process, Converted, Recycled, Dead
+status_description         | 狀態描述                  |
+birthdate                  | 生日                      |
+website                    | 網址                      |
 
 
 ### Contacts
@@ -604,7 +604,7 @@ website                    | 網址                     |
             "primary_address_city": "primary_address_city",
             "primary_address_state": "primary_address_state",
             "primary_address_postalcode": "primary_address_postalcode",
-            "primary_address_country": "primary_address_country",
+            "primary_address_country": "tw",
             "birthdate": "2020-10-06",
             "birth_of_day_c": "birth_of_day_c",
             "birth_of_year_c": "birth_of_year_c",
@@ -665,14 +665,14 @@ HTTP/1.1 201
             "primary_address_city": "primary_address_city",
             "primary_address_state": "primary_address_state",
             "primary_address_postalcode": "primary_address_post",
-            "primary_address_country": "primary_address_country",
+            "primary_address_country": "tw",
             "alt_address_street": "",
             "alt_address_street_2": "",
             "alt_address_street_3": "",
             "alt_address_city": "",
             "alt_address_state": "",
             "alt_address_postalcode": "",
-            "alt_address_country": "",
+            "alt_address_country": "tw",
             "assistant": "",
             "assistant_phone": "",
             "email_addresses_primary": "",
@@ -741,7 +741,8 @@ HTTP/1.1 201
             "jjwg_maps_lng_c": "0.00000000",
             "jjwg_maps_geocode_status_c": "",
             "jjwg_maps_address_c": "",
-            "birth_of_month_c": "birth_of_month_c"
+            "birth_of_month_c": "birth_of_month_c",
+            "membership_type_c": "normal"
         },
         "relationships": {
             "AM_ProjectTemplates": {
@@ -805,41 +806,42 @@ HTTP/1.1 201
 
 ```
 
-Parameter                  | Description              | Value
----------                  | -----------              | -----
-description                | 描述                     | Description
-assigned_user_id           | 指派給                   | Experience: 4e640918-9db7-2121-94b5-5eba64642e0c
-account_id                 | 客戶別（這邊帶入事業體） | **Experience**: <br>73bad98b-40da-11eb-8665-fa163ef36d26<br>**Market:** <br>70b1530c-40da-11eb-8665-fa163ef36d26 <br>**OwlJourney:** <br>768bfdaf-40da-11eb-8665-fa163ef36d26
-salutation                 | 稱呼                     | Mr.,Ms.,Mrs.,Miss,Dr.,Prof.
-first_name                 | 名                       |
-last_name                  | 姓                       |
-title                      | 職稱                     |
-do_not_call                | 不接受電訪               | 0,1
-phone_home                 | 家庭電話                 | 08-88888888
-phone_mobile               | 行動電話                 | 0912345678
-phone_work                 | 辦公電話                 | 07-77777777
-phone_other                | 傳真電話                 | 06-66666666
-phone_fax                  | 傳真                     | 1234567890
-email1                     | 主要聯絡                 |
-email2                     | 次要聯絡                 |
-invalid_email              | 無效郵件地址             | 0,1
-email_opt_out              | 棄用                     | 0,1
-lawful_basis               | 合法基礎                 | consent, contract, legal_obligation, protection_of_interest, public_interest, legitimate_interest, withdrawn
-lawful_basis_source        | 合法基礎來源             | website, phone, given_to_user, email, third_party
-date_reviewed              | 合法基礎之審核日期       |
-primary_address_street     | 主要地址1                |
-primary_address_street_2   | 主要地址2                |
-primary_address_street_3   | 主要地址3                |
-primary_address_city       | 主要城市                 |
-primary_address_state      | 主要州或省               |
-primary_address_postalcode | 郵地區碼                 |
-primary_address_country    | 國家                     |
-lead_source                | 潛在客戶來源             | Cold Call, Existing Customer, Self Generated, Employee, Partner, Public Relations, Direct Mail, Conference, Trade Show, Web Site, Word of mouth, Email, Campaign, Other
-lead_source_description    | 潛在客戶來源說明         | lead_source_description
-birthdate                  | 生日                     |
-birth_of_day_c             | 日                       |
-birth_of_year_c            | 年                       |
-birth_of_month_c           | 月                       |
+Parameter                  | Description               | Value
+---------                  | -----------               | -----
+description                | 描述                      | Description
+assigned_user_id           | 指派給                    | Experience: 4e640918-9db7-2121-94b5-5eba64642e0c
+account_id                 | 客戶別（這邊帶入事業體）  | **Experience**: <br>73bad98b-40da-11eb-8665-fa163ef36d26<br>**Market:** <br>70b1530c-40da-11eb-8665-fa163ef36d26 <br>**OwlJourney:** <br>768bfdaf-40da-11eb-8665-fa163ef36d26
+salutation                 | 稱呼                      | Mr.,Ms.,Mrs.,Miss,Dr.,Prof.
+first_name                 | 名                        |
+last_name                  | 姓                        |
+title                      | 職稱                      |
+do_not_call                | 不接受電訪                | 0,1
+phone_home                 | 家庭電話                  | 08-88888888
+phone_mobile               | 行動電話                  | 0912345678
+phone_work                 | 辦公電話                  | 07-77777777
+phone_other                | 傳真電話                  | 06-66666666
+phone_fax                  | 傳真                      | 1234567890
+email1                     | 主要聯絡                  |
+email2                     | 次要聯絡                  |
+invalid_email              | 無效郵件地址              | 0,1
+email_opt_out              | 棄用                      | 0,1
+lawful_basis               | 合法基礎                  | consent, contract, legal_obligation, protection_of_interest, public_interest, legitimate_interest, withdrawn
+lawful_basis_source        | 合法基礎來源              | website, phone, given_to_user, email, third_party
+date_reviewed              | 合法基礎之審核日期        |
+primary_address_street     | 主要地址1                 |
+primary_address_street_2   | 主要地址2                 |
+primary_address_street_3   | 主要地址3                 |
+primary_address_city       | 主要城市                  |
+primary_address_state      | 主要州或省                |
+primary_address_postalcode | 郵地區碼                  |
+primary_address_country    | 國家(ISO_3166-1_alpha-2_) | us,tw, ...
+lead_source                | 潛在客戶來源              | Cold Call, Existing Customer, Self Generated, Employee, Partner, Public Relations, Direct Mail, Conference, Trade Show, Web Site, Word of mouth, Email, Campaign, Other
+lead_source_description    | 潛在客戶來源說明          | lead_source_description
+birthdate                  | 生日                      |
+birth_of_day_c             | 日                        |
+birth_of_year_c            | 年                        |
+birth_of_month_c           | 月                        |
+membership_type_c          | 會員身份狀態              | normal, premium
 
 
 
@@ -920,6 +922,7 @@ advance_booking_days_c  | 提前預定天數      | 0
 latitude_c              | 經度              | 24.99931400
 longitude_c             | 緯度              | 121.51631800
 aos_product_category_id | 產品類別          |
+room_source_c           | 房源（journey 用）|
 
 
 <aside class="info"><strong>Info</strong>: Journey 特殊料號</aside>
@@ -950,7 +953,8 @@ aos_product_category_id | 產品類別          |
             "price_usdollar": "180.00",
             "url": "",
             "contact_id": "",
-            "aos_product_category_id": "{{product_category_id}}"
+            "aos_product_category_id": "{{product_category_id}}",
+            "room_source_c": "owljourney"
         }
     }
 }
@@ -1026,50 +1030,52 @@ parent_category_id | 父類別      |
 
 稅務算方式為外加稅
 
-Parameter                    | Description              | Value
----------                    | -----------              | -----
-name                         | 職稱                     |
-description                  | 描述                     |
-assigned_user_id             | 負責人                   |
-billing_account_id           | 客戶                     |
-billing_contact_id           | 聯絡人                   |
-billing_address_street       | 街道                     |
-billing_address_city         | 城市                     |
-billing_address_state        | 州或省                   |
-billing_address_country      | 國家                     |
-shipping_address_street      | 街道                     |
-shipping_address_city        | 城市                     |
-shipping_address_state       | 州或省                   |
-shipping_address_postalcode  | 郵遞區號                 |
-shipping_address_country     | 國家                     |
-total_amt                    | 訂單總計                 | 6971 (item_groups 的 amount)
-total_amt_usdollar           | 訂單總計（預設貨幣）     | 6971
-subtotal_amount              | 訂單小計                 | 6891 ( total_amt - discount_amount )
-subtotal_amount_usdollar     | 訂單小計（預設貨幣）     | 6891
-discount_amount              | 訂單折扣總計             | -80
-discount_amount_usdollar     | 訂單折扣總計（預設貨幣） | -80
-tax_amount                   | 訂單稅金總計 (訂單貨幣)  | 349.55 ( item_groups 的tax_amount + shipping_tax_amt )
-tax_amount_usdollar          | 訂單稅金總計（預設貨幣） | 349.55
-shipping_amount              | 訂單貨運                 | 100
-shipping_amount_usdollar     | 訂單貨運（預設貨幣）     | 100
-shipping_tax                 | 訂單貨運稅 (百分之幾)    | 5.0
-shipping_tax_amt             | 訂單貨運稅               | 5 ( shipping_amount * shipping_tax / 100 )
-shipping_tax_amt_usdollar    | 訂單貨運稅（預設貨幣）   | 5
-total_amount                 | 訂單含稅總計             | 7340.55 ( subtotal_amount + tax_amount + shipping_amount)
-total_amount_usdollar        | 訂單含稅總計（預設貨幣） | 7340.55
-currency_id                  | 訂單貨幣                 | -99
-quote_number                 | 報價編號                 |
-quote_date                   | 報價日期                 |
-invoice_date                 | 發票日期                 |
-receipt_number_c             | 發票號碼                 |
-order_type_c                 | 訂單類別                 |
-payment_method_c             | 付款方式                 | 'apple_pay', 'line_pay', 'wechat_pay',<br> 'cash_on_delivery', 'ali_pay', 'credit_card',<br> 'atm', 'intella_pay', 'experiences',<br> 'paynow_creadit_card', 'stripe_credit_card', 'google_pay',<br> 'paynow_credit_card3ds',
-due_date                     | 到期時間                 |
-status                       | 狀態                     | Paid,PendingPaymentConfirmation,Unpaid,<br> Cancelled,Rescheduling,Returning,Returned
-subtotal_tax_amount          | 小計＋稅金               | 0
-subtotal_tax_amount_usdollar | 小計＋稅金（預設貨幣）   | 0
-billing_address_postalcode   | 郵遞區號                 |
-potr_c                       | 付款編號                 |
+Parameter                    | Description               | Value
+---------                    | -----------               | -----
+name                         | 職稱                      |
+description                  | 描述                      |
+assigned_user_id             | 負責人                    |
+billing_account_id           | 客戶                      |
+billing_contact_id           | 聯絡人                    |
+billing_address_street       | 街道                      |
+billing_address_city         | 城市                      |
+billing_address_state        | 州或省                    |
+billing_address_country      | 國家(ISO_3166-1_alpha-2_) | us,tw, ...
+shipping_address_street      | 街道                      |
+shipping_address_city        | 城市                      |
+shipping_address_state       | 州或省                    |
+shipping_address_postalcode  | 郵遞區號                  |
+shipping_address_country     | 國家(ISO_3166-1_alpha-2_) | us,tw, ...
+total_amt                    | 訂單總計                  | 6971 (item_groups 的 amount)
+total_amt_usdollar           | 訂單總計（預設貨幣）      | 6971
+subtotal_amount              | 訂單小計                  | 6891 ( total_amt - discount_amount )
+subtotal_amount_usdollar     | 訂單小計（預設貨幣）      | 6891
+discount_amount              | 訂單折扣總計              | -80
+discount_amount_usdollar     | 訂單折扣總計（預設貨幣）  | -80
+tax_amount                   | 訂單稅金總計 (訂單貨幣)   | 349.55 ( item_groups 的tax_amount + shipping_tax_amt )
+tax_amount_usdollar          | 訂單稅金總計（預設貨幣）  | 349.55
+shipping_amount              | 訂單貨運                  | 100
+shipping_amount_usdollar     | 訂單貨運（預設貨幣）      | 100
+shipping_tax                 | 訂單貨運稅 (百分之幾)     | 5.0
+shipping_tax_amt             | 訂單貨運稅                | 5 ( shipping_amount * shipping_tax / 100 )
+shipping_tax_amt_usdollar    | 訂單貨運稅（預設貨幣）    | 5
+total_amount                 | 訂單含稅總計              | 7340.55 ( subtotal_amount + tax_amount + shipping_amount)
+total_amount_usdollar        | 訂單含稅總計（預設貨幣）  | 7340.55
+currency_id                  | 訂單貨幣                  | -99
+quote_number                 | 報價編號                  |
+quote_date                   | 報價日期                  |
+invoice_date                 | 發票日期                  |
+receipt_number_c             | 發票號碼                  |
+order_type_c                 | 訂單類別                  |
+payment_method_c             | 付款方式                  | 'apple_pay', 'line_pay', 'wechat_pay',<br> 'cash_on_delivery', 'ali_pay', 'credit_card',<br> 'atm', 'intella_pay', 'experiences',<br> 'paynow_creadit_card', 'stripe_credit_card', 'google_pay',<br> 'paynow_credit_card3ds',
+due_date                     | 到期時間                  |
+status                       | 狀態                      | Paid,PendingPaymentConfirmation,Unpaid,<br> Cancelled,Rescheduling,Returning,Returned
+subtotal_tax_amount          | 小計＋稅金                | 0
+subtotal_tax_amount_usdollar | 小計＋稅金（預設貨幣）    | 0
+billing_address_postalcode   | 郵遞區號                  |
+potr_c                       | 付款編號                  |
+number_of_nights_c | 入住夜數 |
+number_of_rooms_s | 房間數 |
 
 
 ```json--request
@@ -1351,36 +1357,38 @@ parent_type                  | 類型                 |       | AOS_Invoices
 
 小計群組裡面的商品
 
-Parameter                        | Description             | Value             | Example
----------                        | -----------             | -----             | -------
-name                             | 名稱                    |                   |
-description                      | 描述                    |                   |
-assigned_user_id                 | 負責人                  |                   |
-currency_id                      | 幣別                    | 預設貨幣(-99)     | -99
-part_number                      | 部件編號                |                   | J_725_3314
-item_description                 | 商品描述                |                   | ""
-number                           | 順序                    |                   | 1
-product_qty                      | 商品數量                |                   | 2
-product_cost_price               | 商品成本                |                   | 2700
-product_cost_price_usdollar      | 商品成本 (預設幣別)     |                   | 2700
-product_list_price               | 商品價格                |                   | 2700
-product_list_price_usdollar      | 商品價格 (預設幣別)     |                   | 2700
-product_discount                 | 折扣                    |                   | 10
-product_discount_usdollar        | 折扣 (預設幣別)         |                   | 10
-product_discount_amount          | 折扣總計                |                   | ""
-product_discount_amount_usdollar | 折扣總計 (預設幣別)     |                   | ""
-discount                         | 折扣類型                | Amount, Percetage | Amount
-product_unit_price               | 產品單位價格            |                   | 2690
-product_unit_price_usdollar      | 產品單位價格 (預設幣別) |                   | 2690
-departure_datetime_c             | 出團日期                |                   | 2020-01-01
-vat_amt                          | 含稅價                  |                   | 269
-vat_amt_usdollar                 | 含稅價 (預設幣別)       |                   | 269
-product_total_price              | 商品含稅總額            |                   | 5380
-product_total_price_usdollar     | 商品含稅總額 (預設幣別) |                   | 5380
-vat                              | 稅率                    |                   | 5.0
-parent_id                        | 發票編號                |                   | {{invoice_id}}
-product_id                       | 產品編號                |                   | {{product_id}}
-group_id                         | 小計編號（產品組）      |                   | {{item_group_id}
+Parameter                        | Description                 | Value             | Example
+---------                        | -----------                 | -----             | -------
+name                             | 名稱                        |                   |
+description                      | 描述                        |                   |
+assigned_user_id                 | 負責人                      |                   |
+currency_id                      | 幣別                        | 預設貨幣(-99)     | -99
+part_number                      | 部件編號                    |                   | J_725_3314
+item_description                 | 商品描述                    |                   | ""
+number                           | 順序                        |                   | 1
+product_qty                      | 商品數量                    |                   | 2
+product_cost_price               | 商品成本                    |                   | 2700
+product_cost_price_usdollar      | 商品成本 (預設幣別)         |                   | 2700
+product_list_price               | 商品價格                    |                   | 2700
+product_list_price_usdollar      | 商品價格 (預設幣別)         |                   | 2700
+product_discount                 | 折扣                        |                   | 10
+product_discount_usdollar        | 折扣 (預設幣別)             |                   | 10
+product_discount_amount          | 折扣總計                    |                   | ""
+product_discount_amount_usdollar | 折扣總計 (預設幣別)         |                   | ""
+discount                         | 折扣類型                    | Amount, Percetage | Amount
+product_unit_price               | 產品單位價格                |                   | 2690
+product_unit_price_usdollar      | 產品單位價格 (預設幣別)     |                   | 2690
+departure_datetime_c             | 出團日期                    |                   | 2020-01-01
+vat_amt                          | 含稅價                      |                   | 269
+vat_amt_usdollar                 | 含稅價 (預設幣別)           |                   | 269
+product_total_price              | 商品含稅總額                |                   | 5380
+product_total_price_usdollar     | 商品含稅總額 (預設幣別)     |                   | 5380
+vat                              | 稅率                        |                   | 5.0
+parent_id                        | 發票編號                    |                   | {{invoice_id}}
+product_id                       | 產品編號                    |                   | {{product_id}}
+group_id                         | 小計編號（產品組）          |                   | {{item_group_id}
+date_start_c                     | 開始時間(journey的租房時間) |                   | Y-m-d H:i:s
+date_end_c                       | 結束時間(journey的租房時間) |                   | Y-m-d H:i:s
 
 ```json--request
 {
@@ -1411,6 +1419,8 @@ group_id                         | 小計編號（產品組）      |           
             "vat_amt_usdollar": "0.000000",
             "product_total_price": "180.000000",
             "product_total_price_usdollar": "180.000000",
+            "date_start_c": "2021-06-01 17:00:00",
+            "date_end_c" : "2021-06-02 09:00:00",
             "vat": "0",
             "parent_name": "OD2020040900050",
             "parent_type": "AOS_Invoices",
@@ -1619,18 +1629,18 @@ date_end         | 結束日期     |       |
 
 Maps locations
 
-Parameter        | Description | Value              | Example
----------        | ----------- | -----              | -------
-name             | 標記名稱    |                    |
-marker_type_c    | 標記類別    | origin,destination |
-description      | 描述        |                    |
-assigned_user_id | 負責人      |                    |
-city             | 城市        |                    |
-state            | 州或省      |                    |
-country          | 國家        |                    |
-jjwg_maps_lat    | 經度        |                    | 113.727
-jjwg_maps_lng    | 緯度        |                    | 34.773
-marker_image     | 標注類型    |                    | accident, administration, agriculture, aircraft_small, airplane_tourism, airport, amphitheater, apartment, aquarium, arch, atm, audio, bank, bank_euro, bank_pound, bar, beach, beautiful, bicycle_parking, big_city, bridge, bridge_modern, bus, cable_car, car, car_rental, carrepair, castle, cathedral, chapel, church, city_square, cluster, cluster_2, cluster_3, cluster_4, cluster_5, coffee, community_centre, company, conference, construction, convenience, court, cruise, currency_exchange, customs, cycling, dam, dentist, deptartment_store, disability, disabled_parking, doctor, dog_leash, down, down_left, down_right, down_then_left, down_then_right, drugs, elevator, embassy, expert, factory, falling_rocks, fast_food, festival, fjord, forest, fountain, friday, garden, gas_station, geyser, gifts, gourmet, grocery, hairsalon, helicopter, highway, historical_quarter, home, hospital, hostel, hotel, hotel_1_star, hotel_2_stars, hotel_3_stars, hotel_4_stars, hotel_5_stars, info, justice, lake, laundromat, left, left_then_down, left_then_up, library, lighthouse, liquor, lock, main_road, massage, mobile_phone_tower, modern_tower, monastery, monday, monument, mosque, motorcycle, museum, music_live, oil_pump_jack, pagoda, palace, panoramic, park, park_and_ride, parking, photo, picnic, places_unvisited, places_visited, playground, police, port, postal, power_line_pole, power_plant, power_substation, public_art, rain, real_estate, regroup, resort, restaurant, restaurant_african, restaurant_barbecue, restaurant_buffet, restaurant_chinese, restaurant_fish, restaurant_fish_chips, restaurant_gourmet, restaurant_greek, restaurant_indian, restaurant_italian, restaurant_japanese, restaurant_kebab, restaurant_korean, restaurant_mediterranean, restaurant_mexican, restaurant_romantic, restaurant_thai, restaurant_turkish, right, right_then_down, right_then_up, saturday, school, shopping_mall, shore, sight, small_city, snow, spaceport, speed_100, speed_110, speed_120, speed_130, speed_20, speed_30, speed_40, speed_50, speed_60, speed_70, speed_80, speed_90, speed_hump, stadium, statue, steam_train, stop, stoplight, subway, sun, sunday, supermarket, synagogue, tapas, taxi, taxiway, teahouse, telephone, temple_hindu, terrace, text, theater, theme_park, thursday, toilets, toll_station, tower, traffic_enforcement_camera, train, tram, truck, tuesday, tunnel, turn_left, turn_right, university, up, up_left, up_right, up_then_left, up_then_right, vespa, video, villa, water, waterfall, watermill, waterpark, watertower, wednesday, wifi, wind_turbine, windmill, winery, work_office, world_heritage_site, zoo,
+Parameter        | Description               | Value              | Example
+---------        | -----------               | -----              | -------
+name             | 標記名稱                  |                    |
+marker_type_c    | 標記類別                  | origin,destination |
+description      | 描述                      |                    |
+assigned_user_id | 負責人                    |                    |
+city             | 城市                      |                    |
+state            | 州或省                    |                    |
+country          | 國家(ISO_3166-1_alpha-2_) |                    | us,tw, ...
+jjwg_maps_lat    | 經度                      |                    | 113.727
+jjwg_maps_lng    | 緯度                      |                    | 34.773
+marker_image     | 標注類型                  |                    | accident, administration, agriculture, aircraft_small, airplane_tourism, airport, amphitheater, apartment, aquarium, arch, atm, audio, bank, bank_euro, bank_pound, bar, beach, beautiful, bicycle_parking, big_city, bridge, bridge_modern, bus, cable_car, car, car_rental, carrepair, castle, cathedral, chapel, church, city_square, cluster, cluster_2, cluster_3, cluster_4, cluster_5, coffee, community_centre, company, conference, construction, convenience, court, cruise, currency_exchange, customs, cycling, dam, dentist, deptartment_store, disability, disabled_parking, doctor, dog_leash, down, down_left, down_right, down_then_left, down_then_right, drugs, elevator, embassy, expert, factory, falling_rocks, fast_food, festival, fjord, forest, fountain, friday, garden, gas_station, geyser, gifts, gourmet, grocery, hairsalon, helicopter, highway, historical_quarter, home, hospital, hostel, hotel, hotel_1_star, hotel_2_stars, hotel_3_stars, hotel_4_stars, hotel_5_stars, info, justice, lake, laundromat, left, left_then_down, left_then_up, library, lighthouse, liquor, lock, main_road, massage, mobile_phone_tower, modern_tower, monastery, monday, monument, mosque, motorcycle, museum, music_live, oil_pump_jack, pagoda, palace, panoramic, park, park_and_ride, parking, photo, picnic, places_unvisited, places_visited, playground, police, port, postal, power_line_pole, power_plant, power_substation, public_art, rain, real_estate, regroup, resort, restaurant, restaurant_african, restaurant_barbecue, restaurant_buffet, restaurant_chinese, restaurant_fish, restaurant_fish_chips, restaurant_gourmet, restaurant_greek, restaurant_indian, restaurant_italian, restaurant_japanese, restaurant_kebab, restaurant_korean, restaurant_mediterranean, restaurant_mexican, restaurant_romantic, restaurant_thai, restaurant_turkish, right, right_then_down, right_then_up, saturday, school, shopping_mall, shore, sight, small_city, snow, spaceport, speed_100, speed_110, speed_120, speed_130, speed_20, speed_30, speed_40, speed_50, speed_60, speed_70, speed_80, speed_90, speed_hump, stadium, statue, steam_train, stop, stoplight, subway, sun, sunday, supermarket, synagogue, tapas, taxi, taxiway, teahouse, telephone, temple_hindu, terrace, text, theater, theme_park, thursday, toilets, toll_station, tower, traffic_enforcement_camera, train, tram, truck, tuesday, tunnel, turn_left, turn_right, university, up, up_left, up_right, up_then_left, up_then_right, vespa, video, villa, water, waterfall, watermill, waterpark, watertower, wednesday, wifi, wind_turbine, windmill, winery, work_office, world_heritage_site, zoo,
 
 
 ```json--request
@@ -1644,7 +1654,7 @@ marker_image     | 標注類型    |                    | accident, administrati
             "assigned_user_id": "123",
             "city": "",
             "state": "",
-            "country": "",
+            "country": "tw",
             "jjwg_maps_lat": "123",
             "jjwg_maps_lng": "123",
             "marker_image": ""
@@ -1676,7 +1686,7 @@ marker_image     | 標注類型    |                    | accident, administrati
             "SecurityGroups": "",
             "city": " ",
             "state": " ",
-            "country": "",
+            "country": "tw",
             "jjwg_maps_lat": "100.00000000",
             "jjwg_maps_lng": "123.00000000",
             "marker_image": "",
