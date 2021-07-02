@@ -608,7 +608,8 @@ website                    | 網址                      |
             "birthdate": "2020-10-06",
             "birth_of_day_c": "birth_of_day_c",
             "birth_of_year_c": "birth_of_year_c",
-            "birth_of_month_c": "birth_of_month_c"
+            "birth_of_month_c": "birth_of_month_c",
+            "membership_type_c": "normal"
         }
     }
 }
@@ -1074,8 +1075,8 @@ subtotal_tax_amount          | 小計＋稅金                | 0
 subtotal_tax_amount_usdollar | 小計＋稅金（預設貨幣）    | 0
 billing_address_postalcode   | 郵遞區號                  |
 potr_c                       | 付款編號                  |
-number_of_nights_c | 入住夜數 |
-number_of_rooms_s | 房間數 |
+number_of_nights_c           | 入住夜數 (journey)        |
+number_of_rooms_c            | 房間數 (journey)          |
 
 
 ```json--request
@@ -1127,6 +1128,8 @@ number_of_rooms_s | 房間數 |
             "subtotal_tax_amount": "",
             "subtotal_tax_amount_usdollar": "0.000000",
             "potr_c": ""
+            "number_of_nights_c": "1",
+            "number_of_rooms_c": "2"
         }
     }
 }
@@ -1357,38 +1360,38 @@ parent_type                  | 類型                 |       | AOS_Invoices
 
 小計群組裡面的商品
 
-Parameter                        | Description                 | Value             | Example
----------                        | -----------                 | -----             | -------
-name                             | 名稱                        |                   |
-description                      | 描述                        |                   |
-assigned_user_id                 | 負責人                      |                   |
-currency_id                      | 幣別                        | 預設貨幣(-99)     | -99
-part_number                      | 部件編號                    |                   | J_725_3314
-item_description                 | 商品描述                    |                   | ""
-number                           | 順序                        |                   | 1
-product_qty                      | 商品數量                    |                   | 2
-product_cost_price               | 商品成本                    |                   | 2700
-product_cost_price_usdollar      | 商品成本 (預設幣別)         |                   | 2700
-product_list_price               | 商品價格                    |                   | 2700
-product_list_price_usdollar      | 商品價格 (預設幣別)         |                   | 2700
-product_discount                 | 折扣                        |                   | 10
-product_discount_usdollar        | 折扣 (預設幣別)             |                   | 10
-product_discount_amount          | 折扣總計                    |                   | ""
-product_discount_amount_usdollar | 折扣總計 (預設幣別)         |                   | ""
-discount                         | 折扣類型                    | Amount, Percetage | Amount
-product_unit_price               | 產品單位價格                |                   | 2690
-product_unit_price_usdollar      | 產品單位價格 (預設幣別)     |                   | 2690
-departure_datetime_c             | 出團日期                    |                   | 2020-01-01
-vat_amt                          | 含稅價                      |                   | 269
-vat_amt_usdollar                 | 含稅價 (預設幣別)           |                   | 269
-product_total_price              | 商品含稅總額                |                   | 5380
-product_total_price_usdollar     | 商品含稅總額 (預設幣別)     |                   | 5380
-vat                              | 稅率                        |                   | 5.0
-parent_id                        | 發票編號                    |                   | {{invoice_id}}
-product_id                       | 產品編號                    |                   | {{product_id}}
-group_id                         | 小計編號（產品組）          |                   | {{item_group_id}
-date_start_c                     | 開始時間(journey的租房時間) |                   | Y-m-d H:i:s
-date_end_c                       | 結束時間(journey的租房時間) |                   | Y-m-d H:i:s
+Parameter                        | Description             | Value             | Example
+---------                        | -----------             | -----             | -------
+name                             | 名稱                    |                   |
+description                      | 描述                    |                   |
+assigned_user_id                 | 負責人                  |                   |
+currency_id                      | 幣別                    | 預設貨幣(-99)     | -99
+part_number                      | 部件編號                |                   | J_725_3314
+item_description                 | 商品描述                |                   | ""
+number                           | 順序                    |                   | 1
+product_qty                      | 商品數量                |                   | 2
+product_cost_price               | 商品成本                |                   | 2700
+product_cost_price_usdollar      | 商品成本 (預設幣別)     |                   | 2700
+product_list_price               | 商品價格                |                   | 2700
+product_list_price_usdollar      | 商品價格 (預設幣別)     |                   | 2700
+product_discount                 | 折扣                    |                   | 10
+product_discount_usdollar        | 折扣 (預設幣別)         |                   | 10
+product_discount_amount          | 折扣總計                |                   | ""
+product_discount_amount_usdollar | 折扣總計 (預設幣別)     |                   | ""
+discount                         | 折扣類型                | Amount, Percetage | Amount
+product_unit_price               | 產品單位價格            |                   | 2690
+product_unit_price_usdollar      | 產品單位價格 (預設幣別) |                   | 2690
+departure_datetime_c             | 出團日期                |                   | 2020-01-01
+vat_amt                          | 含稅價                  |                   | 269
+vat_amt_usdollar                 | 含稅價 (預設幣別)       |                   | 269
+product_total_price              | 商品含稅總額            |                   | 5380
+product_total_price_usdollar     | 商品含稅總額 (預設幣別) |                   | 5380
+vat                              | 稅率                    |                   | 5.0
+parent_id                        | 發票編號                |                   | {{invoice_id}}
+product_id                       | 產品編號                |                   | {{product_id}}
+group_id                         | 小計編號（產品組）      |                   | {{item_group_id}
+date_start_c                     | 開始時間 (journey)      |                   | Y-m-d H:i:s
+date_end_c                       | 結束時間 (journey)      |                   | Y-m-d H:i:s
 
 ```json--request
 {
