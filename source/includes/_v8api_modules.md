@@ -1488,7 +1488,7 @@ code             | 促銷編碼     |       |
 priority         | 優先權       | 0~99  |
 exclusive        | 獨一         | 0,1   |
 usage_limit      | 使用次數限制 | 0     |
-used             | 使用中       | 0,1   |
+used             | 已使用次數   |       |
 coupon_based     | 需配合折扣碼 | 0,1   |
 date_start       | 開始日期     |       |
 date_end         | 結束日期     |       |
@@ -1628,6 +1628,494 @@ date_end         | 結束日期     |       |
 }
 ```
 
+### Promotions Rules
+
+促銷條件
+
+Parameter     | Description | Value 
+---------     | ----------- | ----- 
+name          | 規則名稱    |
+description   | 描述        |
+type          | 規則類別    | cart_quantity, <br> item_total, <br> has_taxon, <br> must_taxon, <br> has_category, <br> must_category, <br> total_of_items_from_taxon, <br> total_of_items_from_category, <br> nth_order, <br> contains_product, <br> contains_role, <br> except_product
+configuration | 設定        | 
+
+#### type 與 configuration 公式
+
+type                         | description                 | php metadata                                   | configuration
+---                          | ---                         | ---                                            | ---
+cart_quantity                | 這邊是 item 總數量          | ['count' => $count]                            | {"count":100}
+item_total                   | 這邊是 item 總金額          | ['amount' => $amount]                          | {"amount":1000}
+has_taxon                    | 至少有一個活動類別的商品    | ['taxons' => $taxons]                          | {"taxons":["boys","girls"]}
+must_taxon                   | 全部都必須為活動類別的商品  | ['taxons' => $taxons]                          | {"taxons":["boys","girls"]}
+has_category                 | 至少有一個為產品類別的商品  | ['categories' => $categories]                  | {"categories":["boys","girls"]}
+must_category                | 全部都必須為產品類別的商品  | ['categories' => $categories]                  | {"categories":["boys","girls"]}
+total_of_items_from_taxon    | 符合銷售類別 的 item 總金額 | ['taxon' => $taxonCode, 'amount' => $amount]   | {"taxon":"boys","amount":1000}
+total_of_items_from_category | 符合產品類別的 item 總金額  | ['category' => $category, 'amount' => $amount] | {"category":"boys","amount":1000}
+nth_order                    | 使用者購買的第幾筆訂單      | ['nth' => $nth]                                | {"nth":3}
+contains_product             | 產品編號為                  | ['products_codes' => $productsCodes]           | {"products_codes":["boys","girls"]}
+contains_role                | 角色身份為                  | ['roles_codes' => $rolesCodes]                 | {"roles_codes":["support","admin"]}
+except_product               | 產品編號不為                | ['products_codes' => $productsCodes]           | {"products_codes":["E123","E456"]}
+
+<aside class="info"><strong>Important</strong>: 儲存格式為 json string </aside>
+
+`GET http://example.com/Api/V8/module/OWL_PromotionRules?page[size]=10&page[number]=1&sort=name`
+
+```json--response
+{
+    "meta": {
+        "total-pages": 1,
+        "records-on-this-page": 2
+    },
+    "data": [
+        {
+            "type": "OWL_PromotionRules",
+            "id": "573c8396-553a-7c5d-01e0-60e65fffc31a",
+            "attributes": {
+                "name": "2020年末Sale100",
+                "date_entered": "2021-07-08T02:15:00+00:00",
+                "date_modified": "2021-07-08T02:17:00+00:00",
+                "modified_user_id": "1",
+                "modified_by_name": "Administrator",
+                "created_by": "1",
+                "created_by_name": "Administrator",
+                "description": "",
+                "deleted": "0",
+                "created_by_link": "",
+                "modified_user_link": "",
+                "assigned_user_id": "1",
+                "assigned_user_name": "Administrator",
+                "assigned_user_link": "",
+                "SecurityGroups": "",
+                "configuration": "{&quot;amount&quot;:1000}",
+                "type": "item_total",
+                "owl_promotionrules_owl_promotions": "",
+                "owl_promotionrules_owl_promotions_name": "2020年末Sale100",
+                "owl_promotionrules_owl_promotionsowl_promotions_ida": "3d13a002-9741-e33e-805f-60d445b13572"
+            },
+            "relationships": {
+                "OWL_Promotions": {
+                    "links": {
+                        "related": "V8/module/OWL_PromotionRules/573c8396-553a-7c5d-01e0-60e65fffc31a/relationships/owl_promotionrules_owl_promotions"
+                    }
+                },
+                "SecurityGroups": {
+                    "links": {
+                        "related": "V8/module/OWL_PromotionRules/573c8396-553a-7c5d-01e0-60e65fffc31a/relationships/SecurityGroups"
+                    }
+                },
+                "Users": {
+                    "links": {
+                        "related": "V8/module/OWL_PromotionRules/573c8396-553a-7c5d-01e0-60e65fffc31a/relationships/created_by_link"
+                    }
+                }
+            }
+        },
+        {
+            "type": "OWL_PromotionRules",
+            "id": "9111a188-0030-7130-2eda-60e65f7a970b",
+            "attributes": {
+                "name": "2020年末Sale100",
+                "date_entered": "2021-07-08T02:14:00+00:00",
+                "date_modified": "2021-07-08T02:18:00+00:00",
+                "modified_user_id": "1",
+                "modified_by_name": "Administrator",
+                "created_by": "1",
+                "created_by_name": "Administrator",
+                "description": "",
+                "deleted": "0",
+                "created_by_link": "",
+                "modified_user_link": "",
+                "assigned_user_id": "1",
+                "assigned_user_name": "Administrator",
+                "assigned_user_link": "",
+                "SecurityGroups": "",
+                "configuration": "{&quot;count&quot;:100}",
+                "type": "cart_quantity",
+                "owl_promotionrules_owl_promotions": "",
+                "owl_promotionrules_owl_promotions_name": "2020年末Sale100",
+                "owl_promotionrules_owl_promotionsowl_promotions_ida": "3d13a002-9741-e33e-805f-60d445b13572"
+            },
+            "relationships": {
+                "OWL_Promotions": {
+                    "links": {
+                        "related": "V8/module/OWL_PromotionRules/9111a188-0030-7130-2eda-60e65f7a970b/relationships/owl_promotionrules_owl_promotions"
+                    }
+                },
+                "SecurityGroups": {
+                    "links": {
+                        "related": "V8/module/OWL_PromotionRules/9111a188-0030-7130-2eda-60e65f7a970b/relationships/SecurityGroups"
+                    }
+                },
+                "Users": {
+                    "links": {
+                        "related": "V8/module/OWL_PromotionRules/9111a188-0030-7130-2eda-60e65f7a970b/relationships/created_by_link"
+                    }
+                }
+            }
+        }
+    ],
+    "links": {
+        "first": null,
+        "prev": null,
+        "next": null,
+        "last": null
+    }
+}
+```
+
+### Promotions Actions
+
+促銷折扣
+
+Parameter     | Description | Value | description
+---------     | ----------- | ----- | -------
+name          | 規則名稱    |
+description   | 描述        |
+type          | 規則類別    | cart_quantity, <br> item_total, <br> has_taxon, <br> must_taxon, <br> has_category, <br> must_category, <br> total_of_items_from_taxon, <br> total_of_items_from_category, <br> nth_order, <br> contains_product, <br> contains_role, <br> except_product
+configuration | 設定        |
+
+#### type 與 configuration 公式
+
+type                               | description                | php metadata                  | Value
+---                                | ---                        | ---                           | ---
+order_fixed_discount               | 固定折扣                   | ['amount' => $amount]         | {"amount":-100}
+unit_fixed_discount                | 每單位折扣                 | ['amount' => $amount]         | {"amount":-100}
+order_percentage_discount          | 每筆訂單固定則扣           | ['percentage' => $percentage] | {"percentage":0.9}
+unit_percentage_discount           | 單位固定則扣               | ['percentage' => $percentage] | {"percentage":0.9}
+shipping_percentage_discount       | 運費百分比折扣             | ['percentage' => $percentage] | {"percentage":0.9}
+owlting_coin_fixed_from_total      | 每多少金額轉換固定奧丁幣   | ['amount' => $amount]         | {"amount":100}
+owlting_coin_percentage_from_total | 每多少百分比金額轉換奧丁幣 | ['percentage' => $percentage] | {"percentage":0.01}
+
+`GET http://example.com/Api/V8/module/OWL_PromotionActions?page[size]=10&page[number]=1&sort=name`
+
+```json--response
+{
+    "meta": {
+        "total-pages": 1,
+        "records-on-this-page": 1
+    },
+    "data": [
+        {
+            "type": "OWL_PromotionActions",
+            "id": "7e9af65e-01a5-dc31-63a9-60e6621ba0b0",
+            "attributes": {
+                "name": "2020年末Sale100",
+                "date_entered": "2021-07-08T02:26:00+00:00",
+                "date_modified": "2021-07-08T02:26:00+00:00",
+                "modified_user_id": "1",
+                "modified_by_name": "Administrator",
+                "created_by": "1",
+                "created_by_name": "Administrator",
+                "description": "",
+                "deleted": "0",
+                "created_by_link": "",
+                "modified_user_link": "",
+                "assigned_user_id": "1",
+                "assigned_user_name": "Administrator",
+                "assigned_user_link": "",
+                "SecurityGroups": "",
+                "configuration": "{&quot;amount&quot;:-100}",
+                "type": "order_fixed_discount",
+                "owl_promotionactions_owl_promotions": "",
+                "owl_promotionactions_owl_promotions_name": "2020年末Sale100",
+                "owl_promotionactions_owl_promotionsowl_promotions_ida": "3d13a002-9741-e33e-805f-60d445b13572"
+            },
+            "relationships": {
+                "OWL_Promotions": {
+                    "links": {
+                        "related": "V8/module/OWL_PromotionActions/7e9af65e-01a5-dc31-63a9-60e6621ba0b0/relationships/owl_promotionactions_owl_promotions"
+                    }
+                },
+                "SecurityGroups": {
+                    "links": {
+                        "related": "V8/module/OWL_PromotionActions/7e9af65e-01a5-dc31-63a9-60e6621ba0b0/relationships/SecurityGroups"
+                    }
+                },
+                "Users": {
+                    "links": {
+                        "related": "V8/module/OWL_PromotionActions/7e9af65e-01a5-dc31-63a9-60e6621ba0b0/relationships/created_by_link"
+                    }
+                }
+            }
+        }
+    ],
+    "links": {
+        "first": null,
+        "prev": null,
+        "next": null,
+        "last": null
+    }
+}
+```
+
+### Promotions Coupons
+
+促銷相關訊息
+
+Parameter                      | Description          | Value    | Example
+---------                      | -----------          | -----    | -------
+name                           | 折扣碼名稱           |          |
+description                    | 描述                 |          |
+code                           | 折扣碼               |          |
+usage_limit                    | 使用次數限制         |          |
+reusable_from_cancelled_orders | 可不可以重複使用     | 0,1      |
+used                           | 已使用次數           | 0        |
+expires_at                     | 過期日期             | datetime |
+per_customer_usage_limit       | 每個使用者使用的次數 | 1        |
+
+`GET http://example.com/Api/V8/module/OWL_PromotionCoupons?page[size]=10&page[number]=1&sort=name`
+
+```json--response
+{
+    "meta": {
+        "total-pages": 1,
+        "records-on-this-page": 5
+    },
+    "data": [
+        {
+            "type": "OWL_PromotionCoupons",
+            "id": "33005b3d-3393-128a-d037-60e6a7bc5703",
+            "attributes": {
+                "name": "2020年末Sale100",
+                "date_entered": "2021-07-08T07:20:00+00:00",
+                "date_modified": "2021-07-08T07:20:00+00:00",
+                "modified_user_id": "1",
+                "modified_by_name": "Administrator",
+                "created_by": "1",
+                "created_by_name": "Administrator",
+                "description": "",
+                "deleted": "0",
+                "created_by_link": "",
+                "modified_user_link": "",
+                "assigned_user_id": "1",
+                "assigned_user_name": "Administrator",
+                "assigned_user_link": "",
+                "SecurityGroups": "",
+                "code": "coupon1104",
+                "usage_limit": "1",
+                "reusable_from_cancelled_orders": "0",
+                "used": "0",
+                "expires_at": "2021-07-08T04:00:00+00:00",
+                "per_customer_usage_limit": "1",
+                "owl_promotioncoupons_owl_promotions": "",
+                "owl_promotioncoupons_owl_promotions_name": "2020年末Sale100",
+                "owl_promotioncoupons_owl_promotionsowl_promotions_ida": "3d13a002-9741-e33e-805f-60d445b13572"
+            },
+            "relationships": {
+                "OWL_Promotions": {
+                    "links": {
+                        "related": "V8/module/OWL_PromotionCoupons/33005b3d-3393-128a-d037-60e6a7bc5703/relationships/owl_promotioncoupons_owl_promotions"
+                    }
+                },
+                "SecurityGroups": {
+                    "links": {
+                        "related": "V8/module/OWL_PromotionCoupons/33005b3d-3393-128a-d037-60e6a7bc5703/relationships/SecurityGroups"
+                    }
+                },
+                "Users": {
+                    "links": {
+                        "related": "V8/module/OWL_PromotionCoupons/33005b3d-3393-128a-d037-60e6a7bc5703/relationships/created_by_link"
+                    }
+                }
+            }
+        },
+        {
+            "type": "OWL_PromotionCoupons",
+            "id": "9ba594b8-96b2-e662-683c-60e6a68cbbb4",
+            "attributes": {
+                "name": "2020年末Sale100",
+                "date_entered": "2021-07-08T07:18:00+00:00",
+                "date_modified": "2021-07-08T07:18:00+00:00",
+                "modified_user_id": "1",
+                "modified_by_name": "Administrator",
+                "created_by": "1",
+                "created_by_name": "Administrator",
+                "description": "",
+                "deleted": "0",
+                "created_by_link": "",
+                "modified_user_link": "",
+                "assigned_user_id": "1",
+                "assigned_user_name": "Administrator",
+                "assigned_user_link": "",
+                "SecurityGroups": "",
+                "code": "coupon1101",
+                "usage_limit": "1",
+                "reusable_from_cancelled_orders": "0",
+                "used": "0",
+                "expires_at": "2021-07-08T04:00:00+00:00",
+                "per_customer_usage_limit": "1",
+                "owl_promotioncoupons_owl_promotions": "",
+                "owl_promotioncoupons_owl_promotions_name": "2020年末Sale100",
+                "owl_promotioncoupons_owl_promotionsowl_promotions_ida": "3d13a002-9741-e33e-805f-60d445b13572"
+            },
+            "relationships": {
+                "OWL_Promotions": {
+                    "links": {
+                        "related": "V8/module/OWL_PromotionCoupons/9ba594b8-96b2-e662-683c-60e6a68cbbb4/relationships/owl_promotioncoupons_owl_promotions"
+                    }
+                },
+                "SecurityGroups": {
+                    "links": {
+                        "related": "V8/module/OWL_PromotionCoupons/9ba594b8-96b2-e662-683c-60e6a68cbbb4/relationships/SecurityGroups"
+                    }
+                },
+                "Users": {
+                    "links": {
+                        "related": "V8/module/OWL_PromotionCoupons/9ba594b8-96b2-e662-683c-60e6a68cbbb4/relationships/created_by_link"
+                    }
+                }
+            }
+        },
+        {
+            "type": "OWL_PromotionCoupons",
+            "id": "c2b8e837-a668-3439-6e40-60e6a6901b1b",
+            "attributes": {
+                "name": "2020年末Sale100",
+                "date_entered": "2021-07-08T07:19:00+00:00",
+                "date_modified": "2021-07-08T07:19:00+00:00",
+                "modified_user_id": "1",
+                "modified_by_name": "Administrator",
+                "created_by": "1",
+                "created_by_name": "Administrator",
+                "description": "",
+                "deleted": "0",
+                "created_by_link": "",
+                "modified_user_link": "",
+                "assigned_user_id": "1",
+                "assigned_user_name": "Administrator",
+                "assigned_user_link": "",
+                "SecurityGroups": "",
+                "code": "coupon1102",
+                "usage_limit": "1",
+                "reusable_from_cancelled_orders": "0",
+                "used": "0",
+                "expires_at": "2021-07-08T04:00:00+00:00",
+                "per_customer_usage_limit": "1",
+                "owl_promotioncoupons_owl_promotions": "",
+                "owl_promotioncoupons_owl_promotions_name": "2020年末Sale100",
+                "owl_promotioncoupons_owl_promotionsowl_promotions_ida": "3d13a002-9741-e33e-805f-60d445b13572"
+            },
+            "relationships": {
+                "OWL_Promotions": {
+                    "links": {
+                        "related": "V8/module/OWL_PromotionCoupons/c2b8e837-a668-3439-6e40-60e6a6901b1b/relationships/owl_promotioncoupons_owl_promotions"
+                    }
+                },
+                "SecurityGroups": {
+                    "links": {
+                        "related": "V8/module/OWL_PromotionCoupons/c2b8e837-a668-3439-6e40-60e6a6901b1b/relationships/SecurityGroups"
+                    }
+                },
+                "Users": {
+                    "links": {
+                        "related": "V8/module/OWL_PromotionCoupons/c2b8e837-a668-3439-6e40-60e6a6901b1b/relationships/created_by_link"
+                    }
+                }
+            }
+        },
+        {
+            "type": "OWL_PromotionCoupons",
+            "id": "d630cde3-66fe-dd0b-19f4-60e6a78dee5f",
+            "attributes": {
+                "name": "2020年末Sale100",
+                "date_entered": "2021-07-08T07:20:00+00:00",
+                "date_modified": "2021-07-08T07:20:00+00:00",
+                "modified_user_id": "1",
+                "modified_by_name": "Administrator",
+                "created_by": "1",
+                "created_by_name": "Administrator",
+                "description": "",
+                "deleted": "0",
+                "created_by_link": "",
+                "modified_user_link": "",
+                "assigned_user_id": "1",
+                "assigned_user_name": "Administrator",
+                "assigned_user_link": "",
+                "SecurityGroups": "",
+                "code": "coupon1105",
+                "usage_limit": "1",
+                "reusable_from_cancelled_orders": "0",
+                "used": "0",
+                "expires_at": "2021-07-08T04:00:00+00:00",
+                "per_customer_usage_limit": "1",
+                "owl_promotioncoupons_owl_promotions": "",
+                "owl_promotioncoupons_owl_promotions_name": "2020年末Sale100",
+                "owl_promotioncoupons_owl_promotionsowl_promotions_ida": "3d13a002-9741-e33e-805f-60d445b13572"
+            },
+            "relationships": {
+                "OWL_Promotions": {
+                    "links": {
+                        "related": "V8/module/OWL_PromotionCoupons/d630cde3-66fe-dd0b-19f4-60e6a78dee5f/relationships/owl_promotioncoupons_owl_promotions"
+                    }
+                },
+                "SecurityGroups": {
+                    "links": {
+                        "related": "V8/module/OWL_PromotionCoupons/d630cde3-66fe-dd0b-19f4-60e6a78dee5f/relationships/SecurityGroups"
+                    }
+                },
+                "Users": {
+                    "links": {
+                        "related": "V8/module/OWL_PromotionCoupons/d630cde3-66fe-dd0b-19f4-60e6a78dee5f/relationships/created_by_link"
+                    }
+                }
+            }
+        },
+        {
+            "type": "OWL_PromotionCoupons",
+            "id": "c92617af-c937-59aa-7599-60e6a7cca402",
+            "attributes": {
+                "name": "2020年末Sale100",
+                "date_entered": "2021-07-08T07:19:00+00:00",
+                "date_modified": "2021-07-08T07:19:00+00:00",
+                "modified_user_id": "1",
+                "modified_by_name": "Administrator",
+                "created_by": "1",
+                "created_by_name": "Administrator",
+                "description": "",
+                "deleted": "0",
+                "created_by_link": "",
+                "modified_user_link": "",
+                "assigned_user_id": "1",
+                "assigned_user_name": "Administrator",
+                "assigned_user_link": "",
+                "SecurityGroups": "",
+                "code": "coupon1103",
+                "usage_limit": "1",
+                "reusable_from_cancelled_orders": "0",
+                "used": "0",
+                "expires_at": "2021-07-08T04:00:00+00:00",
+                "per_customer_usage_limit": "1",
+                "owl_promotioncoupons_owl_promotions": "",
+                "owl_promotioncoupons_owl_promotions_name": "2020年末Sale100",
+                "owl_promotioncoupons_owl_promotionsowl_promotions_ida": "3d13a002-9741-e33e-805f-60d445b13572"
+            },
+            "relationships": {
+                "OWL_Promotions": {
+                    "links": {
+                        "related": "V8/module/OWL_PromotionCoupons/c92617af-c937-59aa-7599-60e6a7cca402/relationships/owl_promotioncoupons_owl_promotions"
+                    }
+                },
+                "SecurityGroups": {
+                    "links": {
+                        "related": "V8/module/OWL_PromotionCoupons/c92617af-c937-59aa-7599-60e6a7cca402/relationships/SecurityGroups"
+                    }
+                },
+                "Users": {
+                    "links": {
+                        "related": "V8/module/OWL_PromotionCoupons/c92617af-c937-59aa-7599-60e6a7cca402/relationships/created_by_link"
+                    }
+                }
+            }
+        }
+    ],
+    "links": {
+        "first": null,
+        "prev": null,
+        "next": null,
+        "last": null
+    }
+}
+```
 ### Map - Markers
 
 Maps locations

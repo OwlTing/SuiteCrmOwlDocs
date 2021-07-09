@@ -242,7 +242,7 @@ HTTP/1.1 201
 
 ### 2.5. 關聯真實客戶去相關的目標群組
 
-{{suitecrm.url}}/Api/V8/module/ProspectLists/{{prospect_id}}/relationships
+http://example.com/Api/V8/module/ProspectLists/{{prospect_id}}/relationships
 
 {
     "data": {
@@ -644,7 +644,7 @@ Product Id 為後續建立訂單資訊需要
 }
 ```
 
-`POST {{suitecrm.url}}/Api/V8/module`
+`POST http://example.com/Api/V8/module`
 
 <aside class="info"><strong>Important</strong>: 建立的產品為預設幣別不需要打入 currency_id</aside>
 <aside class="warning"><strong>Important</strong>: "quote_date": "", 需帶入請求內容</aside>
@@ -794,7 +794,7 @@ Product Id 為後續建立訂單資訊需要
 }
 ```
 
-`POST {{suitecrm.url}}/Api/V8/module`
+`POST http://example.com/Api/V8/module`
 
 <aside class="info"><strong>Important</strong>: 建立的產品為預設幣別不需要打入 currency_id</aside>
 
@@ -895,7 +895,7 @@ Product Id 為後續建立訂單資訊需要
 
 再將產品成功建立後，後面便可以開始建立銷售單之中的商品
 
-`POST {{suitecrm.url}}/Api/V8/module`
+`POST http://example.com/Api/V8/module`
 
 <aside class="info"><strong>Important</strong>: 建立的產品為預設幣別不需要打入 currency_id</aside>
 
@@ -1027,7 +1027,7 @@ Experiece         | a253557e-40f7-11eb-8665-fa163ef36d26
 
 若無保留銷售單單號者, 須透過查詢該筆銷售單的 uuid，並其關聯方式，取得訂單完整資訊
 
-`GET {{suitecrm.url}}/{{suitecrm.url}}/Api/V8/module/AOS_Invoices?filter[name][eq]=OTR2020121600004&page[size]=1&page[number]=1`
+`GET http://example.com/http://example.com/Api/V8/module/AOS_Invoices?filter[name][eq]=OTR2020121600004&page[size]=1&page[number]=1`
 
 <aside class="info"><strong>Tip</strong>: filter 條件可以多塞幾個參數確保查詢訂單的正確性 </aside>
 
@@ -1062,7 +1062,7 @@ Experiece         | a253557e-40f7-11eb-8665-fa163ef36d26
 
 <aside class="warning"><strong>Warning!</strong>: line_items_group 有可能有兩組以上</aside>
 
-`Get {{suitecrm.url}}/Api/V8/module/AOS_Invoices/10afcf29-ee9d-dd48-0f94-5ff2edc88302/relationships/aos_line_item_groups`
+`Get http://example.com/Api/V8/module/AOS_Invoices/10afcf29-ee9d-dd48-0f94-5ff2edc88302/relationships/aos_line_item_groups`
 
 ```json--request
 "AOS_Line_Item_Groups": {
@@ -1231,7 +1231,7 @@ Product Id 為後續建立訂單資訊需要
 
 這邊的 invoice id 為 return_invoice_id
 
-`POST {{suitecrm.url}}/Api/V8/module`
+`POST http://example.com/Api/V8/module`
 
 <aside class="info"><strong>Important</strong>: 建立的產品為預設幣別不需要打入 currency_id</aside>
 <aside class="warning"><strong>Important</strong>: "quote_date": "", 需帶入請求內容</aside>
@@ -1282,7 +1282,7 @@ Product Id 為後續建立訂單資訊需要
 }
 ```
 
-`POST {{suitecrm.url}}/Api/V8/module`
+`POST http://example.com/Api/V8/module`
 
 <aside class="info"><strong>Important</strong>: 建立的產品為預設幣別不需要打入 currency_id</aside>
 
@@ -1341,7 +1341,7 @@ Product Id 為後續建立訂單資訊需要
 
 再將產品成功建立後，後面便可以開始建立銷售單之中的商品
 
-`POST {{suitecrm.url}}/Api/V8/module`
+`POST http://example.com/Api/V8/module`
 
 <aside class="info"><strong>Important</strong>: 建立的產品為預設幣別不需要打入 currency_id</aside>
 
@@ -1376,5 +1376,376 @@ Market     | 70b1530c-40da-11eb-8665-fa163ef36d26
         "type": "AOS_Invoices",
         "id": "{{return_invoice_id}}"
     }
+}
+```
+
+## 5. 建立 促銷活動
+
+以下的範例以折扣卷（折扣碼）為例，Promotions usage_limit 應主要限制，coupon 的限制為次要的限制．
+
+### 5.1. 為促銷活動命名
+
+`POST http://example.com/Api/V8/module`
+
+<aside class="info"><strong>Important</strong>: 建立的產品為預設幣別不需要打入 currency_id</aside>
+
+```json--request
+{
+    "data": {
+        "type": "OWL_Promotions",
+        "attributes": {
+            "name": "Test促銷活動",
+            "description": "這是促銷活動",
+            "code": "testpromotion",
+            "priority": "99",
+            "exclusive": "1",
+            "usage_limit": 0,
+            "coupon_based": 1,
+            "used": 0,
+            "date_start": "2020-01-01",
+            "date_end": "2020-12-31"
+        }
+    }
+}
+```
+
+
+```json--response
+{
+    "data": {
+        "type": "OWL_Promotions",
+        "id": "87539441-3882-b726-6972-60e6c25bdc36",
+        "attributes": {
+            "name": "Test促銷活動",
+            "date_entered": "2021-07-08T09:16:00+00:00",
+            "date_modified": "2021-07-08T09:16:00+00:00",
+            "modified_user_id": "1",
+            "modified_by_name": "Administrator",
+            "created_by": "1",
+            "created_by_name": "Administrator",
+            "description": "這是促銷活動",
+            "deleted": "0",
+            "created_by_link": "",
+            "modified_user_link": "",
+            "assigned_user_id": "",
+            "assigned_user_name": "",
+            "assigned_user_link": "",
+            "SecurityGroups": "",
+            "code": "testpromotion",
+            "priority": "99",
+            "exclusive": "1",
+            "usage_limit": "0",
+            "used": "0",
+            "coupon_based": "1",
+            "date_start": "",
+            "date_end": "",
+            "owl_promotionactions_owl_promotions": "",
+            "owl_promotioncoupons_owl_promotions": "",
+            "owl_promotionrules_owl_promotions": "",
+            "owl_promotions_aos_invoices": "",
+            "type_c": "project_campaign"
+        },
+        "relationships": {
+            "AOS_Invoices": {
+                "links": {
+                    "related": "V8/module/87539441-3882-b726-6972-60e6c25bdc36/relationships/owl_promotions_aos_invoices"
+                }
+            },
+            "OWL_PromotionActions": {
+                "links": {
+                    "related": "V8/module/87539441-3882-b726-6972-60e6c25bdc36/relationships/owl_promotionactions_owl_promotions"
+                }
+            },
+            "OWL_PromotionCoupons": {
+                "links": {
+                    "related": "V8/module/87539441-3882-b726-6972-60e6c25bdc36/relationships/owl_promotioncoupons_owl_promotions"
+                }
+            },
+            "OWL_PromotionRules": {
+                "links": {
+                    "related": "V8/module/87539441-3882-b726-6972-60e6c25bdc36/relationships/owl_promotionrules_owl_promotions"
+                }
+            },
+            "SecurityGroups": {
+                "links": {
+                    "related": "V8/module/87539441-3882-b726-6972-60e6c25bdc36/relationships/SecurityGroups"
+                }
+            },
+            "Users": {
+                "links": {
+                    "related": "V8/module/87539441-3882-b726-6972-60e6c25bdc36/relationships/created_by_link"
+                }
+            }
+        }
+    }
+}
+```
+
+### 5.2. 訂定規則
+
+購物數量滿 100 樣
+
+`POST http://example.com/Api/V8/module`
+
+```json--request
+{
+    "data": {
+        "type": "OWL_PromotionRules",
+        "attributes": {
+            "name": "Test促銷活動",
+            "type": "cart_quantity",
+            "configuration": "{\"count\":100}"
+        }
+    }
+}
+```
+
+```json--response
+{
+    "data": {
+        "type": "OWL_PromotionRules",
+        "id": "9b16bff0-0825-5dc4-60c4-60e6c5fc44bd",
+        "attributes": {
+            "name": "Test促銷活動",
+            "date_entered": "2021-07-08T09:28:00+00:00",
+            "date_modified": "2021-07-08T09:28:00+00:00",
+            "modified_user_id": "1",
+            "modified_by_name": "Administrator",
+            "created_by": "1",
+            "created_by_name": "Administrator",
+            "description": "",
+            "deleted": "0",
+            "created_by_link": "",
+            "modified_user_link": "",
+            "assigned_user_id": "",
+            "assigned_user_name": "",
+            "assigned_user_link": "",
+            "SecurityGroups": "",
+            "configuration": "{&quot;count&quot;:100}",
+            "type": "cart_quantity",
+            "owl_promotionrules_owl_promotions": "",
+            "owl_promotionrules_owl_promotions_name": "",
+            "owl_promotionrules_owl_promotionsowl_promotions_ida": ""
+        },
+        "relationships": {
+            "OWL_Promotions": {
+                "links": {
+                    "related": "V8/module/9b16bff0-0825-5dc4-60c4-60e6c5fc44bd/relationships/owl_promotionrules_owl_promotions"
+                }
+            },
+            "SecurityGroups": {
+                "links": {
+                    "related": "V8/module/9b16bff0-0825-5dc4-60c4-60e6c5fc44bd/relationships/SecurityGroups"
+                }
+            },
+            "Users": {
+                "links": {
+                    "related": "V8/module/9b16bff0-0825-5dc4-60c4-60e6c5fc44bd/relationships/created_by_link"
+                }
+            }
+        }
+    }
+}
+```
+
+### 5.3. 建立規則與促銷活動關聯
+
+`POST http://example.com/Api/V8/module/OWL_Promotions/87539441-3882-b726-6972-60e6c25bdc36/relationships`
+
+```json--request
+{
+    "data": {
+        "type": "OWL_PromotionRules",
+        "id": "9b16bff0-0825-5dc4-60c4-60e6c5fc44bd"
+    }
+}
+```
+
+```json--response
+{
+    "meta": {
+        "message": "OWL_PromotionRules with id 9b16bff0-0825-5dc4-60c4-60e6c5fc44bd has been added to OWL_Promotions with id 87539441-3882-b726-6972-60e6c25bdc36"
+    },
+    "data": []
+}
+```
+
+### 5.4. 訂定折扣
+
+```json--request
+{
+    "data": {
+        "type": "OWL_PromotionActions",
+        "attributes": {
+            "name": "Test促銷活動",
+            "type": "order_fixed_discount",
+            "configuration": "{\"amount\":-100}"
+        }
+    }
+}
+```
+
+```json--response
+{
+    "data": {
+        "type": "OWL_PromotionActions",
+        "id": "5d3d94a2-3220-d6f6-e255-60e6c9047a81",
+        "attributes": {
+            "name": "Test促銷活動",
+            "date_entered": "2021-07-08T09:46:00+00:00",
+            "date_modified": "2021-07-08T09:46:00+00:00",
+            "modified_user_id": "1",
+            "modified_by_name": "Administrator",
+            "created_by": "1",
+            "created_by_name": "Administrator",
+            "description": "",
+            "deleted": "0",
+            "created_by_link": "",
+            "modified_user_link": "",
+            "assigned_user_id": "",
+            "assigned_user_name": "",
+            "assigned_user_link": "",
+            "SecurityGroups": "",
+            "configuration": "{&quot;amount&quot;:-100}",
+            "type": "order_fixed_discount",
+            "owl_promotionactions_owl_promotions": "",
+            "owl_promotionactions_owl_promotions_name": "",
+            "owl_promotionactions_owl_promotionsowl_promotions_ida": ""
+        },
+        "relationships": {
+            "OWL_Promotions": {
+                "links": {
+                    "related": "V8/module/5d3d94a2-3220-d6f6-e255-60e6c9047a81/relationships/owl_promotionactions_owl_promotions"
+                }
+            },
+            "SecurityGroups": {
+                "links": {
+                    "related": "V8/module/5d3d94a2-3220-d6f6-e255-60e6c9047a81/relationships/SecurityGroups"
+                }
+            },
+            "Users": {
+                "links": {
+                    "related": "V8/module/5d3d94a2-3220-d6f6-e255-60e6c9047a81/relationships/created_by_link"
+                }
+            }
+        }
+    }
+}
+```
+
+### 5.5. 建立折扣與促銷活動關聯
+
+`POST http://example.com/Api/V8/module/OWL_Promotions/{{promotion_id}}/relationships`
+
+```json--request
+{
+    "data": {
+        "type": "OWL_PromotionActions",
+        "id": "5d3d94a2-3220-d6f6-e255-60e6c9047a81"
+    }
+}
+```
+
+```json--response
+{
+    "meta": {
+        "message": "OWL_PromotionActions with id 5d3d94a2-3220-d6f6-e255-60e6c9047a81 has been added to OWL_Promotions with id 87539441-3882-b726-6972-60e6c25bdc36"
+    },
+    "data": []
+}
+```
+
+### 5.6. 促銷為折扣碼
+
+`POST http://example.com/Api/V8/module`
+
+```json--request
+{
+    "data": {
+        "type": "OWL_PromotionCoupons",
+        "attributes": {
+            "name": "Test促銷活動",
+            "code": "testpromotion439123",
+            "usage_limit": 0,
+            "reusable_from_cancelled_orders": 0,
+            "used": "1",
+            "expires_at": "2020-12-31",
+            "per_customer_usage_limit": 0
+        }
+    }
+}
+```
+
+```json--response
+{
+    "data": {
+        "type": "OWL_PromotionCoupons",
+        "id": "a68185b5-7a74-109e-c6e1-60e6cafb7523",
+        "attributes": {
+            "name": "Test促銷活動",
+            "date_entered": "2021-07-08T09:52:00+00:00",
+            "date_modified": "2021-07-08T09:52:00+00:00",
+            "modified_user_id": "1",
+            "modified_by_name": "Administrator",
+            "created_by": "1",
+            "created_by_name": "Administrator",
+            "description": "",
+            "deleted": "0",
+            "created_by_link": "",
+            "modified_user_link": "",
+            "assigned_user_id": "",
+            "assigned_user_name": "",
+            "assigned_user_link": "",
+            "SecurityGroups": "",
+            "code": "testpromotion439123",
+            "usage_limit": "0",
+            "reusable_from_cancelled_orders": "0",
+            "used": "1",
+            "expires_at": "",
+            "per_customer_usage_limit": "0",
+            "owl_promotioncoupons_owl_promotions": "",
+            "owl_promotioncoupons_owl_promotions_name": "",
+            "owl_promotioncoupons_owl_promotionsowl_promotions_ida": ""
+        },
+        "relationships": {
+            "OWL_Promotions": {
+                "links": {
+                    "related": "V8/module/a68185b5-7a74-109e-c6e1-60e6cafb7523/relationships/owl_promotioncoupons_owl_promotions"
+                }
+            },
+            "SecurityGroups": {
+                "links": {
+                    "related": "V8/module/a68185b5-7a74-109e-c6e1-60e6cafb7523/relationships/SecurityGroups"
+                }
+            },
+            "Users": {
+                "links": {
+                    "related": "V8/module/a68185b5-7a74-109e-c6e1-60e6cafb7523/relationships/created_by_link"
+                }
+            }
+        }
+    }
+}
+```
+
+### 5.7. 建立規則與促銷活動關聯
+
+`POST http://example.com/Api/V8/module/OWL_Promotions/{{promotion_id}}/relationships`
+
+```json--request
+{
+    "data": {
+        "type": "OWL_PromotionCoupons",
+        "id": "a68185b5-7a74-109e-c6e1-60e6cafb7523"
+    }
+}
+```
+
+```json--response
+{
+    "meta": {
+        "message": "OWL_PromotionCoupons with id a68185b5-7a74-109e-c6e1-60e6cafb7523 has been added to OWL_Promotions with id 87539441-3882-b726-6972-60e6c25bdc36"
+    },
+    "data": []
 }
 ```
